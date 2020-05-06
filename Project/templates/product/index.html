@@ -1,10 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 <p>Welcome to the product page, rendered from ./product/index.html</p>
-    <div class="product">
-        <p>Kristinn er hungry and everybody are sad!</p>
+    <div class="test">
+        {% for product in products %}
+            <!-- We display multiple single_product.html components-->
+            {%  include 'product/single_product.html' with product=product%}
+        {% endfor %}
     </div>
-    {% for product in products %}
-        <!-- We display multiple single_product.html components-->
-        {%  include 'product/single_product.html' with product=product%}
-    {% endfor %}
 {% endblock %}
