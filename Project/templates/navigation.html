@@ -24,16 +24,18 @@
       </li>
     </ul>
   </div>
+
+    <!-- search bar -->
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     </form>
 
-    <div class="MyAccNav">
-
-    </div>
-
-    <ul>
+    {% if user.is_authenticated %}
+        <li><a>Logout</a></li>
+    {% else %}
+        <!-- LOGIN dropdown -->
+        <ul>
       <li id="login">
         <a id="login-trigger" href="#">
           Log in <span>▼</span>
@@ -63,10 +65,10 @@
               </label>
             </fieldset>
           </form>
+            <a href="/user/register">Create an account</a>
         </div>
       </li>
-      <li id="signup">
-        <a href="">Sign up FREE</a>
-      </li>
     </ul>
+    {% endif %}
+
 </nav>
