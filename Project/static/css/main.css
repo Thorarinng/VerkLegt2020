@@ -28,6 +28,10 @@
     border-radius: 3px;
   }
 
+  .footer-padding {
+    padding: 2em;
+  }
+
   nav li {
     float: left;
   }
