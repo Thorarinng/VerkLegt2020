@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # includes looks in products/urls.py for this, if he finds the file its all good
     path('products/', include('product.urls')),
+    path('user/', include('user.urls')),
 ]

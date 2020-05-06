@@ -4,16 +4,32 @@
     border-color: lightcyan;
 }
 
+.container{
+  border: 2px #333;
+  background-color: whitesmoke;
+}
+
 .m-2{
-    background-color: floralwhite;
-    border: darkcyan;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-color: floralwhite;
+  border: darkcyan;
+  box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+  border-radius: 10px 3px 10px 3px;
+}
+.test{
+  display: grid;
+  background-color: #e8c291;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1em;
+  grid-auto-rows: 2fr;
 
 }
 
-.test{
-    border: 2px black;
-    background-color: black;
-    flex-wrap: wrap;
-    display: flex;
+.navbar{
+  padding-left: 100px;
+  padding-right: 100px;
+
 }
 
