@@ -34,42 +34,10 @@
 
     {% if user.is_authenticated %}
         <li><a>Logout</a></li>
+
     {% else %}
-        <!-- LOGIN dropdown -->
-        <ul>
-      <li id="login">
-        <a id="login-trigger" href="#">
-          Log in <span>▼</span>
-        </a>
-        <div id="login-content">
-          <form>
-            <fieldset id="inputs">
-              <input  id="username"
-                      type="email"
-                      name="Email"
-                      placeholder="Your email address"
-                      required>
-              <input  id="password"
-                      type="password"
-                      name="Password"
-                      placeholder="Password"
-                      required>
-            </fieldset>
-            <fieldset id="actions">
-              <input  type="submit"
-                      id="submit"
-                      value="Log in">
-              <label>
-                <input  type="checkbox"
-                        checked="checked">
-                Keep me signed in
-              </label>
-            </fieldset>
-          </form>
-            <a href="/user/register">Create an account</a>
-        </div>
-      </li>
-    </ul>
+        <a href={% url  'register' %}>Create an account</a>
+        <a href={% url  'login' %}>Login</a>
     {% endif %}
 
 </nav>
