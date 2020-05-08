@@ -1,0 +1,36 @@
+select {
+    width: 165px;
+}
+
+#sidebar {
+    min-width: 300px;
+    max-width: 300px;
+    background-color: #EDEDED;
+    height: 450px;
+    margin: 2rem 0 0 1rem;
+}
+
+#submit-border {
+    border-top: solid 1px black;
+}
+
+.sidebar-container {
+    margin: 1rem;
+}
+
+.filter-container {
+    text-align: center;
+}
+
+.filter-border {
+    border-bottom: solid 1px black;
+}
+
+.filter-btn-style {
+    width: 120px;
+    font-weight: bold;
+    background-color: deepskyblue;
+    font-size: 1.5rem;
+    border: solid 3px black;
+    border-radius: 15px;
+}
