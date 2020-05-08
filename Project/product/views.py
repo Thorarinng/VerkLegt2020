@@ -4,6 +4,7 @@ from product.models import Product
 from django.http import JsonResponse
 # INSERT INTO product_product (name,color,price,"imgURL",description,discount)
 
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -40,6 +41,25 @@ def index(request):
             return JsonResponse({'data': products})
     context = {'products': Product.objects.all()}
     return render(request, 'product/index.html', context)
+
+
+def index(request):
+    if 'search_filter' in request.GET:
+        search_filter = request.GET['search_filter']
+        products = [ {
+            'id': x.id,
+            'name': x.name,
+            'color': x.color,
+            'price': x.price,
+            'imgURL': x.imgURL,
+            'description': x.description,
+            'discount': x.discount
+        } for x in Product.objects.filter(name__icontains=search_filter)]
+        return JsonResponse({'data': products})
+
+    context = {'products': Product.objects.all()}
+    return render(request, 'product/index.html', context)
+
 
 # SUPPORTS -> /product/1
 def getProductById(request, id):
