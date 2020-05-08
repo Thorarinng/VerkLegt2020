@@ -3,6 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Base.html Document</title>
     <link
       rel="stylesheet"
@@ -13,17 +14,21 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}" />
     <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
     <link rel="stylesheet" href="{% static 'css/nav.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}" />
   </head>
   <body>
     {% include 'navigation.html' %}
-    <div class="container">
-      <h1>This is the base.html rendering this h1</h1>
-      <h4>Bootstrap is included, look how beautiful the font is</h4>
+    <span class="main-page">
+        {% include 'sidebar.html' %}
+        <div class="container">
+          <h1>This is the base.html rendering this h1</h1>
+          <h4>Bootstrap is included, look how beautiful the font is</h4>
 
-      <!-- This lets us extend index.html from product to the base.html-->
-      <!-- Think of this as an import statement-->
-      {% block content %} {% endblock %}
-    </div>
+          <!-- This lets us extend index.html from product to the base.html-->
+          <!-- Think of this as an import statement-->
+          {% block content %} {% endblock %}
+        </div>
+    </span>
     {% include 'footer.html' %}
     <!-- Bootstrap JavaScript import-->
     <script
@@ -31,9 +36,8 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
     <script src="{% static 'JS/login.js' %}"></script>
-
+    <script src="{% static 'JS/products.js' %}"></script>
   </body>
 </html>

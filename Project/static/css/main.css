@@ -8,6 +8,10 @@
   border: 2px #333;
 }
 
+.no-results{
+  text-align: center;
+}
+
 .m-2{
   display: grid;
   justify-content: center;
@@ -143,6 +147,9 @@
 .navbar{
   padding-left: 100px;
   padding-right: 100px;
-
 }
 
+.main-page {
+  display: flex;
+  flex-wrap: nowrap;
+}
