@@ -42,11 +42,14 @@
 
 .page-footer {
   min-height: 100%;
+  padding: 50px;
+  margin-top: 50px;
+
 
   /* Equal to height of footer */
   /* But also accounting for potential margin-bottom of last child */
-  margin-top: -50px;
+  /*margin-top: -50px;
   clear: both;
-  position: relative;
+  position: relative;*/
 
   }

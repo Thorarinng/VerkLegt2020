@@ -22,6 +22,7 @@
   border-radius: 10px 3px 10px 3px;
 }
 .products {
+
   display: grid;
   background-color: #e8c291;
   grid-template-columns: 1fr 1fr 1fr;
@@ -29,7 +30,16 @@
   grid-auto-rows: 2fr;
 }
 
+.min-height {
+    min-height: 1000px;
+}
+
 .main-page {
   display: flex;
   flex-wrap: nowrap;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: 110px auto 200px;
 }

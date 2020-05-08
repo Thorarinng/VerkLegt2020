@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $('#filter-btn').on('click', function(e) {
+        console.log("frikko")
         e.preventDefault();
         var price_filter = $('#price').val();
         $.ajax({
@@ -15,7 +16,7 @@ $(document).ready(function () {
                                     <h3>${d.description}</h3>
                                 </div>`
                     });
-                    $('.test').html(newHtml.join(''));
+                    $('.products').html(newHtml.join(''));
                     $('#filter-btn').val('');
                 }
                 else {
@@ -29,7 +30,7 @@ $(document).ready(function () {
                                     </div>    
                                </a>`
                     });
-                    $('.test').html(newHtml.join(''));
+                    $('.products').html(newHtml.join(''));
                     $('#filter-btn').val('');
                 }
             },
