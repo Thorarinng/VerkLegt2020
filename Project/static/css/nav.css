@@ -11,6 +11,10 @@
 
   }
 
+  .logout-btn{
+    background-color: #444444;
+  }
+
 
   nav ul {
     margin: 0;

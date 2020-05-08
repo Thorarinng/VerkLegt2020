@@ -33,11 +33,12 @@
     </form>
 
     {% if user.is_authenticated %}
-        <li><a href="{% url 'logout' %}">Logout</a></li>
+        <a href="{% url 'profile' %}"><img src="{{ user.imgURL }}" style="height: 50px" ></a>
+        <a class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
 
     {% else %}
         <a href={% url  'register' %}>Create an account</a>
-        <a href={% url  'login' %}>Login</a>
+        <a class="btn btn-primary" href={% url  'login' %}>Login</a>
     {% endif %}
 
 </nav>
