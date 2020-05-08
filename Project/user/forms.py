@@ -1,27 +1,28 @@
 from django.contrib.auth import authenticate
-from django.forms import ModelForm, widgets, forms
-from user.models import User
+from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
+from user.models import User
 
-class ContactForm(ModelForm):
+
+class RegistrationForm(UserCreationForm):
+    email = forms.EmailField(max_length=254, help_text='Required. Add a valid email address.')
+
     class Meta:
         model = User
-        exclude = ['id', 'name', 'last_login', 'active', 'employee', 'admin']
+        fields = ('email', 'password1', 'password2',)
 
-class UserLoginForm(forms.Form):
-    email = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
-    def clean(self, *args, **kwargs):
-        email = self.cleaned_data.get('email')
-        password = self.cleaned_data.get('password')
 
-        if email and password:
-            user = authenticate(email=email, password=password)
-            if not user:
-                raise forms.ValidationError('Go fuck yourself')
+class AccountAuthenticationForm(forms.ModelForm):
+    password = forms.CharField(label='Password', widget=forms.PasswordInput)
 
-            if not user.check_password(password):
-                raise forms.ValidationError('Incorrect PW')
+    class Meta:
+        model = User
+        fields = ('email', 'password')
 
-        return super(UserLoginForm, self).clean(*args, **kwargs)
+    def clean(self):
+        if self.is_valid():
+            email = self.cleaned_data['email']
+            password = self.cleaned_data['password']
+            if not authenticate(email=email, password=password):
+                raise forms.ValidationError("Invalid login")
