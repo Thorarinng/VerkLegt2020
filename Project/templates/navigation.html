@@ -24,11 +24,11 @@
   </div>
 
 <nav>
-  <div class="login-container">
+  <!-- <div class="login-container">
   {% if user.is_authenticated %}
       <li><a>Logout</a></li>
   {% else %}
-      <!-- LOGIN dropdown -->
+      LOGIN dropdown 
   <ul>
     <li id="login">
       <div id="login-trigger" href="#">
@@ -40,7 +40,14 @@
           My account
         </a>
         <span id="arrow">▼</span>
-      </div>
+    </div> -->
+    {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+
+    {% else %}
+        <a href={% url  'register' %}>Create an account</a>
+        <a href={% url  'login' %}>Login</a>
+    {% endif %}
 
       <div id="login-content">
         <form>
