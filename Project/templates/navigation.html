@@ -33,7 +33,7 @@
     </form>
 
     {% if user.is_authenticated %}
-        <li><a>Logout</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
 
     {% else %}
         <a href={% url  'register' %}>Create an account</a>

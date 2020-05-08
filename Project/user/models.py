@@ -1,19 +1,33 @@
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django.contrib.auth.models import AbstractUser
 from django.db import models
-
 
 # Create User
 from django.db.models import Model
 
 
 class UserManager(BaseUserManager):
-    def createUser(self):
-        pass
+    def create_user(self, email, password=None):
+        if not email:
+            raise ValueError('Users must have an email address')
 
-    def createStaffUser(self):
-        pass
+        user = self.model(
+            email=self.normalize_email(email),
+        )
+
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, password):
+        user = self.create_user(
+            email=self.normalize_email(email),
+            password=password,
+        )
+        user.is_admin = True
+        user.is_staff = True
+        user.save(using=self._db)
+        return user
+
 
 # User
 class User(AbstractBaseUser):
@@ -31,7 +45,7 @@ class User(AbstractBaseUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [firstName, lastName, email]
 
-    object = UserManager()
+    objects = UserManager()
 
     def __str__(self):
         return self.email
@@ -59,4 +73,3 @@ class User(AbstractBaseUser):
     @property
     def isActive(self):
         return self.active
-
