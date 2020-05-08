@@ -29,7 +29,11 @@
       <ul>
         <li id="login">
           <div id="login-trigger" href="{% url 'login' %}">
+            {% if user.is_authenticated %}
+              <img src="{{ user.imgURL }}" style="height: 50px" class="far fa-user">
+              {% else %}
             <i class='far fa-user'></i>
+              {% endif %}
             <a id="hello">Hello, log in?</a>
             <a id="my-account">My account</a>
             <span id="arrow">▼</span>
