@@ -34,7 +34,7 @@ def loginUser(request):
 
     user = request.user
     if user.is_authenticated:
-        return redirect("home")
+        return redirect("/user/profile")
 
     if request.POST:
         form = AccountAuthenticationForm(request.POST)

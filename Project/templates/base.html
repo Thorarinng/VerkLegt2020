@@ -20,18 +20,11 @@
   <body>
     <div class="grid">
     {% include 'navigation.html' %}
-<<<<<<< HEAD
-    <div class="container">
-      <!-- This lets us extend index.html from product to the base.html-->
-      <!-- Think of this as an import statement-->
-      {% block content %} {% endblock %}
-=======
+
+
     <span class="main-page">
         {% include 'sidebar.html' %}
         <div class="container">
-          <h1>This is the base.html rendering this h1</h1>
-          <h4>Bootstrap is included, look how beautiful the font is</h4>
-
           <!-- This lets us extend index.html from product to the base.html-->
           <!-- Think of this as an import statement-->
           {% block content %} {% endblock %}
@@ -39,8 +32,7 @@
     </span>
 
     {% include 'footer.html' %}
->>>>>>> f3abf47d0ad6a30fcec121446e4df95368286f39
-    </div>
+
     <!-- Bootstrap JavaScript import-->
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
