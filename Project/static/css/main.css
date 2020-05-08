@@ -39,7 +39,7 @@
   flex-wrap: nowrap;
 }
 
-.grid {
+/*.grid {
   display: grid;
   grid-template-rows: 110px auto 200px;
-}
+}*/

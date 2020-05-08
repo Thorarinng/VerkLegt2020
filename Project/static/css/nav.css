@@ -8,6 +8,8 @@
   }
 
   .nav-container {
+    position: sticky;
+    top: 0;
     display: grid;
     grid-template-columns: 15% 15% 30% 25% 15%;
     justify-items: center;
@@ -50,6 +52,13 @@
   input[type="search"]::-webkit-search-cancel-button,
   input[type="search"]::-webkit-search-results-button,
   input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+
+.dropdown-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 
 
   .arrow {
@@ -95,13 +104,14 @@
   }
 
   .far {
-    font-size: 36px;
+    font-size: 2rem;
     font-weight: lighter;
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 2;
     grid-row-end: 2;
   }
+
 
   #hello {
     font-size: 14px;

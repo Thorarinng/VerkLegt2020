@@ -23,63 +23,124 @@
       </div>
   </div>
 
-<nav>
-  <!-- <div class="login-container">
+<div class="dropdown-container">
+  <div class="login-container">
   {% if user.is_authenticated %}
       <li><a>Logout</a></li>
   {% else %}
-      LOGIN dropdown 
-  <ul>
-    <li id="login">
-      <div id="login-trigger" href="#">
-        <i class='far fa-user'></i>
-        <a id="hello">
-          Hello, log in?
-        </a>
-        <a id="my-account">
-          My account
-        </a>
-        <span id="arrow">▼</span>
-    </div> -->
-    {% if user.is_authenticated %}
-        <li><a href="{% url 'logout' %}">Logout</a></li>
+      <!--LOGIN dropdown -->
+      <ul>
+        <li id="login">
+          <div id="login-trigger" href="#">
+            <i class='far fa-user'></i>
+            <a id="hello">
+              Hello, log in?
+            </a>
+            <a id="my-account">
+              My account
+            </a>
+            <span id="arrow">▼</span>
+          </div>
+        <!--{% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
 
-    {% else %}
-        <a href={% url  'register' %}>Create an account</a>
-        <a href={% url  'login' %}>Login</a>
-    {% endif %}
+        {% else %}
+            <a href={% url  'register' %}>Create an account</a>
+            <a href={% url  'login' %}>Login</a>
+        {% endif %}-->
 
-      <div id="login-content">
-        <form>
-          <fieldset id="inputs">
-            <input  id="username"
-                    type="email"
-                    name="Email"
-                    placeholder="Your email address"
-                    required>
-            <input  id="password"
-                    type="password"
-                    name="Password"
-                    placeholder="Password"
-                    required>
-          </fieldset>
-          <fieldset id="actions">
-            <input  type="submit"
-                    id="submit"
-                    value="Log in">
-            <label>
-              <input  type="checkbox"
-                      checked="checked">
-              Keep me signed in
-            </label>
-          </fieldset>
-        </form>
-          <a href="/user/register">Create an account</a>
-      </div>
-    </li>
-  </ul>
+          <div id="login-content">
+            <form>
+              <fieldset id="inputs">
+                <input  id="username"
+                        type="email"
+                        name="Email"
+                        placeholder="Your email address"
+                        required>
+                <input  id="password"
+                        type="password"
+                        name="Password"
+                        placeholder="Password"
+                        required>
+              </fieldset>
+              <fieldset id="actions">
+                <input  type="submit"
+                        id="submit"
+                        value="Log in">
+                <label>
+                  <input  type="checkbox"
+                          checked="checked">
+                  Keep me signed in
+                </label>
+              </fieldset>
+            </form>
+              <a href="/user/register">Create an account</a>
+          </div>
+        </li>
+      </ul>
   {% endif %}
+  </div>
 
-</nav>
+
+  <div class="login-container">
+  {% if user.is_authenticated %}
+      <li><a>Logout</a></li>
+  {% else %}
+      <!--LOGIN dropdown -->
+      <ul>
+        <li id="login">
+          <div id="login-trigger" href="#">
+            <i class='fas far fa-shopping-cart'></i>
+            <a id="hello">
+              Hello, log in?
+            </a>
+            <a id="my-account">
+              My account
+            </a>
+            <span id="arrow">▼</span>
+          </div>
+        <!--{% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+
+        {% else %}
+            <a href={% url  'register' %}>Create an account</a>
+            <a href={% url  'login' %}>Login</a>
+        {% endif %}-->
+
+          <!--<div id="login-content">
+            <form>
+              <fieldset id="inputs">
+                <input  id="username"
+                        type="email"
+                        name="Email"
+                        placeholder="Your email address"
+                        required>
+                <input  id="password"
+                        type="password"
+                        name="Password"
+                        placeholder="Password"
+                        required>
+              </fieldset>
+              <fieldset id="actions">
+                <input  type="submit"
+                        id="submit"
+                        value="Log in">
+                <label>
+                  <input  type="checkbox"
+                          checked="checked">
+                  Keep me signed in
+                </label>
+              </fieldset>
+            </form>
+              <a href="/user/register">Create an account</a>
+          </div>-->
+        </li>
+      </ul>
+  {% endif %}
+  </div>
+
+
+
+</div>
 </div>
 

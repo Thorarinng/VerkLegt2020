@@ -36,3 +36,4 @@ input.addEventListener("keyup", function(event) {
    document.getElementById("search-btn").click();
   }
 });
+
