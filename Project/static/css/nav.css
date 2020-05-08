@@ -1,83 +1,163 @@
-  .header {
+  .logo {
+    height: 5.5rem;
+    padding-bottom: 1.2rem;
+  }
+
+  .logo-container {
+    grid-column-start: 2;
+  }
+
+  .nav-container {
     display: grid;
+    grid-template-columns: 15% 15% 30% 25% 15%;
     justify-items: center;
+    align-items: center;
     background-color: #EDEDED;
+    height: 110px;
     }
 
-  .navbar {
+  .search-bar-container {
+    grid-column-start: 3;
+    position: relative;
+  }
 
-    padding: 0.5rem;
-    width: 80%;
+  .submit {
+    position: absolute;
+    color: #808080;
+    background: transparent;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+    top: 11px;
+    left: 440px;
+  }
+
+  .search-bar {
+    color: #808080;
+    padding-left: 25px;
+    background: white;
+    border: none;
+    height: 3rem;
+    width: 30rem;
+    border-radius: 4px;
 
   }
 
+  input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
+  input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
 
-  nav ul {
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+
+  .arrow {
+      border: solid black;
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 3px;
+}
+
+
+
+
+
+   ul {
     margin: 0;
     padding: 0;
     list-style: none;
     position: relative;
     float: right;
     background: #eee;
-    border-bottom: 1px solid #fff;
     border-radius: 3px;
   }
 
-  nav li {
-    float: left;
-  }
 
-  nav #login {
-    border-right: 1px solid #ddd;
-    box-shadow: 1px 0 0 #fff;
-  }
+    /*login style*/
 
-  nav #login-trigger,
-  nav #signup a {
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
-    height: 25px;
-    line-height: 25px;
-    font-weight: bold;
-    padding: 0 8px;
+
+  #login-trigger {
+    cursor: pointer;
+    height: 110px;
+    width: 200px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-rows: 49% 2% 49%;
+
+    /*padding: 0 8px;*/
     text-decoration: none;
     color: #444;
-    text-shadow: 0 1px 0 #fff;
+    decoration: none
+
   }
 
-  nav #signup a {
-    border-radius: 0 3px 3px 0;
+  .far {
+    font-size: 36px;
+    font-weight: lighter;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 2;
+    grid-row-end: 2;
   }
 
-  nav #login-trigger {
-    border-radius: 3px 0 0 3px;
+  #hello {
+    font-size: 14px;
+    align-self: end;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 1;
   }
 
-  nav #login-trigger:hover,
-  nav #login .active,
-  nav #signup a:hover {
-    background: #fff;
+  #my-account {
+    align-self: start;
+    font-weight: bold;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 3;
   }
 
-  nav #login-content {
+  #arrow {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
+
+
+
+
+    /*Nav hover*/
+  #login-trigger:hover,
+  #login .active,
+  #signup a:hover {
+    background-color: #DFDFDF;
+  }
+
+    /*Slide down sticker*/
+  #login-content {
     display: none;
     position: absolute;
-    top: 24px;
+    top: 110px;
     right: 0;
     z-index: 999;
-    background: #fff;
-    background-image: linear-gradient(top, #fff, #eee);
+    background-color: #DFDFDF;
     padding: 15px;
     box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
     border-radius: 3px 0 3px 3px;
   }
 
-  nav li #login-content {
-    right: 0;
+    /*slide down box*/
+  #login-content {
+    /*right: 0;*/
     width: 250px;
   }
 
+    /*Input style*/
   #inputs input {
     background: #f1f1f1;
     padding: 6px 5px;
@@ -88,6 +168,7 @@
     box-shadow: 0 1px 1px #ccc inset;
   }
 
+    /*Þegar inputið er selectað*/
   #inputs input:focus {
     background-color: #fff;
     border-color: #e8c291;
@@ -95,10 +176,8 @@
     box-shadow: 0 0 0 1px #e8c291 inset;
   }
 
-  #login #actions {
-    margin: 10px 0 0 0;
-  }
 
+   /*Login button*/
   #login #submit {
     background-color: #d14545;
     background-image: linear-gradient(top, #e97171, #d14545);
@@ -116,25 +195,15 @@
     color: #fff;
   }
 
+
+  /*Hover login*/
   #login #submit:hover,
   #login #submit:focus {
     background-color: #e97171;
     background-image: linear-gradient(top, #d14545, #e97171);
   }
 
-  #login #submit:active {
-    outline: none;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
-  }
 
-  #login label {
-    float: right;
-    line-height: 30px;
-  }
 
-  #login label input {
-    position: relative;
-    top: 2px;
-    right: 2px;
-  }
+
 

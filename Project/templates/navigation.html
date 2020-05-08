@@ -1,76 +1,78 @@
-<div class="header">
-<nav class="navbar">
-  <a class="navbar-brand" href="/">GamesGo</a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<div class="nav-container">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav">
-        <li>
-        <a class="nav-link" href="{% url 'product-index' %}"
-          >Products <span class="sr-only">(current)</span>
-        </a>
-        </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Profile</a>
-      </li>
-    </ul>
+  <div class="logo-container">
+      <a href="/">
+        <img class="logo" src="static/Images/logo.png">
+      </a>
   </div>
 
     <!-- search bar -->
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
+ <!-- <div class="search-bar-container">
+  <form>
+      <input class="search-bar" id="search-box" type="search" placeholder="Search" aria-label="Search">
+      <div class="input-group-btn">
+        <button class="submit" id="search-btn" type="button"><i class="fa fa-search"></i></button>
+      </div>
+  </form>
+  </div>-->
 
-    {% if user.is_authenticated %}
-        <li><a>Logout</a></li>
-    {% else %}
-        <!-- LOGIN dropdown -->
-        <ul>
-      <li id="login">
-        <a id="login-trigger" href="#">
-          Log in <span>▼</span>
+  <div class="input-group">
+      <input type="search" class="search-bar" id="search-box" placeholder="Enter search">
+      <div class="input-group-btn">
+        <button type="button" id="search-btn" class="submit" ><i class="fa fa-search"></i></button>
+      </div>
+  </div>
+
+<nav>
+  <div class="login-container">
+  {% if user.is_authenticated %}
+      <li><a>Logout</a></li>
+  {% else %}
+      <!-- LOGIN dropdown -->
+  <ul>
+    <li id="login">
+      <div id="login-trigger" href="#">
+        <i class='far fa-user'></i>
+        <a id="hello">
+          Hello, log in?
         </a>
-        <div id="login-content">
-          <form>
-            <fieldset id="inputs">
-              <input  id="username"
-                      type="email"
-                      name="Email"
-                      placeholder="Your email address"
-                      required>
-              <input  id="password"
-                      type="password"
-                      name="Password"
-                      placeholder="Password"
-                      required>
-            </fieldset>
-            <fieldset id="actions">
-              <input  type="submit"
-                      id="submit"
-                      value="Log in">
-              <label>
-                <input  type="checkbox"
-                        checked="checked">
-                Keep me signed in
-              </label>
-            </fieldset>
-          </form>
-            <a href="/user/register">Create an account</a>
-        </div>
-      </li>
-    </ul>
-    {% endif %}
+        <a id="my-account">
+          My account
+        </a>
+        <span id="arrow">▼</span>
+      </div>
 
+      <div id="login-content">
+        <form>
+          <fieldset id="inputs">
+            <input  id="username"
+                    type="email"
+                    name="Email"
+                    placeholder="Your email address"
+                    required>
+            <input  id="password"
+                    type="password"
+                    name="Password"
+                    placeholder="Password"
+                    required>
+          </fieldset>
+          <fieldset id="actions">
+            <input  type="submit"
+                    id="submit"
+                    value="Log in">
+            <label>
+              <input  type="checkbox"
+                      checked="checked">
+              Keep me signed in
+            </label>
+          </fieldset>
+        </form>
+          <a href="/user/register">Create an account</a>
+      </div>
+    </li>
+  </ul>
+  {% endif %}
+  </div>
 </nav>
 </div>
+

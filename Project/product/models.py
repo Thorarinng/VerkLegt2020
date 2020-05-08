@@ -1,5 +1,7 @@
 from django.db import models
 
+
+
 # Create your models here.
 class Product(models.Model):
     # TODO: Add the rest of the attributes required
