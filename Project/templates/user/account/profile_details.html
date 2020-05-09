@@ -1,0 +1,17 @@
+{% block content %}
+    <div class="profile">
+        <h1>Profile</h1>
+        <h3>{{ user.firstName }}</h3>
+        <h3>{{ user.lastName }}</h3>
+        <img style="width: 200px" src="{{ user.imgURL }}">
+        <h4>{{ user.email }}</h4>
+        <h4>{{ user.phoneNumber }}</h4>
+        {% if user.active %}
+            <h4>Status: <span style="color: green"> Active </span></h4>
+        {% else %}
+            <h4>Status: <span style="color: red"> Inactive </span></h4>
+        {% endif %}
+
+        <a class="btn btn-primary" style="width: 14rem" href="{% url 'editProfile' %}">Edit Profile</a>
+    </div>
+{% endblock %}

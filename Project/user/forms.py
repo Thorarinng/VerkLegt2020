@@ -2,9 +2,10 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
-from user.models import User
+from user.models import User, ShippingAddress
 
 
+# register
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Required. Add a valid email address.')
     password1 = forms.PasswordInput(attrs={'class': 'form-control'})
@@ -25,6 +26,7 @@ class RegistrationForm(UserCreationForm):
         }
 
 
+# auth
 class AccountAuthenticationForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
 
@@ -40,10 +42,19 @@ class AccountAuthenticationForm(forms.ModelForm):
                 raise forms.ValidationError("Invalid login")
 
 
+# Edit Profile
 class EditProfileForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('imgURL', 'firstName', 'lastName', 'phoneNumber', 'password')
+        # labels = {'password': 'New Password or enter your old one'}
         widgets = {
             'password': forms.PasswordInput()
         }
+
+
+class ShippingAddressForm(forms.ModelForm):
+    class Meta:
+        model = ShippingAddress
+        exclude = ('pk',)
+        fields = ('address1','address2','city','country','region','postalCode')
