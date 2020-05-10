@@ -9,6 +9,7 @@ urlpatterns = [
     path('logout/', views.logoutUser, name='logout'),
     path('account/', views.getProfile, name='account'),
     path('account/profile/edit/', views.editProfile, name='editProfile'),
-    path('account/billingaddress/edit/', views.editBillingAddress, name='editBillingAddress'),
-    path('account/billingaddress/add/', views.addBillingAddress, name='addBillingAddress'),
+    path('account/billingaddress/edit/', views.updateBillingAddress, name='updateBillingAddress'),
+    # path('account/billingaddress/edit/', views.updateBillingAddress, name='editBillingAddress'),
+    # path('account/billingaddress/add/', views.updateBillingAddress, name='addBillingAddress'),
 ]

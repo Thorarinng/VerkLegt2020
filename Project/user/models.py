@@ -3,6 +3,7 @@ from django.db import models
 
 # Create User
 from django.db.models import Model
+from django_countries.fields import CountryField
 
 
 class UserManager(BaseUserManager):
@@ -47,6 +48,13 @@ class User(AbstractBaseUser):
 
     objects = UserManager()
 
+    def __setUserAttributes__(self,form):
+        self.firstName = form.cleaned_data['firstName']
+        self.lastName = form.cleaned_data['lastName']
+        self.phoneNumber = form.cleaned_data['phoneNumber']
+        self.imgURL = form.cleaned_data['imgURL']
+        self.set_password(form.cleaned_data['password'])
+
     def __str__(self):
         return self.email
 
@@ -74,14 +82,28 @@ class User(AbstractBaseUser):
     def isActive(self):
         return self.active
 
+
 class ShippingAddress(models.Model):
     address1 = models.CharField(max_length=80)
     address2 = models.CharField(max_length=80)
     city = models.CharField(max_length=100, default=None)
-    country = models.CharField(max_length=100)
+    # country = models.CharField(max_length=100)
+    # Added this third party django-countries library that allows us to use a selector field for countries
+    country = CountryField()
     region = models.CharField(max_length=50)
     postalCode = models.CharField(max_length=15)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    # Sets attributes to a shippingAddress object and returns it
+    def __setShippingAddressAttributes__(self, request, form):
+        self.user_id = request.user.pk
+        self.address1 = form.cleaned_data.get('address1')
+        self.address2 = form.cleaned_data.get('address2')
+        self.city = form.cleaned_data.get('city')
+        self.country = form.cleaned_data.get('country')
+        self.region = form.cleaned_data.get('region')
+        self.postalCode = form.cleaned_data.get('postalCode')
+        return self
 
     @property
     def getAddress1(self):
@@ -120,5 +142,3 @@ class ShippingAddress(models.Model):
                f"{self.region}\n" \
                f"{self.postalCode}\n" \
                f"{self.user}\n"
-
-

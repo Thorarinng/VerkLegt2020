@@ -4,7 +4,7 @@
 
     <h2>Edit Shipping Address</h2>
     <div class="profile">
-        <form class="form form-horizontal" action="{% url 'editBillingAddress' %}" method="post">
+        <form class="form form-horizontal" action="{% url 'updateBillingAddress' %}" method="post">
             {% csrf_token %}
             {{ editShippingAddressForm.as_p }}
             <input type="submit" class="btn btn-primary" value="Save Changes">

@@ -1,8 +1,9 @@
+from user.forms import AccountAuthenticationForm, RegistrationForm, EditProfileForm, ShippingAddressForm
+from .models import User, ShippingAddress
+
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
-from .models import User, ShippingAddress
-from user.forms import AccountAuthenticationForm, RegistrationForm, EditProfileForm, ShippingAddressForm
 
 
 def registerUser(request):
@@ -73,20 +74,12 @@ def getProfile(request):
 
 
 def editProfile(request):
-    context = {}
     if request.POST:
         form = EditProfileForm(request.POST, instance=request.user)
         if form.is_valid():
-            password = form.cleaned_data['password']
-            print(password)
-            print(request.user.password)
             user = User.objects.get(pk=request.user.pk)
             if user:
-                user.firstName = form.cleaned_data['firstName']
-                user.lastName = form.cleaned_data['lastName']
-                user.phoneNumber = form.cleaned_data['phoneNumber']
-                user.imgURL = form.cleaned_data['imgURL']
-                user.set_password(password)
+                user.__setUserAttributes__(form)
                 user.save()
                 login(request, user)
                 return redirect("/user/account")
@@ -105,61 +98,36 @@ def editProfile(request):
             }
         )
 
-    context['editProfileForm'] = form
+    context = {'editProfileForm': form}
 
-    return render(request, "user/account/edit/edit-profile.html", context)
+    return render(request, "user/account/edit-profile.html", context)
 
 
-def editBillingAddress(request):
-    sa = ShippingAddress.objects.get(user_id=request.user.id)
+# This was originally editBillingAddress, because we had two different functions essentially doing the same thing
+# Update and ADding BillingAddress are now one function
+def updateBillingAddress(request):
+    # Try to find a BillingAddress that exists exists
+    try:
+        sa = ShippingAddress.objects.get(user_id=request.user.id)
+    except ShippingAddress.DoesNotExist:
+        sa = ShippingAddress()
+
     if request.POST:
         form = ShippingAddressForm(request.POST, instance=request.user)
         if form.is_valid():
-            print('Valid form')
-            sa = __setShippingAddressAttributes(request, form, sa)
-            print(sa.city)
+            sa.__setShippingAddressAttributes__(request, form)
             sa.save()
             return redirect("/user/account")
 
     form = ShippingAddressForm(
 
-    initial={
-        'address1': sa.address1,
-        'address2': sa.address2,
-        'city': sa.city,
-        'country': sa.country,
-        'region': sa.region,
-        'postalCode': sa.postalCode
-    })
+        initial={
+            'address1': sa.address1,
+            'address2': sa.address2,
+            'city': sa.city,
+            'country': sa.country,
+            'region': sa.region,
+            'postalCode': sa.postalCode
+        })
     context = {'editShippingAddressForm': form}
-    return render(request, "user/account/edit/edit-billing-address.html", context)
-
-
-def addBillingAddress(request):
-    # TODO: should return a form that a user can manipulate
-    if request.POST:
-        sa = ShippingAddress()
-        form = ShippingAddressForm(request.POST, instance=request.user)
-        if form.is_valid():
-            obj = __setShippingAddressAttributes(request, form, sa)
-            print(obj.city)
-            obj.save()
-            return redirect("/user/account")
-        else:
-            print("NOT VALID")
-    else:
-        form = ShippingAddressForm()
-    context = {'addShippingAddressForm': form}
-    return render(request, "user/account/add/add-billing-address.html", context)
-
-
-# Sets attributes to a shippingAddress object and returns it
-def __setShippingAddressAttributes(request, form, obj):
-    obj.user_id = request.user.pk
-    obj.address1 = form.cleaned_data.get('address1')
-    obj.address2 = form.cleaned_data.get('address2')
-    obj.city = form.cleaned_data.get('city')
-    obj.country = form.cleaned_data.get('country')
-    obj.region = form.cleaned_data.get('region')
-    obj.postalCode = form.cleaned_data.get('postalCode')
-    return obj
+    return render(request, "user/account/update-billing-address.html", context)

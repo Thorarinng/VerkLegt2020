@@ -31,14 +31,21 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Default
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Added
     'product.apps.ProductConfig',
-    'user.apps.UserConfig'
+    'user.apps.UserConfig',
+
+    # Country selector
+    # https://pypi.org/project/django-countries/#multi-choice
+    'django_countries'
 ]
 
 MIDDLEWARE = [
