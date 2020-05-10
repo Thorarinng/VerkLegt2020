@@ -73,3 +73,52 @@ class User(AbstractBaseUser):
     @property
     def isActive(self):
         return self.active
+
+class ShippingAddress(models.Model):
+    address1 = models.CharField(max_length=80)
+    address2 = models.CharField(max_length=80)
+    city = models.CharField(max_length=100, default=None)
+    country = models.CharField(max_length=100)
+    region = models.CharField(max_length=50)
+    postalCode = models.CharField(max_length=15)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    @property
+    def getAddress1(self):
+        return self.address1
+
+    @property
+    def getAddress2(self):
+        return self.address2
+
+    @property
+    def getCity(self):
+        return self.city
+
+    @property
+    def getCountry(self):
+        return self.country
+
+    @property
+    def getRegion(self):
+        return self.region
+
+    @property
+    def getPostalCode(self):
+        return self.postalCode
+
+    @property
+    def getUser(self):
+        return self.user
+
+    def __str__(self):
+        return f"{self.pk}\n" \
+               f"{self.address1}\n" \
+               f"{self.address2}\n" \
+               f"{self.city}\n" \
+               f"{self.country}\n" \
+               f"{self.region}\n" \
+               f"{self.postalCode}\n" \
+               f"{self.user}\n"
+
+

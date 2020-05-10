@@ -1,3 +1,19 @@
+.profile{
+  width: min-content;
+  padding: 20px;
+  background-color: lightgrey;
+  border: darkcyan;
+  box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+}
+
+/*.helptext{*/
+/*  visibility: hidden;*/
+/*}*/
+
+.form-group ul {
+  visibility: hidden;
+}
+
 .product {
     background-color: lightblue;
     color: black;
@@ -39,7 +55,7 @@
   flex-wrap: nowrap;
 }
 
-.grid {
+/*.grid {
   display: grid;
   grid-template-rows: 110px auto 200px;
-}
+}*/

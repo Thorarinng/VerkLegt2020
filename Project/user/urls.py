@@ -7,6 +7,8 @@ urlpatterns = [
     path('register/', views.registerUser, name='register'),
     path('login/', views.loginUser, name='login'),
     path('logout/', views.logoutUser, name='logout'),
-    # path('login/', LoginView.as_view(template_name='user/login.html'), name='login'),
-    # path('logout/', LogoutView.as_view(next_page='/'), name='logout')
+    path('account/', views.getProfile, name='account'),
+    path('account/profile/edit/', views.editProfile, name='editProfile'),
+    path('account/billingaddress/edit/', views.editBillingAddress, name='editBillingAddress'),
+    path('account/billingaddress/add/', views.addBillingAddress, name='addBillingAddress'),
 ]

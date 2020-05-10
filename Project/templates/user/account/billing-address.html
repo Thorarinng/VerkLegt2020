@@ -1,0 +1,17 @@
+{% block content %}
+    <div class="profile">
+        <h1>Shipping Address </h1>
+        {% if hasBillingAddress %}
+            <p> <b>Address: </b> {{ sa.address1 }}</p>
+            <p> <b>Bell: </b> {{ sa.address2 }}</p>
+            <p> <b> City: </b> {{ sa.city }}</p>
+            <p> <b> Country: </b> {{ sa.country }}</p>
+            <p> <b> Region: </b> {{ sa.region }}</p>
+            <p> <b> Post Code: </b>: {{ sa.postalCode }}</p>
+            <a class="btn btn-primary" style="width: 14rem" href="{% url 'editBillingAddress' %}">Edit Billing Address</a>
+        {% else %}
+            <p> No shipping address currently registered</p>
+            <a class="btn btn-primary" style="width: 14rem" href="{% url 'addBillingAddress' %}">Add Billing Address</a>
+        {% endif %}
+    </div>
+{% endblock %}

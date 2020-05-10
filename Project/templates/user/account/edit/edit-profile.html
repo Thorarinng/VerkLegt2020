@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h2>Edit Profile</h2>
+    <div class="profile">
+    <img style="width: 200px" src="{{ user.imgURL }}">
+    <h3>{{ user.email }}</h3>
+    <form class="form form-horizontal" action="{% url 'editProfile' %}" method="post">
+        {% csrf_token %}
+        {{ editProfileForm.as_p }}
+        <input type="submit" class="btn btn-primary" value="Save Changes">
+        <a href= "{% url 'account' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+    </div>
+
+{% endblock %}

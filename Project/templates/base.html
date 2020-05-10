@@ -17,23 +17,24 @@
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
+
   <body>
     <div class="grid">
     {% include 'navigation.html' %}
+
+
     <span class="main-page">
         {% include 'sidebar.html' %}
         <div class="container">
-          <h1>This is the base.html rendering this h1</h1>
-          <h4>Bootstrap is included, look how beautiful the font is</h4>
-
           <!-- This lets us extend index.html from product to the base.html-->
           <!-- Think of this as an import statement-->
-          {% block content %} {% endblock %}
+        <!-- product/index.html -->
+         {% block content %} {% endblock %}
         </div>
     </span>
 
     {% include 'footer.html' %}
-    </div>
+
     <!-- Bootstrap JavaScript import-->
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
@@ -45,6 +46,6 @@
     <script src="{% static 'JS/login.js' %}"></script>
     <script src="{% static 'JS/products.js' %}"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-
+    </div>
   </body>
 </html>

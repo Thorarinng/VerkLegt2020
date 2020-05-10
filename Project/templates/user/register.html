@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h1>Sign Up Now MotherFucker!</h1>
-    <form class="form form-horizontal" action="{% url 'register' %}" method="post">
-        {% csrf_token %}
-        {{ registerForm }}
-        <input type="submit" class="btn btn-primary" value="Sign Up">
-    </form>
+    <div class="offset-3 col-md-6">
+        <form class="form form-horizontal" action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ registerForm.as_p }}
+                <input type="submit" class="btn btn-primary" value="Sign Up">
+            </div>
+
+        </form>
+    </div>
 
 {% endblock %}
