@@ -1,8 +1,10 @@
+# Django libraries
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.db import models
-
-# Create User
 from django.db.models import Model
+
+# Third-party libraries
+from creditcards.models import CardNumberField, CardExpiryField, SecurityCodeField
 from django_countries.fields import CountryField
 
 
@@ -48,7 +50,7 @@ class User(AbstractBaseUser):
 
     objects = UserManager()
 
-    def __setUserAttributes__(self,form):
+    def __setUserAttributes__(self, form):
         self.firstName = form.cleaned_data['firstName']
         self.lastName = form.cleaned_data['lastName']
         self.phoneNumber = form.cleaned_data['phoneNumber']
@@ -95,7 +97,7 @@ class ShippingAddress(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     # Sets attributes to a shippingAddress object and returns it
-    def __setShippingAddressAttributes__(self, request, form):
+    def setShippingAddressAttributes(self, request, form):
         self.user_id = request.user.pk
         self.address1 = form.cleaned_data.get('address1')
         self.address2 = form.cleaned_data.get('address2')
@@ -142,3 +144,32 @@ class ShippingAddress(models.Model):
                f"{self.region}\n" \
                f"{self.postalCode}\n" \
                f"{self.user}\n"
+
+
+class PaymentMethod(models.Model):
+    # # pip install django-credit-cards
+    # nameOnCard = models.CharField(max_length=255)
+    # # Only stores 4 bytes by default
+    # cardNumber = models.PositiveIntegerField(max_length=16)
+    # expMonth = models.CharField(max_length=2)
+    # expYear = models.CharField(max_length=4)
+    # cvc = models.IntegerField()
+
+    nameOnCard = models.CharField(max_length=255)
+    cardNumber = CardNumberField(max_length=16)
+    cardExpiry = CardExpiryField(max_length=4)
+    cvc = SecurityCodeField('security code')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    # def setPaymentMethodAttributes(self, request, form):
+    #     self.user_id = request.user.pk
+    #     self.nameOnCard = form.cleaned_data.get('nameOnCard')
+    #     self.cardNumber = form.cleaned_data.get('cardNumber')
+    #     self.expMonth = form.cleaned_data.get('expMonth')
+    #     self.expYear = form.cleaned_data.get('expYear')
+    #     self.cvc = form.cleaned_data.get('cvc')
+    #     return self
+    #
+    # def validateAttributes(self, request, form):
+    #     if len(form.cleaned_data.get('nameOnCard')) != 16:
+    #         return False

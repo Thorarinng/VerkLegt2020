@@ -1,5 +1,5 @@
-from user.forms import AccountAuthenticationForm, RegistrationForm, EditProfileForm, ShippingAddressForm
-from .models import User, ShippingAddress
+from user.forms import AccountAuthenticationForm, RegistrationForm, EditProfileForm, ShippingAddressForm, PaymentMethodForm
+from .models import User, ShippingAddress, PaymentMethod
 
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
@@ -62,15 +62,26 @@ def loginUser(request):
 
 def getProfile(request):
     # TODO: return the payment-method information stored about a user
+    sa = ShippingAddress()
+    pm = PaymentMethod()
+    # Check if a shippingAddress exists
+    context = {}
     try:
         sa = ShippingAddress.objects.get(user_id=request.user.pk)
-        context = {
-            'sa': sa,
-            'hasBillingAddress': True
-        }
-    except:
-        context = {'hasBillingAddress': False}
-    return render(request, 'user/account/account.html', context)
+        context['sa'] = sa
+        context['hasShippingAddress'] = True
+    except ShippingAddress.DoesNotExist:
+        context['hasShippingAddress'] = False
+    # Check if a PaymentMethod exists
+    # pm.checkIfExists(request.user.pk)
+    try:
+        pm = PaymentMethod.objects.get(user_id=request.user.pk)
+        context['pm'] = pm
+        context['hasPaymentMethod'] = True
+    except PaymentMethod.DoesNotExist:
+        context['hasPaymentMethod'] = False
+
+    return render(request, 'user/account/account_details.html', context)
 
 
 def editProfile(request):
@@ -100,7 +111,7 @@ def editProfile(request):
 
     context = {'editProfileForm': form}
 
-    return render(request, "user/account/edit-profile.html", context)
+    return render(request, "user/account/profile/profile_edit.html", context)
 
 
 # This was originally editBillingAddress, because we had two different functions essentially doing the same thing
@@ -115,7 +126,7 @@ def updateBillingAddress(request):
     if request.POST:
         form = ShippingAddressForm(request.POST, instance=request.user)
         if form.is_valid():
-            sa.__setShippingAddressAttributes__(request, form)
+            sa.setShippingAddressAttributes(request, form)
             sa.save()
             return redirect("/user/account")
 
@@ -129,5 +140,36 @@ def updateBillingAddress(request):
             'region': sa.region,
             'postalCode': sa.postalCode
         })
-    context = {'editShippingAddressForm': form}
-    return render(request, "user/account/update-billing-address.html", context)
+    context = {'updateShippingAddressForm': form}
+    return render(request, "user/account/shippingaddress/shippingaddress_update.html", context)
+
+
+def updatePaymentMethod(request):
+    # Try to find a BillingAddress that exists exists
+    try:
+        pm = PaymentMethod.objects.get(user_id=request.user.id)
+    except PaymentMethod.DoesNotExist:
+        pm = PaymentMethod()
+
+    if request.POST:
+        form = PaymentMethodForm(request.POST, instance=request.user)
+        if form.is_valid():
+            print("Valid")
+            # pm.validateAttributes(request, form)
+            # pm.setPaymentMethodAttributes(request, form)
+            pm.save()
+            print("Valid paymentMethod")
+            return redirect("/user/account")
+        print("Not valid")
+
+    form = PaymentMethodForm(
+
+        initial={
+            'nameOnCard': pm.nameOnCard,
+            'cardNumber': pm.cardNumber,
+            'cardExpiry': pm.cardExpiry,
+            'cvc': pm.cvc
+        })
+
+    context = {'updatePaymentMethod': form}
+    return render(request, "user/account/paymentmethod/paymentmethod_update.html", context)

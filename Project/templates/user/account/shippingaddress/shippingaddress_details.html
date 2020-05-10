@@ -1,7 +1,7 @@
 {% block content %}
     <div class="profile">
         <h1>Shipping Address </h1>
-        {% if hasBillingAddress %}
+        {% if hasShippingAddress %}
             <p> <b>Address: </b> {{ sa.address1 }}</p>
             <p> <b>Bell: </b> {{ sa.address2 }}</p>
             <p> <b> City: </b> {{ sa.city }}</p>

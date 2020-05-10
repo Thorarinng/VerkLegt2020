@@ -2,8 +2,8 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
-from user.models import User, ShippingAddress
-
+from user.models import User, ShippingAddress, PaymentMethod
+from creditcards.models import CardNumberField, CardExpiryField, SecurityCodeField
 
 # register
 class RegistrationForm(UserCreationForm):
@@ -57,4 +57,25 @@ class ShippingAddressForm(forms.ModelForm):
     class Meta:
         model = ShippingAddress
         exclude = ('pk',)
-        fields = ('address1','address2','city','country','region','postalCode')
+        fields = ('address1', 'address2', 'city', 'country', 'region', 'postalCode')
+
+
+class PaymentMethodForm(forms.ModelForm):
+    # MONTHS = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
+    # baba = ['12']
+    # YEARS = ['2020','2021']
+    # expMonth = forms.ChoiceField(choices=MONTHS)
+    # nameOnCard = forms.CharField(widget=forms.Select(choices=baba))
+    # expYear = forms.ChoiceField(choices=MONTHS)
+
+
+
+    class Meta:
+        model = PaymentMethod
+        fields = ('nameOnCard', 'cardNumber', 'cardExpiry', 'cvc')
+        widgets = {
+            'nameOnCard': forms.widgets.NumberInput(attrs={'placeholder': 'Name'}),
+            'cardNumber': forms.widgets.NumberInput(attrs={'placeholder': '16-digits'}),
+            'cardExpiry': forms.widgets.NumberInput(attrs={'placeholder': 'MM/YY'}),
+            'cvc': forms.widgets.NumberInput(attrs={'placeholder': 'CVC'})
+        }
