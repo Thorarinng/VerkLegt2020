@@ -1,36 +1,48 @@
+
+h5 {
+    color: #494949;
+}
+
 select {
     width: 165px;
 }
 
 #sidebar {
-    min-width: 300px;
-    max-width: 300px;
+    width: 90%;
     background-color: #EDEDED;
     height: 450px;
     margin-top: 2rem;
+    border-radius: 8px;
+    padding: 1.5rem;
+
 }
 
-#submit-border {
-    border-top: solid 1px black;
+
+.option {
+    border: 1px solid #a0a0a0;
+    height: 2rem;
+    width: 90%;
+    border-radius: 3px;
+    color: #494949;
+
 }
 
 .sidebar-container {
-    margin: 1rem;
+
+    margin-bottom: 1rem;
 }
 
-.filter-container {
-    text-align: center;
-}
 
-.filter-border {
-    border-bottom: solid 1px black;
-}
+
 
 .filter-btn-style {
-    width: 120px;
-    font-weight: bold;
-    background-color: deepskyblue;
-    font-size: 1.5rem;
-    border: solid 3px black;
-    border-radius: 15px;
+    margin-top: 1rem;
+    width: 6rem;
+    background-color: #55ccd4;
+    font-weight: 600;
+    color: #494949;
+    font-size: 1rem;
+    border: transparent;
+    border-radius: 5px;
+
 }
