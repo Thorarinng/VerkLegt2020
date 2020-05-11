@@ -1,17 +1,18 @@
   .logo {
-    height: 5.5rem;
-    padding-bottom: 1.2rem;
+    height: 5rem;
+    padding-bottom: 1rem;
   }
 
   .logo-container {
     grid-column-start: 2;
+    justify-self: start;
   }
 
   .nav-container {
     position: sticky;
     top: 0;
     display: grid;
-    grid-template-columns: 15% 15% 30% 25% 15%;
+    grid-template-columns: 10% 15% auto 25% 10%;
     justify-items: center;
     align-items: center;
     background-color: #EDEDED;
@@ -45,12 +46,13 @@
 
   }
 
-<<<<<<< HEAD
+
+
   .logout-btn{
     background-color: #444444;
   }
 
-=======
+
   input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
   input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
 
@@ -63,8 +65,9 @@
 .dropdown-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    justify-self: end;
 }
->>>>>>> f3abf47d0ad6a30fcec121446e4df95368286f39
+
 
 
 

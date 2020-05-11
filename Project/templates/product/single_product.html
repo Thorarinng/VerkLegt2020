@@ -1,11 +1,34 @@
 <!-- This makes our objects clickable and href redirects us, instead of typing it in the URL manually-->
-<div class="one-product">
-    <a href="/products/{{ product.id }}">
-        <div class="border m-2">
-            <h3> {{ product.name }}</h3>
-            <img style="height: 12rem" src={{ product.imgURL }} >
-            <p> {{ product.price }}$</p>
-            <p> {{ product.description}}</p>
-        </div>
+
+
+<div class="multi-product-container">
+    <a class="product-name" href="/products/{{ product.id }}">
+        <h3 class="text-decoration"> {{ product.name }}</h3>
     </a>
+    <a class="grid-image" href="/products/{{ product.id }}">
+        <img class="images" src={{ product.imgURL }} >
+    </a>
+    <hr class="hr">
+    <p class="product-price">${{ product.price }} US</p>
+    <button type="button" class="atc-btn " onclick="console.log('buttonpress')" >Add to cart</button>
 </div>
+
+
+
+
+
+
+<!--<div class="one-product">
+
+        <div >
+            <a href="/products/{{ product.id }}" class="multi-product-container">
+            <h3 class="product-name"> {{ product.name }}</h3>
+            <img class="images" src={{ product.imgURL }} >
+            <hr class="hr">
+            <p class="product-price"> {{ product.price }}$</p>
+
+            </a>
+            <button type="button" class="atc-btn " onclick="console.log('buttonpress')" >Add to cart</button>
+        </div>
+
+</div>-->

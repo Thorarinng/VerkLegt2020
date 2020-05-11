@@ -16,20 +16,23 @@
     <link rel="stylesheet" href="{% static 'css/nav.css' %}" />
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
   </head>
 
   <body>
+
     <div class="grid">
     {% include 'navigation.html' %}
 
 
     <span class="main-page">
-        {% include 'sidebar.html' %}
-        <div class="container">
+
+        <div class="content-container">
+
           <!-- This lets us extend index.html from product to the base.html-->
           <!-- Think of this as an import statement-->
         <!-- product/index.html -->
-         {% block content %} {% endblock %}
+         {% block content1 %} {% endblock %}
         </div>
     </span>
 

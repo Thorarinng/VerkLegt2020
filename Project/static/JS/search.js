@@ -12,7 +12,7 @@ $(document).ready(function() {
                                 <a href="/products/${d.id}">
 
                                     <h3>${d.name}</h3>
-                                    <img style="height: 200px" src="${d.imgURL}"> /*TODO gera style*/
+                                    <img src="${d.imgURL}"> /*TODO gera style*/
                                     <p>${d.price}$</p>
                                     <p>${d.description}</p>
                                 </a>
@@ -36,4 +36,6 @@ input.addEventListener("keyup", function(event) {
    document.getElementById("search-btn").click();
   }
 });
+
+
 
