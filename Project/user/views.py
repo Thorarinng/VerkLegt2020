@@ -1,3 +1,5 @@
+from django.http import HttpResponseRedirect
+
 from user.forms import AccountAuthenticationForm, RegistrationForm, EditProfileForm, ShippingAddressForm, PaymentMethodForm
 from .models import User, ShippingAddress, PaymentMethod
 
@@ -146,21 +148,26 @@ def updateBillingAddress(request):
 
 def updatePaymentMethod(request):
     # Try to find a BillingAddress that exists exists
+    context = {}
     try:
         pm = PaymentMethod.objects.get(user_id=request.user.id)
     except PaymentMethod.DoesNotExist:
         pm = PaymentMethod()
 
     if request.POST:
-        form = PaymentMethodForm(request.POST, instance=request.user)
+        form = PaymentMethodForm(request.POST)
         if form.is_valid():
+            # cardNumber = form.cleaned_data.get('cardNumber')
+            # form.cleanCardNumber()
             print("Valid")
             # pm.validateAttributes(request, form)
-            # pm.setPaymentMethodAttributes(request, form)
+            pm.setPaymentMethodAttributes(request, form)
             pm.save()
             print("Valid paymentMethod")
             return redirect("/user/account")
-        print("Not valid")
+        else:
+            context['updatePaymentMethod'] = form
+            return render(request, "user/account/paymentmethod/paymentmethod_update.html", context)
 
     form = PaymentMethodForm(
 
@@ -171,5 +178,5 @@ def updatePaymentMethod(request):
             'cvc': pm.cvc
         })
 
-    context = {'updatePaymentMethod': form}
+    context['updatePaymentMethod'] = form
     return render(request, "user/account/paymentmethod/paymentmethod_update.html", context)

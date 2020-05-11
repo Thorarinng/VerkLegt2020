@@ -229,16 +229,15 @@ hr {
 
 
 
-/*
+
 .profile{
-  width: min-content;
+  width: fit-content;
   padding: 20px;
   background-color: lightgrey;
   border: darkcyan;
   box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
 }
 
-*/
 /*.helptext{*//*
 
 
