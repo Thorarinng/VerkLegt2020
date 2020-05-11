@@ -7,6 +7,8 @@ from django.db.models import Model
 from creditcards.models import CardNumberField, CardExpiryField, SecurityCodeField
 from django_countries.fields import CountryField
 
+from .validators import validate_even
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
@@ -146,29 +148,40 @@ class ShippingAddress(models.Model):
                f"{self.user}\n"
 
 
+# class IntegerRangeField(models.IntegerField):
+#     def __init__(self, verbose_name=None, name=None, min_value=0, max_value=65536, **kwargs):
+#         self.min_value, self.max_value = min_value, max_value
+#         models.IntegerField.__init__(self, verbose_name, name, **kwargs)
+#
+#     def formfield(self, **kwargs):
+#         defaults = {'min_value': self.min_value, 'max_value': self.max_value}
+#         defaults.update(kwargs)
+#         return super(IntegerRangeField, self).formfield(**defaults)
+
+
 class PaymentMethod(models.Model):
     # # pip install django-credit-cards
+    nameOnCard = models.CharField(max_length=255, blank=True)
+    # Only stores 4 bytes by default
+    cardNumber = models.CharField(max_length=16)
+    cardExpiry = models.CharField(max_length=5, blank=True)
+    cvc = models.CharField(max_length=3, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+
     # nameOnCard = models.CharField(max_length=255)
-    # # Only stores 4 bytes by default
+    # # # Only stores 4 bytes by default
     # cardNumber = models.PositiveIntegerField(max_length=16)
-    # expMonth = models.CharField(max_length=2)
-    # expYear = models.CharField(max_length=4)
-    # cvc = models.IntegerField()
+    # cardExpiry = CardExpiryField(max_length=4)
+    # cvc = SecurityCodeField('security code')
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    nameOnCard = models.CharField(max_length=255)
-    cardNumber = CardNumberField(max_length=16)
-    cardExpiry = CardExpiryField(max_length=4)
-    cvc = SecurityCodeField('security code')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    # def setPaymentMethodAttributes(self, request, form):
-    #     self.user_id = request.user.pk
-    #     self.nameOnCard = form.cleaned_data.get('nameOnCard')
-    #     self.cardNumber = form.cleaned_data.get('cardNumber')
-    #     self.expMonth = form.cleaned_data.get('expMonth')
-    #     self.expYear = form.cleaned_data.get('expYear')
-    #     self.cvc = form.cleaned_data.get('cvc')
-    #     return self
+    def setPaymentMethodAttributes(self, request, form):
+        self.user_id = request.user.pk
+        self.nameOnCard = form.cleaned_data.get('nameOnCard')
+        self.cardNumber = form.cleaned_data.get('cardNumber')
+        self.cardExpiry = form.cleaned_data.get('cardExpiry')
+        self.cvc = form.cleaned_data.get('cvc')
+        return self
     #
     # def validateAttributes(self, request, form):
     #     if len(form.cleaned_data.get('nameOnCard')) != 16:

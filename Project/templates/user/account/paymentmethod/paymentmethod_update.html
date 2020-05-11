@@ -6,7 +6,25 @@
     {% else %}
         <h2>Add Payment Method</h2>
     {%  endif %}
+
+
     <div class="profile">
+
+{#        {% if updatePaymentMethod.errors %}#}
+{#            {% for field in updatePaymentMethod %}#}
+{#                {% for error in field.errors %}#}
+{#                    <div class="alert alert-danger">#}
+{#                        <strong> {{ error|escape }} </strong>#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#            {% endfor %}#}
+{#            {% for error in updatePaymentMethod.non_field_errors %}#}
+{#                <div class="alert alert-danger">#}
+{#                    <strong> {{ error|escape }} </strong>#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#        {% endif %}#}
+
         <form class="form form-horizontal" action="{% url 'updatePaymentMethod' %}" method="post">
             {% csrf_token %}
             {{ updatePaymentMethod.as_p }}

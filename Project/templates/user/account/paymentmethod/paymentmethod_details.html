@@ -4,8 +4,7 @@
         {% if hasPaymentMethod %}
             <p> <b> Name: </b> {{ pm.nameOnCard }}</p>
             <p> <b> Card Number: </b> {{ pm.cardNumber }}</p>
-            <p> <b> Expiration Month: </b> {{ pm.expMonth }}</p>
-            <p> <b> Expiration Year: </b> {{ pm.expYear }} <img src="{{ sa.country.flag }}" alt=""></p>
+            <p> <b> Expiration: </b> {{ pm.cardExpiry }}</p>
             <p> <b> CVC: </b> {{ pm.cvc }}</p>
             <a class="btn btn-primary" style="width: 14rem" href="{% url 'updatePaymentMethod' %}">Edit Payment Method</a>
         {% else %}
