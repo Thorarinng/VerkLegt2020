@@ -186,3 +186,9 @@ class PaymentMethod(models.Model):
     # def validateAttributes(self, request, form):
     #     if len(form.cleaned_data.get('nameOnCard')) != 16:
     #         return False
+
+    @property
+    def getCardNumber(self):
+        card = self.cardNumber
+        display = '••••-••••-••••-' + str(card[12:])
+        return display
