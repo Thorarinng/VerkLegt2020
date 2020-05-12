@@ -39,10 +39,7 @@ a:hover {
 }
 
 .images {
-    max-height: 10rem;
-
-
-
+    max-height: 7rem;
 }
 
 .grid-image {
@@ -56,6 +53,7 @@ a:hover {
 }
 
 .product-price {
+    font-size: 0.8rem;
     font-weight: bold;
     grid-column-start: 2;
     justify-self: start;
@@ -183,8 +181,8 @@ hr {
 }
 
 .color-details {
-    height: 3rem;
-    width: 6rem;
+    height: 4rem;
+    width: 8rem;
     border: 2px solid #C7DAC7;
     border-radius: 10px;
     background-color: #D5EDD5;
@@ -200,7 +198,7 @@ hr {
 }
 
 .image-details-min {
-    height: 80%;
+    height: 75%;
     grid-column-start: 1;
 }
 

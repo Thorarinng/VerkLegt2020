@@ -10,7 +10,7 @@ select {
 #sidebar {
     width: 90%;
     background-color: #EDEDED;
-    height: 450px;
+    height: 412px;
     margin-top: 2rem;
     border-radius: 8px;
     padding: 1.5rem;
@@ -20,8 +20,8 @@ select {
 
 .option {
     border: 1px solid #a0a0a0;
-    height: 2rem;
-    width: 90%;
+    height: 1.5rem;
+    width: 100%;
     border-radius: 3px;
     color: #494949;
 
