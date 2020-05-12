@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Added
     'product.apps.ProductConfig',
     'user.apps.UserConfig',
+    'cart.apps.CartConfig',
 
     # Country selector
     # https://pypi.org/project/django-countries/#multi-choice

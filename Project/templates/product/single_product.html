@@ -10,25 +10,7 @@
     </a>
     <hr class="hr">
     <p class="product-price">${{ product.price }} US</p>
-    <button type="button" class="atc-btn " onclick="console.log('buttonpress')" >Add to cart</button>
+    <a href="{% url 'addToCart' product.id %}"  type="submit" class="atc-btn " >Add to cart</a>
 </div>
 
 
-
-
-
-
-<!--<div class="one-product">
-
-        <div >
-            <a href="/products/{{ product.id }}" class="multi-product-container">
-            <h3 class="product-name"> {{ product.name }}</h3>
-            <img class="images" src={{ product.imgURL }} >
-            <hr class="hr">
-            <p class="product-price"> {{ product.price }}$</p>
-
-            </a>
-            <button type="button" class="atc-btn " onclick="console.log('buttonpress')" >Add to cart</button>
-        </div>
-
-</div>-->

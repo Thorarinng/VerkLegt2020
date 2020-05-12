@@ -7,9 +7,9 @@
         </div>
         <div class="details-container product-details">
             <h3 class="price-details">${{ product.price }} US</h3>
-            <button type="button" class="atc-btn-min"
+            <a href="{% url 'addToCart' product.id %}" type="button" class="btn atc-btn-min"
                     onclick="console.log('buttonpress')" >Add to cart
-            </button>
+            </a>
             <p>Color:</p>
             <div class="color-details">
                 <img class="image-details-min" src="{{ product.imgURL }}">

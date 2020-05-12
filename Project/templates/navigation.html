@@ -67,60 +67,13 @@
         <li id="login">
           <div id="login-trigger" href="#">
             <i class='fas far fa-shopping-cart'></i>
-            <a id="hello">
-              View My Cart
-            </a>
-            <a id="my-account">My Cart
-            </a>
+            <a href="{% url 'getCart' %}" id="hello">View My Cart</a>
+            <a href="{% url 'getCart' %}" id="my-account">My Cart</a>
             <span id="arrow">▼</span>
           </div>
-        <!--{% if user.is_authenticated %}
-            <li><a href="{% url 'logout' %}">Logout</a></li>
-
-        {% else %}
-            <a href={% url  'register' %}>Create an account</a>
-            <a href={% url  'login' %}>Login</a>
-        {% endif %}-->
-
-          <!--<div id="login-content">
-            <form>
-              <fieldset id="inputs">
-                <input  id="username"
-                        type="email"
-                        name="Email"
-                        placeholder="Your email address"
-                        required>
-                <input  id="password"
-                        type="password"
-                        name="Password"
-                        placeholder="Password"
-                        required>
-              </fieldset>
-              <fieldset id="actions">
-                <input  type="submit"
-                        id="submit"
-                        value="Log in">
-                <label>
-                  <input  type="checkbox"
-                          checked="checked">
-                  Keep me signed in
-                </label>
-              </fieldset>
-            </form>
-              <a href="/user/register">Create an account</a>
-          </div>-->
         </li>
       </ul>
   </div>
-
-{#    {% if user.is_authenticated %}#}
-{#        <a href="{% url 'profile' %}"><img src="{{ user.imgURL }}" style="height: 50px" ></a>#}
-{#        <a class="btn btn-danger" href="{% url 'logout' %}">Logout</a>#}
-{##}
-{#    {% else %}#}
-{#        <a href={% url  'register' %}>Create an account</a>#}
-{#        <a class="btn btn-primary" href={% url  'login' %}>Login</a>#}
-{#    {% endif %}#}
 
 </div>
 </div>
