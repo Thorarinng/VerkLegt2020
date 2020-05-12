@@ -1,8 +1,17 @@
+
+
+
+
 $(document).ready(function() {
     console.log("góðan daginn")
+
+
     $('#search-btn').on( 'click', function(e) {
+
+
         e.preventDefault();
         var searchText = $('#search-box').val();
+
         $.ajax({
             url: '/products/?search_filter=' + searchText,
             type: 'GET',
@@ -39,6 +48,9 @@ input.addEventListener("keyup", function(event) {
    document.getElementById("search-btn").click();
   }
 });
+
+
+
 
 
 
