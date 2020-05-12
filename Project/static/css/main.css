@@ -3,8 +3,8 @@ body {
 }
 
 .multi-product-container {
-    width: 20rem;
-    height: 25rem;
+    width: 15rem;
+    height: 20rem;
 
     padding: 1rem;
 
@@ -39,10 +39,7 @@ a:hover {
 }
 
 .images {
-    max-height: 10rem;
-
-
-
+    max-height: 7rem;
 }
 
 .grid-image {
@@ -56,6 +53,7 @@ a:hover {
 }
 
 .product-price {
+    font-size: 0.8rem;
     font-weight: bold;
     grid-column-start: 2;
     justify-self: start;
