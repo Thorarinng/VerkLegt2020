@@ -4,15 +4,15 @@ $(document).ready(function() {
         e.preventDefault();
         var searchText = $('#search-box').val();
         $.ajax({
-            url: '/?search_filter=' + searchText,
+            url: '/products/?search_filter=' + searchText,
             type: 'GET',
             success: function(resp) {
                 var newHtml = resp.data.map(d => {
                     return `<div class="multi-product-container">
-                                <a class="product-name" href="/${d.id}">
+                                <a class="product-name" href="/products/${d.id}">
                                     <h3 class="text-decoration"> ${d.name}</h3>
                                 </a>
-                                <a class="grid-image" href="/products/{{ product.id }}">
+                                <a class="grid-image" href="/products/${ d.id }">
                                     <img class="images" src="${d.imgURL}" >
                                 </a>
                                 <hr class="hr">
@@ -20,12 +20,6 @@ $(document).ready(function() {
                                 <button type="button" class="atc-btn " onclick="console.log('buttonpress')" >Add to cart</button>
 
                             </div>`
-
-
-
-
-
-
                 });
                 $('.products-container').html(newHtml.join(''));
                 $('#search-box').val('');

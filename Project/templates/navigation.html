@@ -17,9 +17,11 @@
   </div>-->
 
   <div class="input-group">
-      <input type="search" class="search-bar" id="search-box" placeholder="Enter search">
+      <input type="search" class="search-bar" id="search-box" onsearch="" placeholder="Enter search">
       <div class="input-group-btn">
-        <button type="button" id="search-btn" class="submit" ><i class="fa fa-search"></i></button>
+        <a href="/">
+            <button type="button" id="search-btn" class="submit"><i class="fa fa-search"></i></button>
+        </a>
       </div>
   </div>
 
@@ -47,7 +49,9 @@
                   <a class="btn btn-success" href='{% url 'account' %}'>Account</a>
               {% else %}
                   <a class="btn btn-primary" href={% url  'login' %}>Login</a>
-                  <a class="btn btn-secondary" href={% url  'register' %}>Create an account</a>
+                  <a class="btn btn-secondary" href={% url  'register' %}>
+                      Create an account
+                  </a>
               {% endif %}
           </div>
 
