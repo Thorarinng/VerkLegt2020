@@ -11,7 +11,11 @@ from django.contrib import messages
 def addToCart(request, id):
     product = Product.objects.get(id=id)
     # request.session.setdefault('cart', {})[str(id)] = product.productToDict()
-    if request.session['cart'] is None:
+    # Guard against default cookies without cart.
+    try:
+        if request.session['cart'] is None:
+            request.session['cart'] = {}
+    except:
         request.session['cart'] = {}
     request.session['cart'][str(id)] = product.productToDict(id)
     # request.session['cart'].append(product.productToDict())

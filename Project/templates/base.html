@@ -28,16 +28,7 @@
 
     <span class="main-page">
 
-        {% if messages %}
-            {% for message in messages %}
-                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                    <div id="success-message" class="alert alert-success container">
-                        {{ message }}
-                    </div>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-
+    {% include 'messages.html' %}
         <div class="content-container">
 
           <!-- This lets us extend index.html from product to the base.html-->
