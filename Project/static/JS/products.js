@@ -2,9 +2,35 @@ $(document).ready(function () {
     $('#filter-btn').on('click', function(e) {
         console.log("frikko")
         e.preventDefault();
+        var color_filter = $('#color').val();
         var price_filter = $('#price').val();
+        var brand_filter = $('#brand').val();
+        var sort_filter = $('#sort').val();
+        var url_string = "";
+
+        if (color_filter) {
+            url_string += "?color=" + color_filter;
+        }
+        if (price_filter && url_string) {
+            url_string += "&price=" + price_filter;
+        }
+        if (price_filter && !url_string) {
+            url_string += "?price=" + price_filter;
+        }
+        if (brand_filter && url_string) {
+            url_string += "&brand=" + brand_filter;
+        }
+        if (brand_filter && !url_string) {
+            url_string += "?brand=" + brand_filter;
+        }
+        if (sort_filter && url_string) {
+            url_string += "&sort=" + sort_filter;
+        }
+        if (sort_filter && !url_string) {
+            url_string += "?sort=" + sort_filter;
+        }
         $.ajax({
-            url: '/?price=' + price_filter,
+            url: '/' + url_string,
             type: 'GET',
             success: function (resp) {
                 if (resp.data.length == 0) {
