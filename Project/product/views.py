@@ -22,7 +22,8 @@ def index(request):
             'discount': x.discount
         } for x in Product.objects.filter(name__icontains=search_filter)]
         return JsonResponse({'data': products})
-
+    if 'color' in request.GET:
+        color_filter = request.GET['color']
     if 'price' in request.GET:
         price_filter = request.GET['price']
         if price_filter == 'low':
@@ -52,6 +53,12 @@ def index(request):
                 'price': x.price
             } for x in Product.objects.filter(price__gt=500)]
             return JsonResponse({'data': products})
+    if 'brand' in request.GET:
+        brand_filter = request.GET['brand']
+
+    if 'sort' in request.GET:
+        sort_filter = request.GET['sort']
+
     context = {'products': Product.objects.all()}
     return render(request, 'product/index.html', context)
 
