@@ -3,8 +3,8 @@ body {
 }
 
 .multi-product-container {
-    width: 20rem;
-    height: 25rem;
+    width: 15rem;
+    height: 20rem;
 
     padding: 1rem;
 
@@ -100,6 +100,7 @@ hr {
     border: none;
     outline: none;
     border-radius: 10px;
+
 }
 
 .atc-btn-min {
@@ -114,6 +115,7 @@ hr {
     outline: none;
     border-radius: 10px;
     margin-bottom: 1.5rem;
+    font-weight: bold;
 }
 
 .products-container {
