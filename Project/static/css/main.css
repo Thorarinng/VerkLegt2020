@@ -94,9 +94,6 @@ hr {
     justify-self: center;
     width: 100%;
     height: 3rem;
-
-
-
     display:block;
     background-color: #C7DAC7;
     color: #494949;
@@ -105,7 +102,19 @@ hr {
     border-radius: 10px;
 }
 
-
+.atc-btn-min {
+    grid-column-start: 2;
+    justify-self: center;
+    width: 80%;
+    height: 3rem;
+    display:block;
+    background-color: #C7DAC7;
+    color: #494949;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
 
 .products-container {
     display: grid;
@@ -113,20 +122,12 @@ hr {
     justify-self: end;
     grid-gap: 2rem;
     margin-top: 2rem;
-
-
-
-
-
-
 }
 
 #sidebar {
     grid-row-start: 1;
     grid-column-start: 2;
 }
-
-
 
 .content-container {
     display: grid;
@@ -137,105 +138,74 @@ hr {
     grid-column-start: 3;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .profile{
   width: fit-content;
   padding: 20px;
   background-color: lightgrey;
   border: darkcyan;
   box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+}
+
+.product-name-details {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.details-container {
+    height: 23rem;
+    width: 24rem;
+}
+
+.image-container {
+    background-color: #EDEDED;
+    grid-column-start: 1;
+    display: grid;
+    justify-content: center;
+}
+
+.product-details {
+    grid-column-start: 2;
+    padding-left: 3rem;
+}
+
+.price-details {
+    height: 3rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.image-details {
+    height: 18rem;
+    align-self: center;
+}
+
+.color-details {
+    height: 3rem;
+    width: 6rem;
+    border: 2px solid #C7DAC7;
+    border-radius: 10px;
+    background-color: #D5EDD5;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    justify-items: center;
+    margin-bottom: 1rem;
+}
+
+.color-color {
+    margin: 0;
+}
+
+.image-details-min {
+    height: 80%;
+    grid-column-start: 1;
+}
+
+.product-container {
+    grid-column-start: 2;
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 
 /*.helptext{*//*
