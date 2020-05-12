@@ -1,12 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="product-container">
-        <h3>{{ product.name }}</h3>
-        <img class="images"  src="{{ product.imgURL }}">
-        <h4>{{ product.color }}</h4>
-        <h4>{{ product.price }}</h4>
-        <h4>{{ product.description }}</h4>
-        <h4>{{ product.discount }}</h4>
+        <h1 class="product-name-details">{{ product.name }}</h1>
+        <div class="details-container image-container">
+            <img class="image-details" src="{{ product.imgURL }}">
+        </div>
+        <div class="details-container product-details">
+            <h3 class="price-details">${{ product.price }} US</h3>
+            <button type="button" class="atc-btn-min"
+                    onclick="console.log('buttonpress')" >Add to cart
+            </button>
+            <p>Color:</p>
+            <div class="color-details">
+                <img class="image-details-min" src="{{ product.imgURL }}">
+                <p class="color-color">{{ product.color }}</p>
+            </div>
+            <p>Description:</p>
+            <p>{{ product.description }}</p>
+        </div>
     </div>
 
 {% endblock %}
