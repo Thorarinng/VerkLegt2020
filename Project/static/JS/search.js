@@ -4,21 +4,30 @@ $(document).ready(function() {
         e.preventDefault();
         var searchText = $('#search-box').val();
         $.ajax({
-            url: '/products?search_filter=' + searchText,
+            url: '/?search_filter=' + searchText,
             type: 'GET',
             success: function(resp) {
                 var newHtml = resp.data.map(d => {
-                    return `<div class="border m-2">
-                                <a href="/products/${d.id}">
-
-                                    <h3>${d.name}</h3>
-                                    <img src="${d.imgURL}"> /*TODO gera style*/
-                                    <p>${d.price}$</p>
-                                    <p>${d.description}</p>
+                    return `<div class="multi-product-container">
+                                <a class="product-name" href="/${d.id}">
+                                    <h3 class="text-decoration"> ${d.name}</h3>
                                 </a>
+                                <a class="grid-image" href="/products/{{ product.id }}">
+                                    <img class="images" src="${d.imgURL}" >
+                                </a>
+                                <hr class="hr">
+                                <p class="product-price">$${d.price} US</p>
+                                <button type="button" class="atc-btn " onclick="console.log('buttonpress')" >Add to cart</button>
+
                             </div>`
+
+
+
+
+
+
                 });
-                $('.products').html(newHtml.join(''));
+                $('.products-container').html(newHtml.join(''));
                 $('#search-box').val('');
             },
             error: function(xhr, status, error) {
