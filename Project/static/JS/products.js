@@ -4,7 +4,7 @@ $(document).ready(function () {
         e.preventDefault();
         var price_filter = $('#price').val();
         $.ajax({
-            url: 'products?price=' + price_filter,
+            url: '/products/?price=' + price_filter,
             type: 'GET',
             success: function (resp) {
                 if (resp.data.length == 0) {
@@ -12,25 +12,29 @@ $(document).ready(function () {
                                  'Image': "", 'price': ""});
                     var newHtml = resp.data.map(d => {
                         return `<div></div>
-                                <div class="border m-2 no-results">
+                                <div class="multi-product-container">
                                     <h3>${d.description}</h3>
                                 </div>`
                     });
-                    $('.products').html(newHtml.join(''));
+                    $('.products-container').html(newHtml.join(''));
                     $('#filter-btn').val('');
                 }
                 else {
                     var newHtml = resp.data.map(d => {
-                        return `<a href="/products/${d.id}">
-                                    <div class="border m-2">
-                                        <h3>${ d.name }</h3>
-                                        <img style="height: 200px" src="${d.Image}" />
-                                        <p>${ d.price + "$"}</p>
-                                        <p>${ d.description}</p>
-                                    </div>    
-                               </a>`
+                        return `<div class="multi-product-container">
+                                        <a class="product-name" href="/products/${ d.id }">
+                                            <h3 class="text-decoration"> ${ d.name }</h3>
+                                        </a>
+                                        <a class="grid-image" href="/products/${ d.id }">
+                                            <img class="images" src="${d.imgURL}" >
+                                        </a>
+                                        <hr class="hr">
+                                        <p class="product-price">$${ d.price } US</p>
+                                        <button type="button" class="atc-btn " onclick="console.log('buttonpress')" >Add to cart</button>
+                                </div>`
                     });
-                    $('.products').html(newHtml.join(''));
+                    $('.products-container').html(newHtml.join(''));
+
                     $('#filter-btn').val('');
                 }
             },
@@ -40,3 +44,6 @@ $(document).ready(function () {
         })
     });
 });
+
+
+

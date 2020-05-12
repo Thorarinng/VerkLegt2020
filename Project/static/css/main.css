@@ -98,6 +98,7 @@ hr {
     border: none;
     outline: none;
     border-radius: 10px;
+
 }
 
 .atc-btn-min {
@@ -112,6 +113,7 @@ hr {
     outline: none;
     border-radius: 10px;
     margin-bottom: 1.5rem;
+    font-weight: bold;
 }
 
 .products-container {
