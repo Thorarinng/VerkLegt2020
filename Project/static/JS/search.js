@@ -1,8 +1,17 @@
+
+
+
+
 $(document).ready(function() {
     console.log("góðan daginn")
+
+
     $('#search-btn').on( 'click', function(e) {
+
+
         e.preventDefault();
         var searchText = $('#search-box').val();
+
         $.ajax({
             url: '/?search_filter=' + searchText,
             type: 'GET',
@@ -12,7 +21,7 @@ $(document).ready(function() {
                                 <a class="product-name" href="/${d.id}">
                                     <h3 class="text-decoration"> ${d.name}</h3>
                                 </a>
-                                <a class="grid-image" href="/products/{{ product.id }}">
+                                <a class="grid-image" href="/{{ product.id }}">
                                     <img class="images" src="${d.imgURL}" >
                                 </a>
                                 <hr class="hr">
@@ -45,6 +54,9 @@ input.addEventListener("keyup", function(event) {
    document.getElementById("search-btn").click();
   }
 });
+
+
+
 
 
 
