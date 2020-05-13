@@ -11,21 +11,21 @@ from .validators import validate_even
 # register
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Required. Add a valid email address.')
-    password1 = forms.PasswordInput(attrs={'class': 'form-control'})
-    password2 = forms.PasswordInput(attrs={'class': 'form-control'})
+    password1 = forms.PasswordInput(attrs={'class': 'option'})
+    password2 = forms.PasswordInput(attrs={'class': 'option'})
 
     class Meta:
         model = User
         fields = ('email', 'password1', 'password2', 'firstName', 'lastName', 'phoneNumber', 'imgURL')
         widgets = {
-            'password': forms.PasswordInput(attrs={'class': 'form-control'}),
-            'email': forms.TextInput(attrs={'class': 'form-control'}),
-            'password1': forms.TextInput(attrs={'class': 'form-control'}),
-            'password2': forms.PasswordInput(attrs={'class': 'form-control'}),
-            'firstName': forms.TextInput(attrs={'class': 'form-control'}),
-            'lastName': forms.TextInput(attrs={'class': 'form-control'}),
-            'phoneNumber': forms.TextInput(attrs={'class': 'form-control'}),
-            'imgURL': forms.TextInput(attrs={'class': 'form-control'})
+            'password': forms.PasswordInput(attrs={'class': 'option'}),
+            'email': forms.TextInput(attrs={'class': 'option'}),
+            'password1': forms.TextInput(attrs={'class': 'option'}),
+            'password2': forms.PasswordInput(attrs={'class': 'option'}),
+            'firstName': forms.TextInput(attrs={'class': 'option'}),
+            'lastName': forms.TextInput(attrs={'class': 'option'}),
+            'phoneNumber': forms.TextInput(attrs={'class': 'option'}),
+            'imgURL': forms.TextInput(attrs={'class': 'option'})
         }
 
 
