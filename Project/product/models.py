@@ -15,6 +15,18 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    def productToDict(self, id):
+        productDict = {
+            'id': id,
+            'name': self.name,
+            'color': self.color,
+            'price': self.price,
+            'imgURL': self.imgURL,
+            'description': self.description,
+            'discount': self.discount,
+        }
+        return productDict
+
 
 class ProductImage(models.Model):
     image = models.CharField(max_length=99)

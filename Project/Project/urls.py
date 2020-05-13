@@ -24,5 +24,6 @@ urlpatterns = [
     # path('user/', include('user.urls')),
     path('user/', include('user.urls')),
     # path('login/', include('user.urls')),
+    path('cart/', include('cart.urls')),
 
 ]
