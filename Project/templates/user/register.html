@@ -3,7 +3,7 @@
 
     <div class="offset-3 col-md-6">
         <h1 class="name-style product-name-details">Create an Account</h1>
-        <form class="form form-horizontal" action="{% url 'register' %}" method="post">
+        <form class="form-horizontal" action="{% url 'register' %}" method="post">
             {% csrf_token %}
             <div class="form-group">
                 {{ registerForm.as_p }}

@@ -13,12 +13,16 @@
     grid-column-start: 2;
     justify-self: start;
     color: #494949;
+    background: #ededed;
+    padding: 1rem;
     margin: 1rem 0 25rem 0;
+    border-radius: 1rem;
 }
 
 
 
 #id_email, #id_password1, #id_password2, #id_password {
+    padding-left: 0.5rem;
     border: 1px solid #a0a0a0;
     height: 1.5rem;
     width: 100%;
@@ -43,20 +47,21 @@
     border-radius: 1rem;
 }
 
-/*
-
-li, .helptext {
-    background: transparent;
-    color: gray;
-
-
-}
-
 ul {
     float: left;
 }
 
-label {
-    margin-top: 1rem;
+
+
+li, .helptext {
+    background: transparent;
+    color: gray;
 }
-*/
+
+
+
+
+
+
+
+
