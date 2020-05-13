@@ -14,8 +14,6 @@ select {
     margin-top: 2rem;
     border-radius: 8px;
     padding: 1.5rem;
-    position: sticky;
-    top: 8.9rem;
 
 }
 
@@ -41,13 +39,14 @@ select {
     margin-top: 1rem;
     width: 6rem;
     background-color: #55ccd4;
-
-    color: white;
+    font-weight: 600;
+    color: #494949;
     font-size: 1rem;
     border: transparent;
     border-radius: 5px;
 
 }
+<<<<<<< HEAD
 
 .filter-btn-style:hover {
 
@@ -62,3 +61,5 @@ select {
     background-color: #6c757d;
     border-color: #6c757d;
 }
+=======
+>>>>>>> parent of 578f3a9... filter sticky

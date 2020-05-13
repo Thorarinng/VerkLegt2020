@@ -13,16 +13,24 @@
     grid-column-start: 2;
     justify-self: start;
     color: #494949;
+<<<<<<< HEAD
     background: #ededed;
     padding: 1rem;
     margin: 1rem 0 25rem 0;
     border-radius: 1rem;
+=======
+    margin: 2rem 0 25rem 0;
+>>>>>>> parent of 578f3a9... filter sticky
 }
 
 
 
+<<<<<<< HEAD
 #id_email, #id_password1, #id_password2, #id_password {
     padding-left: 0.5rem;
+=======
+#id_email, #id_password1, #id_password2 {
+>>>>>>> parent of 578f3a9... filter sticky
     border: 1px solid #a0a0a0;
     height: 1.5rem;
     width: 100%;
@@ -30,6 +38,7 @@
     color: #494949;
 
 
+<<<<<<< HEAD
 
 }
 
@@ -56,6 +65,8 @@ ul {
 li, .helptext {
     background: transparent;
     color: gray;
+=======
+>>>>>>> parent of 578f3a9... filter sticky
 }
 
 

@@ -225,5 +225,75 @@ hr {
     grid-template-columns: 50% 50%;
 }
 
+/*.helptext{*//*
 
+
+*/
+/*
+visibility: hidden;
+*//*
+
+
+
+
+*/
+/*.form-group ul {
+  visibility: hidden;
+}*//*
+
+
+.product {
+    background-color: lightblue;
+    color: black;
+    border-color: lightcyan;
+}
+
+
+
+.no-results{
+  text-align: center;
+}
+
+.m-2{
+
+
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-color: floralwhite;
+  border: darkcyan;
+  box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+  border-radius: 10px 3px 10px 3px;
+}
+
+.products {
+
+  display: grid;
+  background-color: #e8c291;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1em;
+  grid-auto-rows: 2fr;
+}
+
+.min-height {
+
+    min-height: 60rem;
+}
+
+.main-page {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+
+*/
+/*
+.grid {
+  display: grid;
+  grid-template-rows: 110px auto 200px;
+}
+*//*
+
+
+*/
 
