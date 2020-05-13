@@ -47,4 +47,5 @@ def removeFromCart(request, id):
     context = {'cart': request.session['cart']}
     # Message displayed when item removed
     messages.warning(request, 'Item removed from cart')
-    return render(request, 'cart/cart.html', context)
+    # render(request, 'cart/cart.html', context)
+    return redirect('/cart')
