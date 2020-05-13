@@ -13,7 +13,7 @@ body {
     justify-content: stretch;
     align-items: center;
     text-align: center;
-    grid-template-columns: 5% 90% 5%;
+    grid-template-columns: 10% 80% 10%;
     grid-template-rows: 5fr 1fr 1fr 1fr 1fr;
 
 
@@ -54,8 +54,11 @@ a:hover {
 }
 
 .product-price {
+<<<<<<< HEAD
     font-size: 0.8rem;
     font-weight: bold;
+=======
+>>>>>>> parent of 77277ef... stylish
     grid-column-start: 2;
     justify-self: start;
     align-self: end;

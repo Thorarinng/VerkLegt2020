@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block content1 %}
 <!--<p>Welcome to the product page, rendered from ./product/index.html</p>-->
 
     <div class="min-height">
@@ -15,6 +15,7 @@
 
 <nav id="sidebar">
     <div class="filter-container">
+<<<<<<< HEAD
         <div>
           <div class="sidebar-container">
               <label for="color"><h5><strong>Color</strong></h5></label><br>
@@ -26,11 +27,22 @@
                 <option value="blue">Blue</option>
                 <option value="black">Black</option>
                 <option value="white">White</option>
+=======
+        <h3 class="filter-border"><strong>Filter</strong></h3>
+        <div>
+          <div class="sidebar-container">
+              <label for="type"><h5><strong>Type</strong></h5></label><br>
+              <select id="type" name="type">
+                <option value="" disabled selected hidden>Type...</option>
+                <option value="consoles">Consoles</option>
+                <option value="games">Games</option>
+                <option value="magazines">Magazines</option>
+>>>>>>> parent of 77277ef... stylish
               </select><br>
           </div>
           <div class="sidebar-container">
             <label for="price"><h5><strong>Price</strong></h5></label><br>
-            <select class="option" id="price" name="price">
+            <select id="price" name="price">
                 <option value="" disabled selected hidden>Price...</option>
                 <option value="low">0$ - 100$ </option>
                 <option value="mid">100$ - 500$</option>
@@ -38,9 +50,15 @@
             </select><br>
           </div>
           <div class="sidebar-container">
+<<<<<<< HEAD
             <label for="type"><h5><strong>Type</strong></h5></label><br>
             <select class="option" id="type" name="type">
                 <option value="" disabled selected hidden>Type...</option>
+=======
+            <label for="brand"><h5><strong>Brand</strong></h5></label><br>
+            <select id="brand" name="brand">
+                <option value="" disabled selected hidden>Brand...</option>
+>>>>>>> parent of 77277ef... stylish
                 <option value="nintendo">Nintendo</option>
                 <option value="console">Console</option>
                 <option value="xbox">Xbox</option>
@@ -48,7 +66,7 @@
           </div>
           <div class="sidebar-container">
               <label for="sort"><h5><strong>Sort</strong></h5></label><br>
-              <select class="option" id="sort" name="sort">
+              <select id="sort" name="sort">
                 <option value="" disabled selected hidden>Sort...</option>
                 <option value="lowhigh">Price (low to high)</option>
                 <option value="highlow">Price (high to low)</option>

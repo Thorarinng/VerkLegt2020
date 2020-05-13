@@ -1,22 +1,16 @@
-
-h5 {
-    color: #494949;
-}
-
 select {
     width: 165px;
 }
 
 #sidebar {
-    width: 90%;
+    min-width: 300px;
+    max-width: 300px;
     background-color: #EDEDED;
     height: 412px;
     margin-top: 2rem;
-    border-radius: 8px;
-    padding: 1.5rem;
-
 }
 
+<<<<<<< HEAD
 
 .option {
     border: 1px solid #a0a0a0;
@@ -25,17 +19,26 @@ select {
     border-radius: 3px;
     color: #494949;
 
+=======
+#submit-border {
+    border-top: solid 1px black;
+>>>>>>> parent of 77277ef... stylish
 }
 
 .sidebar-container {
-
-    margin-bottom: 1rem;
+    margin: 1rem;
 }
 
+.filter-container {
+    text-align: center;
+}
 
-
+.filter-border {
+    border-bottom: solid 1px black;
+}
 
 .filter-btn-style {
+<<<<<<< HEAD
     margin-top: 1rem;
     width: 6rem;
     background-color: #55ccd4;
@@ -63,3 +66,12 @@ select {
 }
 =======
 >>>>>>> parent of 578f3a9... filter sticky
+=======
+    width: 120px;
+    font-weight: bold;
+    background-color: deepskyblue;
+    font-size: 1.5rem;
+    border: solid 3px black;
+    border-radius: 15px;
+}
+>>>>>>> parent of 77277ef... stylish

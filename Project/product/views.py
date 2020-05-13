@@ -27,7 +27,7 @@ def index(request):
             'type': x.type
         } for x in Product.objects.filter(name__icontains=search_filter)]
         return JsonResponse({'data': products})
-<<<<<<< HEAD
+
 
     if 'color' in request.GET or 'price' in request.GET or 'type' in request.GET or 'sort' in request.GET:
         query = Product.objects.all()
@@ -54,7 +54,7 @@ def index(request):
             print(type_query)
             query = query & type_query
             print(query)
-=======
+
     if 'color' in request.GET:
         color_filter = request.GET['color']
     if 'price' in request.GET:
@@ -88,7 +88,7 @@ def index(request):
             return JsonResponse({'data': products})
     if 'brand' in request.GET:
         brand_filter = request.GET['brand']
->>>>>>> parent of 4d6d208... filter fixed
+
 
         if 'sort' in request.GET:
             sort_filter = request.GET['sort']
