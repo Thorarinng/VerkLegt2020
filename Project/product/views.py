@@ -27,6 +27,7 @@ def index(request):
             'type': x.type
         } for x in Product.objects.filter(name__icontains=search_filter)]
         return JsonResponse({'data': products})
+<<<<<<< HEAD
 
     if 'color' in request.GET or 'price' in request.GET or 'type' in request.GET or 'sort' in request.GET:
         query = Product.objects.all()
@@ -53,6 +54,41 @@ def index(request):
             print(type_query)
             query = query & type_query
             print(query)
+=======
+    if 'color' in request.GET:
+        color_filter = request.GET['color']
+    if 'price' in request.GET:
+        price_filter = request.GET['price']
+        if price_filter == 'low':
+            products = [ {
+                'id': x.id,
+                'name': x.name,
+                'description': x.description,
+                'Image': x.imgURL,
+                'price': x.price
+            } for x in Product.objects.filter(price__gte=0, price__lte=100)]
+            return JsonResponse({'data': products})
+        elif price_filter == 'mid':
+            products = [{
+                'id': x.id,
+                'name': x.name,
+                'description': x.description,
+                'Image': x.imgURL,
+                'price': x.price
+            } for x in Product.objects.filter(price__gt=100, price__lte=500)]
+            return JsonResponse({'data': products})
+        elif price_filter == 'max':
+            products = [{
+                'id': x.id,
+                'name': x.name,
+                'description': x.description,
+                'Image': x.imgURL,
+                'price': x.price
+            } for x in Product.objects.filter(price__gt=500)]
+            return JsonResponse({'data': products})
+    if 'brand' in request.GET:
+        brand_filter = request.GET['brand']
+>>>>>>> parent of 4d6d208... filter fixed
 
         if 'sort' in request.GET:
             sort_filter = request.GET['sort']
