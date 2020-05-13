@@ -1,0 +1,15 @@
+
+{% block content %}
+    <div style="display: flex; flex-wrap: wrap; background: lightgrey">
+        <div>
+            <img class="" style="height: 75px" src="{{ product.imgURL }}">
+        </div>
+        <div>
+            <h3 class="" style="padding-left: 20px"> {{ product.name }}</h3>
+            <p class="" style="padding-left: 20px"> {{ product.color }}</p>
+        </div>
+        <h4 class="" style="padding-left: 200px"> ${{ product.price }} US</h4>
+        <a href="{% url 'removeFromCart' product.id %}" class="btn btn-danger">X</a>
+    </div>
+
+{% endblock %}

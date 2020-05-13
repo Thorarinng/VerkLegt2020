@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--<p>Welcome to the product page, rendered from ./product/index.html</p>-->
+
+    <div class="min-height">
+    <div class="cart-container" style="padding-top: 20px">
+        {% for product in cart.values %}
+            <!-- We display multiple single_product.html components-->
+            {%  include 'cart/single_product_cart.html' with product=product%}
+        {% endfor %}
+    </div>
+    </div>
+
+{% endblock %}

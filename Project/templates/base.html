@@ -4,8 +4,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base.html Document</title>
-    <link rel="shortcut icon" type="image/png" href="..\..\static\Images\Gamli.png">
+    <title>Games Go</title>
+    <link rel="shortcut icon" type="image/ico" href="..\..\static\Images\favicon.ico" >
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
     <link rel="stylesheet" href="{% static 'css/nav.css' %}" />
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
   </head>
@@ -28,6 +29,7 @@
 
     <span class="main-page">
 
+    {% include 'messages.html' %}
         <div class="content-container">
 
           <!-- This lets us extend index.html from product to the base.html-->
@@ -49,6 +51,7 @@
     <script src="{% static 'JS/search.js' %}"></script>
     <script src="{% static 'JS/login.js' %}"></script>
     <script src="{% static 'JS/products.js' %}"></script>
+    <script src="{% static 'JS/messageTimeout.js' %}"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     </div>
   </body>

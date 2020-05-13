@@ -10,9 +10,6 @@
     </a>
     <hr class="hr">
     <p class="product-price">${{ product.price }} US</p>
-    <button type="button" class="atc-btn " onclick="console.log('buttonpress')" >Add to cart</button>
+    <a href="{% url 'addToCart' product.id %}"  type="submit" class="atc-btn " >Add to cart</a>
 </div>
-
-
-
 
