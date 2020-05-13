@@ -38,13 +38,23 @@
 
 .form-group {
     width: 150%;
+    background: #EDEDED;
+    padding: 1rem 2rem 2rem 2rem;
+    border-radius: 1rem;
 }
 
-.caa {
+
+li, .helptext {
+    background: transparent;
+    color: gray;
+
+
+}
+
+ul {
+    float: left;
+}
+
+label {
     margin-top: 1rem;
-}
-
-li {
-    background: white;
-
 }
