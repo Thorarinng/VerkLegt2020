@@ -10,30 +10,41 @@ from django.contrib import messages
 
 def addToCart(request, id):
     product = Product.objects.get(id=id)
-    # request.session.setdefault('cart', {})[str(id)] = product.productToDict()
     # Guard against default cookies without cart.
-    try:
-        if request.session['cart'] is None:
-            request.session['cart'] = {}
-    except:
-        request.session['cart'] = {}
+    # If cart hasn't been created in the cookies before, we do it here
+    __cartExists(request)
     request.session['cart'][str(id)] = product.productToDict(id)
-    # request.session['cart'].append(product.productToDict())
-    # return render(request, 'base.html', request.session['cart'])
-    # return render(request, 'product/index.html')
     request.session.modified = True
     messages.success(request, 'Added to cart')
     return redirect("/")
 
 
+def __cartExists(request):
+    try:
+        # See if cart exists
+        context = {'cart': request.session['cart']}
+    except KeyError:
+        # If not, we create it
+        request.session['cart'] = {}
+        context = {}
+    return context
+
+
 def getCart(request):
-    context = {'cart': request.session['cart']}
+    context = __cartExists(request)
     return render(request, 'cart/cart.html', context)
 
 
 def removeFromCart(request, id):
+    # This guard should prevent crash
+    context = __cartExists(request)
     print(request.session['cart'][str(id)])
+    # Removing the certain product from the cart
     del request.session['cart'][str(id)]
+    # Committing the changes
     request.session.modified = True
+    # dictionary ret value to return
     context = {'cart': request.session['cart']}
+    # Message displayed when item removed
+    messages.warning(request, 'Item removed from cart')
     return render(request, 'cart/cart.html', context)

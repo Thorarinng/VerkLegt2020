@@ -10,6 +10,7 @@
 
   .nav-container {
     position: sticky;
+    z-index:1;
     top: 0;
     display: grid;
     grid-template-columns: 10% 15% auto 25% 10%;
@@ -109,7 +110,8 @@
     /*padding: 0 8px;*/
     text-decoration: none;
     color: #444;
-    decoration: none
+    decoration: none;
+    background: #EDEDED
 
   }
 
