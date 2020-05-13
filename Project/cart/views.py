@@ -1,11 +1,13 @@
+from django.contrib.auth import authenticate, login
 from django.forms import model_to_dict
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from product.models import Product
 from django.contrib import messages
 
-
 # Create your views here.
+from user.forms import AccountAuthenticationForm, ShippingAddressForm, EditProfileForm
+from user.models import ShippingAddress, PaymentMethod
 
 
 def addToCart(request, id):
@@ -47,4 +49,56 @@ def removeFromCart(request, id):
     context = {'cart': request.session['cart']}
     # Message displayed when item removed
     messages.warning(request, 'Item removed from cart')
-    return render(request, 'cart/cart.html', context)
+    print(request.session['cart'])
+    return redirect("/cart")
+    # return render(request, 'cart/cart.html', context)
+
+
+def checkout(request):
+    request.session['redirect'] = '/cart/checkout'
+    print("Redirect path: ",request.session['redirect'])
+    context = {}
+    if request.user.is_authenticated:
+        return __getCheckoutDetails(request)
+    else:
+        print("redirect")
+        form = AccountAuthenticationForm(request.POST)
+        context['loginForm'] = form
+        # redirect to cart when logging in from checkout
+        request.session['redirect'] = '/cart'
+        return render(request, "user/login.html", context)
+
+
+def __getCheckoutDetails(request):
+    # TODO: return the payment-method information stored about a user
+    sa = ShippingAddress()
+    pm = PaymentMethod()
+    # Check if a shippingAddress exists
+    context = {}
+    try:
+        context['cart'] = request.session['cart']
+    except:
+        pass
+    try:
+        sa = ShippingAddress.objects.get(user_id=request.user.pk)
+        context['sa'] = sa
+        context['hasShippingAddress'] = True
+    except ShippingAddress.DoesNotExist:
+        context['hasShippingAddress'] = False
+    # Check if a PaymentMethod exists
+    # pm.checkIfExists(request.user.pk)
+    try:
+        pm = PaymentMethod.objects.get(user_id=request.user.pk)
+        context['pm'] = pm
+        context['hasPaymentMethod'] = True
+    except PaymentMethod.DoesNotExist:
+        context['hasPaymentMethod'] = False
+
+    return render(request, 'cart/checkout_details.html', context)
+
+
+def shippingMethod(request):
+    context = {}
+    context['cart'] = request.session['cart']
+    print("SHIPPING METHOD FUNCTION")
+    return render(request, 'cart/shipping_method.html', context)

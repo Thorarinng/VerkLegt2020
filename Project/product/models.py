@@ -12,6 +12,9 @@ class Product(models.Model):
     imgURL = models.CharField(max_length=255)
     description = models.CharField(max_length=255, blank=True)
     discount = models.FloatField()
+
+
+
     def __str__(self):
         return self.name
 
