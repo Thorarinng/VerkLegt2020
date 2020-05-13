@@ -8,30 +8,39 @@ from django.contrib import messages
 # Create your views here.
 
 
-def addToCart(request, productId):
+def addToCart(request, id):
     product = Product.objects.get(id=id)
     # Guard against default cookies without cart.
     # If cart hasn't been created in the cookies before, we do it here
-    try:
-        if request.session['cart'] is None:
-            request.session['cart'] = {}
-    except:
-        request.session['cart'] = {}
-    request.session['cart'][str(productId)] = product.productToDict(productId)
+    __cartExists(request)
+    request.session['cart'][str(id)] = product.productToDict(id)
     request.session.modified = True
     messages.success(request, 'Added to cart')
     return redirect("/")
 
 
+def __cartExists(request):
+    try:
+        # See if cart exists
+        context = {'cart': request.session['cart']}
+    except KeyError:
+        # If not, we create it
+        request.session['cart'] = {}
+        context = {}
+    return context
+
+
 def getCart(request):
-    context = {'cart': request.session['cart']}
+    context = __cartExists(request)
     return render(request, 'cart/cart.html', context)
 
 
-def removeFromCart(request, productId):
-    print(request.session['cart'][str(productId)])
+def removeFromCart(request, id):
+    # This guard should prevent crash
+    context = __cartExists(request)
+    print(request.session['cart'][str(id)])
     # Removing the certain product from the cart
-    del request.session['cart'][str(productId)]
+    del request.session['cart'][str(id)]
     # Committing the changes
     request.session.modified = True
     # dictionary ret value to return
