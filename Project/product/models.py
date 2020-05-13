@@ -24,6 +24,7 @@ class Product(models.Model):
             'imgURL': self.imgURL,
             'description': self.description,
             'discount': self.discount,
+            
         }
         return productDict
 
