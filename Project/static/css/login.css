@@ -13,12 +13,12 @@
     grid-column-start: 2;
     justify-self: start;
     color: #494949;
-    margin: 2rem 0 25rem 0;
+    margin: 1rem 0 25rem 0;
 }
 
 
 
-#id_email, #id_password1, #id_password2 {
+#id_email, #id_password1, #id_password2, #id_password {
     border: 1px solid #a0a0a0;
     height: 1.5rem;
     width: 100%;
@@ -26,4 +26,35 @@
     color: #494949;
 
 
+
+}
+
+.offset-3 {
+    grid-column: 2 / span 2;
+    justify-self: start;
+    margin: 0px;
+
+}
+
+.form-group {
+    width: 150%;
+    background: #EDEDED;
+    padding: 1rem 2rem 2rem 2rem;
+    border-radius: 1rem;
+}
+
+
+li, .helptext {
+    background: transparent;
+    color: gray;
+
+
+}
+
+ul {
+    float: left;
+}
+
+label {
+    margin-top: 1rem;
 }
