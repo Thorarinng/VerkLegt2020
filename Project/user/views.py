@@ -38,6 +38,7 @@ def loginUser(request):
 
     user = request.user
     if user.is_authenticated:
+        request.content_params
         return redirect("/user/account")
 
     if request.POST:

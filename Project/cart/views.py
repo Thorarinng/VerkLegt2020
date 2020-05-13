@@ -102,3 +102,4 @@ def shippingMethod(request):
     context['cart'] = request.session['cart']
     print("SHIPPING METHOD FUNCTION")
     return render(request, 'cart/shipping_method.html', context)
+

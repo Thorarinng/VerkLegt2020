@@ -4,7 +4,7 @@ $(document).ready(function () {
         e.preventDefault();
         var color_filter = $('#color').val();
         var price_filter = $('#price').val();
-        var brand_filter = $('#brand').val();
+        var type_filter = $('#type').val();
         var sort_filter = $('#sort').val();
         var url_string = "";
 
@@ -17,14 +17,16 @@ $(document).ready(function () {
         if (price_filter && !url_string) {
             url_string += "?price=" + price_filter;
         }
-        if (brand_filter && url_string) {
-            url_string += "&brand=" + brand_filter;
+        if (type_filter && url_string) {
+            url_string += "&type=" + type_filter;
         }
-        if (brand_filter && !url_string) {
-            url_string += "?brand=" + brand_filter;
+        if (type_filter && !url_string) {
+            url_string += "?type=" + type_filter;
+            console.log(type_filter)
         }
         if (sort_filter && url_string) {
             url_string += "&sort=" + sort_filter;
+            console.log(type_filter)
         }
         if (sort_filter && !url_string) {
             url_string += "?sort=" + sort_filter;
