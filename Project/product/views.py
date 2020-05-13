@@ -29,7 +29,6 @@ def index(request):
 
     if 'color' in request.GET or 'price' in request.GET or 'brand' in request.GET or 'sort' in request.GET:
         query = Product.objects.all()
-        print(query)
         if 'color' in request.GET:
             color_filter = request.GET['color']
             color_query = Product.objects.filter(color=color_filter)
@@ -58,6 +57,12 @@ def index(request):
                 query = query & sort_query
             elif sort_filter == "highlow":
                 sort_query = Product.objects.order_by('-price')
+                query = query & sort_query
+            elif sort_filter == "az":
+                sort_query = Product.objects.order_by('name')
+                query = query & sort_query
+            elif sort_filter == "za":
+                sort_query = Product.objects.order_by('-name')
                 query = query & sort_query
 
         products = [{

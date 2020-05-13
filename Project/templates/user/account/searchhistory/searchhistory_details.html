@@ -1,0 +1,16 @@
+{% block content %}
+    <div class="profile">
+        <h1>Search History</h1>
+        <p> <b>First Name: </b> {{ user.firstName }}</p>
+        <p> <b>Last Name: </b> {{ user.lastName }}</p>
+        <p> <b> Email: </b> {{ user.email }} </p>
+        <p> <b> Phone Number: </b> {{ user.phoneNumber }}</p>
+        {% if user.active %}
+            <h4>Status: <span style="color: green"> Active </span></h4>
+        {% else %}
+            <h4>Status: <span style="color: red"> Inactive </span></h4>
+        {% endif %}
+
+        <a class="btn btn-primary" style="width: 14rem" href="{% url 'editProfile' %}">Edit Profile</a>
+    </div>
+{% endblock %}
