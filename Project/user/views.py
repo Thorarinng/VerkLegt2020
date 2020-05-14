@@ -1,7 +1,8 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 
-from user.forms import AccountAuthenticationForm, RegistrationForm, EditProfileForm, ShippingAddressForm, PaymentMethodForm
-from .models import User, ShippingAddress, PaymentMethod
+from user.forms import AccountAuthenticationForm, RegistrationForm, EditProfileForm, ShippingAddressForm, PaymentMethodForm, SearchForm
+from .models import User, ShippingAddress, PaymentMethod, SearchHistory
+from product.models import Product
 
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
@@ -82,9 +83,13 @@ def getProfile(request):
         context['hasPaymentMethod'] = True
     except PaymentMethod.DoesNotExist:
         context['hasPaymentMethod'] = False
-
+    try:
+        sh = __getSearchHistory(request)
+        context['sh'] = sh
+        context['hasSearchHistory'] = True
+    except KeyError:
+        context['hasSearchHistory'] = False
     return render(request, 'user/account/account_details.html', context)
-
 
 def editProfile(request):
     if request.POST:
@@ -180,3 +185,28 @@ def updatePaymentMethod(request):
 
     context['updatePaymentMethod'] = form
     return render(request, "user/account/paymentmethod/paymentmethod_update.html", context)
+
+def __getSearchHistory(request):
+    ret_list = {}
+    for i in request.session['searchHistory']:
+        products = [{
+            'id': x.id,
+            'name': x.name,
+            'color': x.color,
+            'price': x.price,
+            'imgURL': x.imgURL,
+            'description': x.description,
+            'discount': x.discount
+        } for x in Product.objects.filter(name__icontains=i)]
+        for y in products:
+            print(y['id'])
+            ret_list[str(y['id'])] = y
+    return ret_list
+
+def getSearchHistory(request):
+    try:
+        context = {'sh': __getSearchHistory(request)}
+    except KeyError:
+        context = {'sh': {}}
+    return render(request, 'user/account/searchhistory/searchhistory_page.html', context)
+

@@ -11,6 +11,7 @@ urlpatterns = [
     path('account/profile/edit/', views.editProfile, name='editProfile'),
     path('account/shippingaddress/edit/', views.updateBillingAddress, name='updateBillingAddress'),
     path('account/paymentmethod/edit/', views.updatePaymentMethod, name='updatePaymentMethod'),
+    path('account/searchhistory', views.getSearchHistory, name='getSearchHistory'),
     # path('account/shippingaddress/edit/', views.updateBillingAddress, name='editBillingAddress'),
     # path('account/shippingaddress/add/', views.updateBillingAddress, name='addBillingAddress'),
 ]

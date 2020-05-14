@@ -208,5 +208,22 @@ hr {
     grid-template-columns: 50% 50%;
 }
 
+.history-header {
+    grid-column-start: 2;
+    margin-top: 2rem;
+}
 
+.search-history {
+    justify-self: center;
+    grid-column-start: auto;
+}
+
+.history-container {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem;
+    margin-top: 1rem;
+}
 
