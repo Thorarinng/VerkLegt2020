@@ -19,16 +19,11 @@
             <h3 class="cart-price total">Total: ${{ total }} US</h3>
         </div>
 
-        <div style="display: flex; align-self: flex-end">
             {% if hasPaymentMethod %}
-                <a href="{% url 'reviewOrder' %}" class="btn btn-primary" style=" width: 14rem; color: white ">Proceed</a>
+                <a href="{% url 'reviewOrder' %}" class="btn btn-primary checkout" >Proceed</a>
             {% else %}
-                <a href="{% url 'paymentOrder' %}" class="btn btn-primary" style=" width: 14rem; color: white ">Proceed 2</a>
+                <a href="{% url 'paymentOrder' %}" class="btn btn-primary checkout" >Proceed</a>
             {% endif %}
-        </div>
-
-        <a href="{% url 'reviewOrder' %}" class="btn btn-primary checkout">Proceed</a>
-
 
     </div>
 
