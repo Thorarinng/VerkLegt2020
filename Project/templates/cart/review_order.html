@@ -3,10 +3,10 @@
 {% block content %}
 <!--<p>Welcome to the product page, rendered from ./product/index.html</p>-->
 
-    <div class="min-height" style="border-style: solid; border-color: #4CAF50; display: flex; flex-wrap: wrap;">
+    <div class="cart-grid" >
 
-        <div class="shipping-address" style="border-style: solid; border-color: yellow">
-            <h1>Shipping Address </h1>
+        <div class="shipping-address account-styling payment-method" >
+            <h1 class="ship-adr">Shipping Address </h1>
             <p> <b>Address: </b> {{ sa.address1 }}</p>
             <p> <b>Bell: </b> {{ sa.address2 }}</p>
             <p> <b> City: </b> {{ sa.city }}</p>
@@ -15,26 +15,28 @@
             <p> <b> Post Code: </b>: {{ sa.postalCode }}</p>
         </div>
 
-        <div class="payment-info" style="border-style: solid; border-color: yellow">
+        <div class="payment-info account-styling payment-method" >
             <h1>Payment </h1>
             <p> <b> Name: </b> {{ pm.nameOnCard.title }}</p>
-            <p> <b> Card Number: </b> {{ pm.getCardNumber }}</p>
+            <p> <b> Card Number: <br></b> {{ pm.getCardNumber }}</p>
             <p> <b> Expiration: </b> {{ pm.cardExpiry }}</p>
             <p> <b> CVC: </b> {{ pm.cvc }}</p>
         </div>
 
-        <div class="cart-container" style="border-style: solid; border-color: red">
+
+
+        <div class="cart-container" >
             {% for product in cart.values %}
-                <div style="border-style: solid; border-color: blue">
+                <div class="cart-item">
                     <!-- We display multiple single_product.html components-->
                     {%  include 'cart/single_product_cart.html' with product=product%}
                 </div>
             {% endfor %}
-            <h3>Shipping:  + $50 US</h3>
-            <h3>Total: ${{ total }} US</h3>
+            <h3 class="cart-price total">Shipping:  + $50 US</h3>
+            <h3 class="cart-price total">Total: ${{ total }} US</h3>
         </div>
 
-        <a class="btn btn-primary" style="width: 14rem" href="{% url 'confirmOrder' %}">Confirm Order</a>
+        <a class="btn btn-primary checkout"  href="{% url 'confirmOrder' %}">Confirm Order</a>
 
     </div>
 

@@ -7,9 +7,12 @@ from product.models import Product
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
-
+from product.views import index
 
 def registerUser(request):
+    # checks if a user has inputted in the search field in the navbar
+    if 'search_filter' in request.GET:
+        return index(request)
     context = {}
     if request.POST:
         form = RegistrationForm(request.POST)
@@ -35,6 +38,9 @@ def logoutUser(request):
 
 
 def loginUser(request):
+    # checks if a user has inputted in the search field in the navbar
+    if 'search_filter' in request.GET:
+        return index(request)
     context = {}
 
     user = request.user
@@ -70,6 +76,9 @@ def loginUser(request):
 
 
 def getProfile(request):
+    # checks if a user has inputted in the search field in the navbar
+    if 'search_filter' in request.GET:
+        return index(request)
     request.session['redirect'] = None
     print("Redirect path: ",request.session['redirect'])
 
@@ -107,6 +116,9 @@ def getProfile(request):
     return render(request, 'user/account/account_details.html', context)
 
 def editProfile(request):
+    # checks if a user has inputted in the search field in the navbar
+    if 'search_filter' in request.GET:
+        return index(request)
     if request.POST:
         form = EditProfileForm(request.POST, instance=request.user)
         if form.is_valid():
@@ -139,6 +151,9 @@ def editProfile(request):
 # This was originally editBillingAddress, because we had two different functions essentially doing the same thing
 # Update and ADding BillingAddress are now one function
 def updateBillingAddress(request):
+    # checks if a user has inputted in the search field in the navbar
+    if 'search_filter' in request.GET:
+        return index(request)
     # Try to find a BillingAddress that exists exists
     try:
         sa = ShippingAddress.objects.get(user_id=request.user.id)
@@ -150,6 +165,10 @@ def updateBillingAddress(request):
         if form.is_valid():
             sa.setShippingAddressAttributes(request, form)
             sa.save()
+            request.session['hasShippingMethod'] = True  ###############
+            print("YES")
+            request.session.modified = True
+            print(request.session['hasShippingMethod'])
             try:
                 if request.session['redirect'] == None:
                     return redirect("/user/account")
@@ -173,6 +192,9 @@ def updateBillingAddress(request):
 
 
 def updatePaymentMethod(request):
+    # checks if a user has inputted in the search field in the navbar
+    if 'search_filter' in request.GET:
+        return index(request)
     # Try to find a BillingAddress that exists exists
     context = {}
     try:
@@ -255,6 +277,9 @@ def __getSearchHistory(request):
     return ret_list
 
 def getSearchHistory(request):
+    # checks if a user has inputted in the search field in the navbar
+    if 'search_filter' in request.GET:
+        return index(request)
     try:
         print("In try")
         context = {'sh': __getSearchHistory(request)}

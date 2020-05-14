@@ -208,7 +208,8 @@ hr {
 
 .image-details-min {
 
-    height: 75%;
+    max-height: 3.5rem;
+    max-width: 4rem;
     grid-column-start: 1;
 }
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from product.models import Product, ProductImage
 # Dont need this, this was just an example
 from django.http import JsonResponse
@@ -18,8 +18,12 @@ def __addToSearchHistory(search,request):
     request.session.modified = True
 
 def index(request):
+    print('INDEX')
     if 'search_filter' in request.GET:
+        print('saerched')
+        print(request.GET)
         search_filter = request.GET['search_filter']
+        print(search_filter)
         products = [ {
             'id': x.id,
             'name': x.name,
@@ -31,7 +35,10 @@ def index(request):
             'type': x.type
         } for x in Product.objects.filter(name__icontains=search_filter)]
         __addToSearchHistory(search_filter, request)
-        return JsonResponse({'data': products})
+        #
+        # return JsonResponse({'data': products})
+        # return redirect('/')
+        return render(request,'product/index.html', {'products': products})
 
     if 'color' in request.GET or 'price' in request.GET or 'type' in request.GET or 'sort' in request.GET:
         query = Product.objects.all()
@@ -87,6 +94,9 @@ def index(request):
 
 # SUPPORTS -> /product/1
 def getProductById(request, id):
+    # checks if a user has inputted in the search field in the navbar
+    if 'search_filter' in request.GET:
+        return index(request)
     # TODO: Get product images from imageDB by productID
     context = {}
     images = ProductImage.objects.filter(product_id=id)
