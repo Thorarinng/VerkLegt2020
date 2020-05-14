@@ -1,14 +1,14 @@
 
 {% block content %}
-    <div style="display: flex; flex-wrap: wrap; background: lightgrey">
-        <div>
-            <img class="" style="height: 75px" src="{{ product.imgURL }}">
-        </div>
-        <div>
-            <h3 class="" style="padding-left: 20px"> {{ product.name }}</h3>
-            <p class="" style="padding-left: 20px"> {{ product.color }}</p>
-        </div>
-        <h4 class="" style="padding-left: 200px"> ${{ product.price }} US</h4>
-    </div>
+
+
+    <img class="images cart-image" src="{{ product.imgURL }}">
+
+
+    <h3 class="cart-name"> {{ product.name }}</h3>
+    <p class="cart-color"> Color: {{ product.color }}</p>
+
+    <h4 class="cart-price"> ${{ product.price }} US</h4>
+
 
 {% endblock %}

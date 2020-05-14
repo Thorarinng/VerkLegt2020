@@ -26,38 +26,40 @@
       </div>
   </div>
 
+<div class="dropdown">
 <div class="dropdown-container">
   <div class="login-container">
       <!--LOGIN dropdown -->
       <ul>
         <li id="login">
-          <div id="login-trigger" href="{% url 'login' %}">
-            {% if user.is_authenticated %}
-              <img src="{{ user.imgURL }}" style="height: 50px; width: 50px; border-radius: 50%" class="far fa-user">
-                <a id="hello">{{ user.firstName }}</a>
-                <a id="my-account">{{ user.lastName }}</a>
-              {% else %}
-            <i class='far fa-user'></i>
-            <a id="hello">Hello, log in?</a>
-            <a id="my-account">My Account</a>
-              {% endif %}
-            <span id="arrow">▼</span>
-          </div>
 
-          <div id="login-content">
-              {% if user.is_authenticated %}
-                <a class="btn btn-primary" href='{% url 'logout' %}'>Logout</a>
-                  <a class="btn btn-success" href='{% url 'account' %}'>Account</a>
-              {% else %}
-                  <a class="btn btn-primary" href={% url  'login' %}>Login</a>
-                  <a class="btn btn-secondary caa" href={% url  'register' %}>
-                      Create an account
-                  </a>
-              {% endif %}
-          </div>
+            <div id="login-trigger" href="{% url 'login' %}">
+                {% if user.is_authenticated %}
+                  <img src="{{ user.imgURL }}" style="height: 50px; width: 50px; border-radius: 50%" class="far fa-user">
+                    <a id="hello">{{ user.firstName }}</a>
+                    <a id="my-account">{{ user.lastName }}</a>
+                {% else %}
+                    <i class='far fa-user'></i>
+                    <a id="hello">Hello, log in?</a>
+                    <a id="my-account">My Account</a>
+                {% endif %}
+                <span id="arrow">▼</span>
+            </div>
 
-        <div class="dropdown">
-</div>
+            <div id="login-content">
+                <div id="login-content-flex">
+
+                  {% if user.is_authenticated %}
+                      <a class="btn btn-primary" href='{% url 'logout' %}'>Logout</a>
+                      <a class="btn btn-success" href='{% url 'account' %}'>Account</a>
+                  {% else %}
+                      <a class="btn btn-primary" href={% url  'login' %}>Login</a>
+                      <a class="btn btn-secondary caa" href={% url  'register' %}>
+                          Create an account
+                      </a>
+                  {% endif %}
+                </div>
+            </div>
 
         </li>
       </ul>
@@ -72,7 +74,7 @@
             <i class='fas far fa-shopping-cart'></i>
             <a href="{% url 'getCart' %}" id="hello">View My Cart</a>
             <a href="{% url 'getCart' %}" id="my-account">My Cart</a>
-            <span id="arrow">▼</span>
+            {% comment %}<span id="arrow">▼</span>{% endcomment %}
           </div>
         </li>
       </ul>
@@ -80,4 +82,4 @@
 
 </div>
 </div>
-
+</div>

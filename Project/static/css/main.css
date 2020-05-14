@@ -28,6 +28,11 @@ body {
 
 }
 
+.multi-product-container:hover {
+    background-color: #F0F0F0;
+    transition: width 2s;
+}
+
 /* unvisited link */
 a {
   color: #494949;
@@ -209,6 +214,7 @@ hr {
 
 .image-details {
     max-width: 20rem;
+    max-height: 22rem;
 }
 
 .product-container {
@@ -241,5 +247,9 @@ hr {
     font-size: 1.2rem;
 }
 
+
+.btn-margin {
+    margin-top: 1rem;
+}
 
 
