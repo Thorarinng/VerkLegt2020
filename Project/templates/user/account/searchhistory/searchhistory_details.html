@@ -1,6 +1,10 @@
 {% block content %}
     <div class="account-styling search-history">
         <h1>Search History</h1>
+        <h3>Recently searched strings:</h3>
+        {% for strings in so %}
+            <p>{{ strings }}</p>
+        {% endfor %}
         <a class="btn btn-primary" style="width: 14rem" href="{% url 'getSearchHistory' %}">View full history</a>
     </div>
 {% endblock %}

@@ -28,6 +28,11 @@ body {
 
 }
 
+.multi-product-container:hover {
+    background-color: #F0F0F0;
+    transition: width 2s;
+}
+
 /* unvisited link */
 a {
   color: #494949;
@@ -209,6 +214,7 @@ hr {
 
 .image-details {
     max-width: 20rem;
+    max-height: 22rem;
 }
 
 .product-container {
@@ -221,6 +227,7 @@ hr {
 .history-header {
     grid-column-start: 2;
     margin-top: 2rem;
+    justify-self: center;
 }
 
 .search-history {
@@ -241,5 +248,27 @@ hr {
     font-size: 1.2rem;
 }
 
+.more-images {
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    justify-self: center;
+    margin-top: 1rem;
+}
+
+.more-images-container {
+    border: 1px solid #EDEDED;
+    background-color: #EDEDED;
+    border-radius: 10px;
+    margin-top: auto;
+}
+.btn-margin {
+    margin-top: 1rem;
+}
 
 
+.extra-img {
+    max-height: 10rem;
+    margin: 1rem;
+}

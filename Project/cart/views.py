@@ -59,11 +59,12 @@ def removeFromCart(request, id):
 
 
 def checkout(request):
+    request.session['redirect'] = '/cart/checkout/shipping'
+    request.session.modified = True
     try:
         if request.session['cart'] == {}:
             return getCart(request)
         else:
-            request.session['redirect'] = '/cart/checkout'
             print("Redirect path: ", request.session['redirect'])
             context = {}
             if request.user.is_authenticated:
@@ -74,6 +75,7 @@ def checkout(request):
                 context['loginForm'] = form
                 # redirect to cart when logging in from checkout
                 request.session['redirect'] = '/cart'
+                request.session.modified = True
                 return render(request, "user/login.html", context)
     except:
         return redirect("/")
@@ -118,6 +120,8 @@ def __getCheckoutDetails(request):
 
 @login_required
 def getPayment(request):
+    request.session['redirect'] = '/cart/checkout/payment'
+    request.session.modified = True
     context = {}
     pm = PaymentMethod.objects.get(user_id=request.user.pk)
     context['hasPaymentMethod'] = True
