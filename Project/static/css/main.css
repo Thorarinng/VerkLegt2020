@@ -193,8 +193,10 @@ hr {
 }
 
 .image-details {
-    height: 18rem;
+    /*height: 18rem;*/
+    max-width: 22 rem;
     align-self: center;
+    background-size: contain;
 }
 
 .color-details {
