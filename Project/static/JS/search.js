@@ -12,6 +12,7 @@ $(document).ready(function() {
             url: '/products/?search_filter=' + searchText,
             type: 'GET',
             success: function(resp) {
+                $(location).attr('href', '/')
                 var newHtml = resp.data.map(d => {
                     return `<div class="multi-product-container">
                                 <a class="product-name" href="/products/${d.id}">
@@ -28,6 +29,7 @@ $(document).ready(function() {
                 });
                 $('.products-container').html(newHtml.join(''));
                 $('#search-box').val('');
+                $(location).attr('href', '/')
             },
             error: function(xhr, status, error) {
                 // TODO: show toastr

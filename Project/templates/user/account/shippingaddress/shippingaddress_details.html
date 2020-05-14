@@ -1,6 +1,6 @@
 {% block content %}
     <div class="account-styling shipping-d">
-        <h1>Shipping Address </h1>
+        <h1 class="ship-adr">Shipping Address</h1>
         {% if hasShippingAddress %}
             <p> <b>Address: </b> {{ sa.address1 }}</p>
             <p> <b>Bell: </b> {{ sa.address2 }}</p>
@@ -8,10 +8,10 @@
             <p> <b> Country: </b> {{ sa.country.name }} <img src="{{ sa.country.flag }}" alt=""></p>
             <p> <b> Region: </b> {{ sa.region }}</p>
             <p> <b> Post Code: </b>: {{ sa.postalCode }}</p>
-            <a class="btn btn-primary" style="width: 14rem" href="{% url 'updateBillingAddress' %}">Edit Billing Address</a>
+            <a class="btn btn-primary" style="width: 14rem" href="{% url 'updateBillingAddress' %}">Edit Shipping Address</a>
         {% else %}
             <p> No shipping address currently registered</p>
-            <a class="btn btn-primary" style="width: 14rem" href="{% url 'updateBillingAddress' %}">Add Billing Address</a>
+            <a class="btn btn-primary" style="width: 14rem" href="{% url 'updateBillingAddress' %}">Add Shipping Address</a>
         {% endif %}
     </div>
 {% endblock %}
