@@ -39,6 +39,7 @@ def loginUser(request):
 
     user = request.user
     if user.is_authenticated:
+        request.content_params
         return redirect("/user/account")
 
     if request.POST:
@@ -52,7 +53,14 @@ def loginUser(request):
 
             if user:
                 login(request, user)
-                return redirect("/user/account")
+                try:
+                    if request.session['redirect'] == None:
+                        return redirect("/")
+                    else:
+                        return redirect(str(request.session['redirect']))
+                except:
+                    return redirect("/")
+
 
     else:
         form = AccountAuthenticationForm()
@@ -64,6 +72,9 @@ def loginUser(request):
 
 
 def getProfile(request):
+    request.session['redirect'] = None
+    print("Redirect path: ",request.session['redirect'])
+
     # TODO: return the payment-method information stored about a user
     sa = ShippingAddress()
     pm = PaymentMethod()
@@ -135,7 +146,13 @@ def updateBillingAddress(request):
         if form.is_valid():
             sa.setShippingAddressAttributes(request, form)
             sa.save()
-            return redirect("/user/account")
+            try:
+                if request.session['redirect'] == None:
+                    return redirect("/user/account")
+                else:
+                    return redirect(str(request.session['redirect']))
+            except:
+                return redirect("/user/account")
 
     form = ShippingAddressForm(
 
@@ -164,14 +181,21 @@ def updatePaymentMethod(request):
         if form.is_valid():
             # cardNumber = form.cleaned_data.get('cardNumber')
             # form.cleanCardNumber()
-            print("Valid")
             # pm.validateAttributes(request, form)
             pm.setPaymentMethodAttributes(request, form)
             pm.save()
             print("Valid paymentMethod")
-            return redirect("/user/account")
-        else:
-            context['updatePaymentMethod'] = form
+        #     return redirect("/user/account")
+        # else:
+        #     context['updatePaymentMethod'] = form
+        #     return render(request, "user/account/paymentmethod/paymentmethod_update.html", context)
+
+        try:
+            if request.session['redirect'] == None:
+                return redirect("/user/account")
+            else:
+                return redirect(str(request.session['redirect']))
+        except:
             return render(request, "user/account/paymentmethod/paymentmethod_update.html", context)
 
     form = PaymentMethodForm(

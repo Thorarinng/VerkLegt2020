@@ -1,0 +1,6 @@
+INSERT INTO product_product (name, color, price, "imgURL", description, discount, type) VALUES ('PS4', 'Black', 900, 'https://www.stickpng.com/assets/images/585ea27bcb11b227491c350b.png', 'Amazing console. You can play fortine with Travis Scott.', 0, 'console');
+
+
+DELETE
+FROM product_product
+WHERE name = 'PS4';

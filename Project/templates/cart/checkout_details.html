@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div style="display: flex; flex-wrap: nowrap">
+
+        <div style="display: flex">
+            {% include 'user/account/shippingaddress/shippingaddress_details.html' %}
+            {% include 'user/account/paymentmethod/paymentmethod_details.html' %}
+        </div>
+
+        <div class="cart-container" style="padding-top: 20px; width: fit-content">
+            {% for product in cart.values %}
+                <div style="display: flex; width: 40rem">
+                    <!-- We display multiple single_product.html components-->
+                    {%  include 'cart/single_product_cart.html' with product=product%}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div style="display: flex; align-self: flex-end">
+            <a href="{% url 'shippingMethod' %}" class="btn btn-primary" style=" width: 14rem; color: white ">Continue to shipping</a>
+        </div>
+
+    </div>
+
+
+{% endblock %}

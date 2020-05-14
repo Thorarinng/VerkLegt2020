@@ -5,6 +5,7 @@ body {
 .multi-product-container {
     width: 15rem;
     height: 20rem;
+    margin: 2rem 1rem 0rem 2rem;
 
     padding: 1rem;
 
@@ -91,15 +92,24 @@ hr {
     grid-column-start: 2;
     justify-self: center;
     width: 100%;
-    height: 2rem;
-    display:block;
-    background-color: #C7DAC7;
+
+
+    background-color: #C7DAC7 !important;
+
     color: #494949;
     border: none;
     outline: none;
     border-radius: 10px;
 
 }
+
+.atc-btn:hover {
+    background-color: #4CAF50 !important;
+    color: white;
+}
+
+
+
 
 .atc-btn-min {
     grid-column-start: 2;
@@ -116,13 +126,20 @@ hr {
     font-weight: bold;
 }
 
-.products-container {
+/*.products-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-self: end;
     grid-gap: 2rem;
     margin-top: 2rem;
+}*/
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
+
 
 #sidebar {
     grid-row-start: 1;

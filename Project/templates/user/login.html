@@ -6,6 +6,8 @@
         {% csrf_token %}
         {{ loginForm.as_p }}
         <input type="submit" class="btn btn-primary" value="Login">
+        <a class="btn btn-secondary" style="width: 14rem" href="{% url 'register' %}">Register new account</a>
+
     </form>
 
 {% endblock %}

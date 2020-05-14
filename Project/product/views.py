@@ -29,12 +29,13 @@ def index(request):
             'price': x.price,
             'imgURL': x.imgURL,
             'description': x.description,
-            'discount': x.discount
+            'discount': x.discount,
+            'type': x.type
         } for x in Product.objects.filter(name__icontains=search_filter)]
         __addToSearchHistory(search_filter, request)
         return JsonResponse({'data': products})
 
-    if 'color' in request.GET or 'price' in request.GET or 'brand' in request.GET or 'sort' in request.GET:
+    if 'color' in request.GET or 'price' in request.GET or 'type' in request.GET or 'sort' in request.GET:
         query = Product.objects.all()
         if 'color' in request.GET:
             color_filter = request.GET['color']
@@ -52,10 +53,12 @@ def index(request):
                 price_query = Product.objects.filter(price__gt=500)
                 query = query & price_query
 
-        if 'brand' in request.GET:
-            brand_filter = request.GET['brand']
-            brand_query = Product.objects.filter(name__icontains=brand_filter)
-            query = query & brand_query
+        if 'type' in request.GET:
+            type_filter = request.GET['type']
+            type_query = Product.objects.filter(type__icontains=type_filter)
+            print(type_query)
+            query = query & type_query
+            print(query)
 
         if 'sort' in request.GET:
             sort_filter = request.GET['sort']
