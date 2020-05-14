@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 <!-- getProfile(self) returns context data about the users billingAddress situation-->
 {% block content %}
-    <div style="display: flex">
+    <div class="account-details">
     {% include 'user/account/profile/profile_details.html' %}
     {% include 'user/account/shippingaddress/shippingaddress_details.html' %}
     {% include 'user/account/paymentmethod/paymentmethod_details.html' %}

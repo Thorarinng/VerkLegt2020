@@ -21,7 +21,13 @@
 
 
 
-#id_email, #id_password1, #id_password2, #id_password {
+#id_email, #id_password1, #id_password2,
+#id_password, #id_imgURL, #id_firstName,
+#id_lastName, #id_phoneNumber, #id_nameOnCard,
+#id_cardNumber, #id_cardExpiry, #id_cvc,
+#id_address1, #id_address2, #id_country,
+#id_region, #id_postalCode, #id_city
+{
     padding-left: 0.5rem;
     border: 1px solid #a0a0a0;
     height: 1.5rem;
