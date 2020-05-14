@@ -19,7 +19,7 @@
             <h3 class="cart-price total">Total: ${{ total }} US</h3>
         </div>
 
-    
+
             {% if hasShippingAddress %}
                 <a href="{% url 'paymentOrder' %}" class="btn btn-primary checkout">Continue to payment step</a>
             {% else %}
