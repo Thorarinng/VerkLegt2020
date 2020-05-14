@@ -1,6 +1,6 @@
 {% block content %}
     <div class="account-styling payment-method">
-        <h1>Payment Method </h1>
+        <h1 class="ship-adr">Payment Method </h1>
         {% if hasPaymentMethod %}
             <p> <b> Name: </b> {{ pm.nameOnCard.title }}</p>
             <p> <b> Card Number: </b> {{ pm.getCardNumber }}</p>

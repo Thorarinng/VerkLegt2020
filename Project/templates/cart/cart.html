@@ -17,11 +17,12 @@
                 <h1>Your cart is empty</h1>
 
             {% endfor %}
-            {% if cart.values %}
-                <a class="btn btn-primary"  href="{% url 'checkoutShipping' %}">Checkout</a>
-            {% endif %}
+
 
         </div>
+        {% if cart.values %}
+            <a class="btn btn-primary checkout"  href="{% url 'checkoutShipping' %}">Checkout</a>
+        {% endif %}
     </div>
 
 {% endblock %}
