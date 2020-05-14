@@ -2,26 +2,26 @@
 
 {% block content %}
 
-    <div style="display: flex; flex-wrap: nowrap">
+    <div class="cart-grid">
 
-        <div style="display: flex">
+        <div >
             {% include 'user/account/paymentmethod/paymentmethod_details.html' %}
         </div>
 
-        <div class="cart-container" style="padding-top: 20px; width: fit-content">
+        <div class="cart-container">
             {% for product in cart.values %}
-                <div style="display: flex; width: 40rem">
+                <div class="cart-item">
                     <!-- We display multiple single_product.html components-->
                     {%  include 'cart/single_product_cart.html' with product=product%}
                 </div>
             {% endfor %}
-            <h3>Shipping:  + $50 US</h3>
-            <h3>Total: ${{ total }} US</h3>
+            <h3 class="cart-price total">Shipping:  + $50 US</h3>
+            <h3 class="cart-price total">Total: ${{ total }} US</h3>
         </div>
 
-        <div style="display: flex; align-self: flex-end">
-            <a href="{% url 'reviewOrder' %}" class="btn btn-primary" style=" width: 14rem; color: white ">Proceed</a>
-        </div>
+
+        <a href="{% url 'reviewOrder' %}" class="btn btn-primary checkout">Proceed</a>
+
 
     </div>
 
