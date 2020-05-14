@@ -230,10 +230,10 @@ hr {
     justify-self: center;
 }
 
-.search-history {
+/*.search-history {
     justify-self: center;
     grid-column-start: auto;
-}
+}*/
 
 .history-container {
     grid-column-start: 2;
