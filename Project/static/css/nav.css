@@ -13,7 +13,7 @@
     z-index:1;
     top: 0;
     display: grid;
-    grid-template-columns: 7% 15% auto 25% 7%;
+    grid-template-columns: 7% 15% auto 35% 7%;
     justify-items: center;
     align-items: center;
     background-color: #EDEDED;
@@ -166,7 +166,7 @@
     position: absolute;
     top: 110px;
     right: 0;
-    z-index: 999;
+    z-index: 9;
     background-color: #DFDFDF;
     padding: 15px;
     box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
@@ -174,11 +174,10 @@
   }
 
     /*slide down box*/
-  #login-content {
+  #login-content-flex {
     width: 17rem;
     display: flex;
     justify-content: space-evenly;
-    padding: 1rem 0 1rem 0;
 
   }
 
