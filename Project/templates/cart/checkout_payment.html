@@ -5,7 +5,6 @@
     <div style="display: flex; flex-wrap: nowrap">
 
         <div style="display: flex">
-            {% include 'user/account/shippingaddress/shippingaddress_details.html' %}
             {% include 'user/account/paymentmethod/paymentmethod_details.html' %}
         </div>
 
@@ -21,7 +20,7 @@
         </div>
 
         <div style="display: flex; align-self: flex-end">
-            <a href="{% url 'confirmOrder' %}" class="btn btn-primary" style=" width: 14rem; color: white ">Confirm Order</a>
+            <a href="{% url 'reviewOrder' %}" class="btn btn-primary" style=" width: 14rem; color: white ">Proceed</a>
         </div>
 
     </div>

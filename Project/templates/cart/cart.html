@@ -6,17 +6,19 @@
     <div class="min-height">
     <div class="cart-container" style="padding-top: 20px">
         {% for product in cart.values %}
-            <div >
-                <a style="height: 2rem" href="{% url 'removeFromCart' product.id %}" class="btn btn-danger">X</a>
+            <div style="display: flex; flex-wrap: wrap">
+                <a href="{% url 'removeFromCart' product.id %}" class="btn btn-danger">X</a>
                 <!-- We display multiple single_product.html components-->
                 {%  include 'cart/single_product_cart.html' with product=product%}
             </div>
-            {% if product in cart.values %}
-                <a class="btn btn-primary" style="width: 14rem" href="{% url 'checkout' %}">Checkout</a>
-            {% endif %}
             {% empty %}
             <h3>Your cart is empty</h3>
+
         {% endfor %}
+        {% if cart.values %}
+            <a class="btn btn-primary" style="width: 14rem" href="{% url 'checkoutShipping' %}">Checkout</a>
+        {% endif %}
+
     </div>
     </div>
 
