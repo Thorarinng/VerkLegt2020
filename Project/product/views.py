@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from product.models import Product
+from product.models import Product, ProductImage
 # Dont need this, this was just an example
 from django.http import JsonResponse
 # INSERT INTO product_product (name,color,price,"imgURL",description,discount)
@@ -87,6 +87,9 @@ def index(request):
 
 # SUPPORTS -> /product/1
 def getProductById(request, id):
-    return render(request, 'product/product_details.html', {
-        'product': get_object_or_404(Product, pk=id)
-    })
+    # TODO: Get product images from imageDB by productID
+    context = {}
+    images = ProductImage.objects.filter(product_id=id)
+    context['product'] = get_object_or_404(Product, pk=id)
+    context['images'] = images
+    return render(request, 'product/product_details.html', context)
