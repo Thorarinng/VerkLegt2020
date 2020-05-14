@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
-from user.models import User, ShippingAddress, PaymentMethod
+from user.models import User, ShippingAddress, PaymentMethod, SearchHistory
 # from creditcards.models import CardNumberField, CardExpiryField, SecurityCodeField
 from .fields import CreditCardField, CVCField, CardExpirationField
 from .validators import validate_even
@@ -72,3 +72,8 @@ class PaymentMethodForm(forms.ModelForm):
     class Meta:
         model = PaymentMethod
         fields = ('nameOnCard', 'cardNumber', 'cardExpiry', 'cvc')
+
+class SearchForm(forms.ModelForm):
+    class Meta:
+        model = SearchHistory
+        fields = ('string',)

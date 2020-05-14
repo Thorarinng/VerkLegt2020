@@ -94,12 +94,53 @@ def __getCheckoutDetails(request):
     except PaymentMethod.DoesNotExist:
         context['hasPaymentMethod'] = False
 
+    total = 50
+    for item in context['cart']:
+        print(int(context['cart'][item]['price']))
+        total += int(context['cart'][item]['price'])
+    request.session['total'] = total
+    context['total'] = request.session['total']
+
     return render(request, 'cart/checkout_details.html', context)
 
 
-def shippingMethod(request):
+def confirmOrder(request):
     context = {}
     context['cart'] = request.session['cart']
-    print("SHIPPING METHOD FUNCTION")
-    return render(request, 'cart/shipping_method.html', context)
+    sa = ShippingAddress.objects.get(user_id=request.user.pk)
+    context['sa'] = sa
+    pm = PaymentMethod.objects.get(user_id=request.user.pk)
+    context['pm'] = pm
+    context['total'] = request.session['total']
+    del request.session['cart']
+    del request.session['total']
+
+
+#    ADD TO ORDER DATABASE HERE -----------------------------------------------
+
+    return render(request, 'cart/confirm.html', context)
+
+
+
+# def shippingMethod(request):
+#     context = {}
+#     context['cart'] = request.session['cart']
+#     # if request.POST:
+#     #     form = shippingMethodForm(request.POST)
+#     #     if form.is_valid():
+#     #         form.save()
+#     #         email = form.cleaned_data.get('email')
+#     #         raw_password = form.cleaned_data.get('password1')
+#     #         user = authenticate(email=email, password=raw_password)
+#     #         login(request, user)
+#     #         return redirect('/user/account')
+#     #     else:
+#     #         context['shippingMethodForm'] = form
+#     #
+#     # else:
+#     #     form = shippingMethodForm()
+#     #     context['registerForm'] = form
+#     print("SHIPPING METHOD FUNCTION")
+#     return render(request, 'cart/confirm.html', context)
+
 

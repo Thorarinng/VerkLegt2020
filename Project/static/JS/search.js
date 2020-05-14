@@ -33,10 +33,11 @@ $(document).ready(function() {
                 // TODO: show toastr
                 console.error(error);
             }
-        })
+        });
     })
 });
 
+//So user can search by pressing enter
 var input = document.getElementById("search-box");
 input.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
@@ -44,9 +45,3 @@ input.addEventListener("keyup", function(event) {
    document.getElementById("search-btn").click();
   }
 });
-
-
-
-
-
-
