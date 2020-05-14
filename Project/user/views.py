@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 
 from user.forms import AccountAuthenticationForm, RegistrationForm, EditProfileForm, ShippingAddressForm, PaymentMethodForm, SearchForm
@@ -211,10 +212,8 @@ def updatePaymentMethod(request):
             pm.setPaymentMethodAttributes(request, form)
             pm.save()
             print("Valid paymentMethod")
-        #     return redirect("/user/account")
-        # else:
-        #     context['updatePaymentMethod'] = form
-        #     return render(request, "user/account/paymentmethod/paymentmethod_update.html", context)
+        else:
+            messages.warning(request, 'Not valid Payment info')
 
         try:
             if request.session['redirect'] == None:
