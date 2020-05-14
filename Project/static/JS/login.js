@@ -8,10 +8,7 @@ $(document).ready(function(){
 
       if ($(this).hasClass('active')) $(this).find('span').html('&#x25B2;')
         else $(this).find('span').html('&#x25BC;')
-        console.log("HERE I AM ");
-      })
+
+      });
   });
-
-
-  console.log("HELLO")
 

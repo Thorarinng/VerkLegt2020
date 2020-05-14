@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-    <h3 class="history-header">Search history</h3>
+    <h1 class="history-header">Search history</h1>
     <div class="history-container">
+
     {% if sh %}
         {% for product in sh.values %}
             <div class="multi-product-container search-history">

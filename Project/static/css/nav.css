@@ -13,7 +13,7 @@
     z-index:1;
     top: 0;
     display: grid;
-    grid-template-columns: 10% 15% auto 25% 10%;
+    grid-template-columns: 7% 15% auto 25% 7%;
     justify-items: center;
     align-items: center;
     background-color: #EDEDED;

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--<p>Welcome to the product page, rendered from ./product/index.html</p>-->
+
+    <div class="min-height" style="border-style: solid; border-color: #4CAF50; display: flex; flex-wrap: wrap;">
+
+        <div class="cart-container" style="border-style: solid; border-color: red">
+            {% for product in cart.values %}
+                <div style="border-style: solid; border-color: blue">
+                    <!-- We display multiple single_product.html components-->
+                    {%  include 'cart/single_product_cart.html' with product=product%}
+                </div>
+            {% endfor %}
+            <h3>Shipping:  + $50 US</h3>
+            <h3>Total: ${{ total }} US</h3>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -5,7 +5,6 @@
     <div style="display: flex; flex-wrap: nowrap">
 
         <div style="display: flex">
-            {% include 'user/account/shippingaddress/shippingaddress_details.html' %}
             {% include 'user/account/paymentmethod/paymentmethod_details.html' %}
         </div>
 
@@ -16,10 +15,12 @@
                     {%  include 'cart/single_product_cart.html' with product=product%}
                 </div>
             {% endfor %}
+            <h3>Shipping:  + $50 US</h3>
+            <h3>Total: ${{ total }} US</h3>
         </div>
 
         <div style="display: flex; align-self: flex-end">
-            <a href="{% url 'shippingMethod' %}" class="btn btn-primary" style=" width: 14rem; color: white ">Continue to shipping</a>
+            <a href="{% url 'reviewOrder' %}" class="btn btn-primary" style=" width: 14rem; color: white ">Proceed</a>
         </div>
 
     </div>
