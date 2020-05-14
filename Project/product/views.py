@@ -3,20 +3,18 @@ from product.models import Product
 # Dont need this, this was just an example
 from django.http import JsonResponse
 # INSERT INTO product_product (name,color,price,"imgURL",description,discount)
-
-from django.http import JsonResponse
-
+import datetime
 
 # Create your views here.
 # This gets rendered when http://127.0.0.1:8000/products is run, which is also the default
 def __addToSearchHistory(search,request):
     try:
-        request.session['searchHistory'][search] = search
+        request.session['searchHistory'][search] = str(datetime.datetime.now())
         print(len(request.session['searchHistory']))
         print(request.session['searchHistory'])
     except KeyError:
         request.session['searchHistory'] = {}
-        request.session['searchHistory'][search] = search
+        request.session['searchHistory'][search] = str(datetime.datetime.now())
     request.session.modified = True
 
 def index(request):
