@@ -30,7 +30,8 @@
                 {% csrf_token %}
                 {{ updatePaymentMethod.as_p }}
                 <input type="submit" class="btn btn-primary" value="Save Changes">
-                <a href= "{% url 'account' %}" class="btn btn-secondary">Cancel</a>
+                <button class="btn btn-secondary" onclick="history.back();">Cancel</button>
+{#                <a href= "{% url 'account' %}" class="btn btn-secondary">Cancel</a>#}
             </form>
         </div>
     </div>
