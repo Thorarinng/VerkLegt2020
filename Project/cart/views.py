@@ -65,9 +65,18 @@ def checkout(request):
         if request.session['cart'] == {}:
             return getCart(request)
         else:
-            print("Redirect path: ", request.session['redirect'])
             context = {}
             if request.user.is_authenticated:
+                # try:
+                #     request.session['hasShippingMethod'] == True
+                #     print("HERE")
+                # except:
+                #     print("HERE1")
+                #     messages.warning(request, 'Missing shipping method')
+                #     context = {'hasShippingAddress': False}
+                #     context['cart'] = request.session['cart']
+                #     return render(request, 'cart/checkout_shipping.html', context)
+
                 return __getCheckoutDetails(request)
             else:
                 print("redirect")
@@ -81,7 +90,6 @@ def checkout(request):
         return redirect("/")
 
 
-@login_required
 def __getCheckoutDetails(request):
     # TODO: return the payment-method information stored about a user
     sa = ShippingAddress()
@@ -96,14 +104,22 @@ def __getCheckoutDetails(request):
         sa = ShippingAddress.objects.get(user_id=request.user.pk)
         context['sa'] = sa
         context['hasShippingAddress'] = True
+        request.session['hasShippingAddress'] = True ###############
+
     except ShippingAddress.DoesNotExist:
         context['hasShippingAddress'] = False
+        print("HERE1")
+        messages.warning(request, 'Missing shipping method')
+        context = {'hasShippingAddress': False}
+        context['cart'] = request.session['cart']
+        return render(request, 'cart/checkout_shipping.html', context)
     # Check if a PaymentMethod exists
     # pm.checkIfExists(request.user.pk)
     try:
         pm = PaymentMethod.objects.get(user_id=request.user.pk)
         context['pm'] = pm
         context['hasPaymentMethod'] = True
+        request.session['hasPaymentMethod'] = True ###############
     except PaymentMethod.DoesNotExist:
         context['hasPaymentMethod'] = False
 
@@ -123,12 +139,29 @@ def getPayment(request):
     request.session['redirect'] = '/cart/checkout/payment'
     request.session.modified = True
     context = {}
-    pm = PaymentMethod.objects.get(user_id=request.user.pk)
-    context['hasPaymentMethod'] = True
-    context['pm'] = pm
-    context['cart'] = request.session['cart']
-    context['total'] = request.session['total']
+    try:
+        pm = PaymentMethod.objects.get(user_id=request.user.pk)
+        context['hasPaymentMethod'] = True
+        context['pm'] = pm
+        context['cart'] = request.session['cart']
+        context['total'] = request.session['total']
+    except:
+        context['cart'] = request.session['cart']
+        context['total'] = request.session['total']
+        messages.warning(request, 'Missing Payment')
+        context['hasPaymentMethod']= False
+        return render(request, 'cart/checkout_payment.html', context)
     return render(request, 'cart/checkout_payment.html', context)
+
+    # try:
+    #     request.session['hasPaymentMethod'] == True
+    #     print("HERE")
+    # except:
+    #     print("HERE1")
+    #     messages.warning(request, 'Missing shipping method')
+    #     context = {'hasPaymentMethod': False}
+    #     context['cart'] = request.session['cart']
+    #     return render(request, 'cart/checkout_payment.html.html', context)
 
 
 @login_required

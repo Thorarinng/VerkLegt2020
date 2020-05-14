@@ -150,6 +150,10 @@ def updateBillingAddress(request):
         if form.is_valid():
             sa.setShippingAddressAttributes(request, form)
             sa.save()
+            request.session['hasShippingMethod'] = True  ###############
+            print("YES")
+            request.session.modified = True
+            print(request.session['hasShippingMethod'])
             try:
                 if request.session['redirect'] == None:
                     return redirect("/user/account")

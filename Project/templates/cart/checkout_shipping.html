@@ -20,7 +20,11 @@
         </div>
 
         <div style="display: flex; align-self: flex-end">
-            <a href="{% url 'paymentOrder' %}" class="btn btn-primary" style=" width: 14rem; color: white ">Continue to payment step</a>
+            {% if hasShippingAddress %}
+                <a href="{% url 'paymentOrder' %}" class="btn btn-primary" style=" width: 14rem; color: white ">Continue to payment step</a>
+            {% else %}
+                <a href="{% url 'checkoutShipping' %}" class="btn btn-primary" style=" width: 14rem; color: white ">Continue to payment step</a>
+            {% endif %}
         </div>
 
     </div>
