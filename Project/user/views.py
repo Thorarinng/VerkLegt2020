@@ -104,7 +104,6 @@ def getProfile(request):
         context['hasSearchHistory'] = True
     except KeyError:
         context['hasSearchHistory'] = False
-    print(context['so'])
     return render(request, 'user/account/account_details.html', context)
 
 def editProfile(request):
