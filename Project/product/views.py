@@ -9,9 +9,15 @@ from django.http import JsonResponse
 
 # Create your views here.
 # This gets rendered when http://127.0.0.1:8000/products is run, which is also the default
-def filter_funk(filter_string):
-    pass
-
+def __addToSearchHistory(search,request):
+    try:
+        request.session['searchHistory'][search] = search
+        print(len(request.session['searchHistory']))
+        print(request.session['searchHistory'])
+    except KeyError:
+        request.session['searchHistory'] = {}
+        request.session['searchHistory'][search] = search
+    request.session.modified = True
 
 def index(request):
     if 'search_filter' in request.GET:
@@ -26,14 +32,14 @@ def index(request):
             'discount': x.discount,
             'type': x.type
         } for x in Product.objects.filter(name__icontains=search_filter)]
+        __addToSearchHistory(search_filter, request)
         return JsonResponse({'data': products})
 
     if 'color' in request.GET or 'price' in request.GET or 'type' in request.GET or 'sort' in request.GET:
         query = Product.objects.all()
-        print(query)
         if 'color' in request.GET:
             color_filter = request.GET['color']
-            color_query = Product.objects.filter(color=color_filter)
+            color_query = Product.objects.filter(color__icontains=color_filter)
             query = query & color_query
         if 'price' in request.GET:
             price_filter = request.GET['price']
@@ -61,6 +67,12 @@ def index(request):
                 query = query & sort_query
             elif sort_filter == "highlow":
                 sort_query = Product.objects.order_by('-price')
+                query = query & sort_query
+            elif sort_filter == "az":
+                sort_query = Product.objects.order_by('name')
+                query = query & sort_query
+            elif sort_filter == "za":
+                sort_query = Product.objects.order_by('-name')
                 query = query & sort_query
 
         products = [{
