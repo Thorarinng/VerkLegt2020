@@ -228,6 +228,7 @@ hr {
 .history-header {
     grid-column-start: 2;
     margin-top: 2rem;
+    justify-self: center;
 }
 
 .search-history {

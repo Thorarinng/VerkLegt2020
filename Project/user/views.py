@@ -47,8 +47,6 @@ def loginUser(request):
         if form.is_valid():
             email = request.POST['email']
             password = request.POST['password']
-            print(email)
-            print(password)
             user = authenticate(email=email, password=password)
 
             if user:
@@ -95,11 +93,18 @@ def getProfile(request):
     except PaymentMethod.DoesNotExist:
         context['hasPaymentMethod'] = False
     try:
+        context['ss'] = request.session['searchHistory']
+    except KeyError:
+        context['ss'] = {}
+    try:
         sh = __getSearchHistory(request)
+        so = __sortedSearchHistory(request)
         context['sh'] = sh
+        context['so'] = so
         context['hasSearchHistory'] = True
     except KeyError:
         context['hasSearchHistory'] = False
+    print(context['so'])
     return render(request, 'user/account/account_details.html', context)
 
 def editProfile(request):
@@ -210,9 +215,31 @@ def updatePaymentMethod(request):
     context['updatePaymentMethod'] = form
     return render(request, "user/account/paymentmethod/paymentmethod_update.html", context)
 
+def __sortedSearchHistory(request):
+    print("Keys:")
+    dateList = []
+    try:
+        for string in request.session['searchHistory']:
+            dateList.append(request.session['searchHistory'][string])
+        slr = sorted(dateList, reverse=True)
+        retList = []
+        count = 0
+        for date in slr:
+            if count == 5:
+                break
+            for string in request.session['searchHistory']:
+                if request.session['searchHistory'][string] == date:
+                    retList.append(string)
+                    count += 1
+                    break
+        return retList
+
+    except KeyError:
+        return []
+
 def __getSearchHistory(request):
     ret_list = {}
-    for i in request.session['searchHistory']:
+    for searchString in request.session['searchHistory']:
         products = [{
             'id': x.id,
             'name': x.name,
@@ -220,17 +247,21 @@ def __getSearchHistory(request):
             'price': x.price,
             'imgURL': x.imgURL,
             'description': x.description,
-            'discount': x.discount
-        } for x in Product.objects.filter(name__icontains=i)]
-        for y in products:
-            print(y['id'])
-            ret_list[str(y['id'])] = y
+            'discount': x.discount,
+        } for x in Product.objects.filter(name__icontains=searchString)]
+        for object in products:
+            object['date'] = request.session['searchHistory'][searchString]
+            ret_list[str(object['id'])] = object
+            print(object['date'])
     return ret_list
 
 def getSearchHistory(request):
     try:
+        print("In try")
         context = {'sh': __getSearchHistory(request)}
+        print(context)
     except KeyError:
+        print("In error")
         context = {'sh': {}}
     return render(request, 'user/account/searchhistory/searchhistory_page.html', context)
 
