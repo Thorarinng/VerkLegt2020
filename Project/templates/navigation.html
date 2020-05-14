@@ -7,13 +7,19 @@
   </div>
 
   <div class="input-group">
-      {% csrf_token %}
-      <input type="search" class="search-bar" id="search-box" name="search" placeholder="Enter search">
-      <div class="input-group-btn">
-        <a href="/">
-            <button type="button" id="search-btn" class="submit"><i class="fa fa-search"></i></button>
-        </a>
-      </div>
+      <form>
+          <input type="search" class="search-bar" name="search_filter" placeholder="Enter search">
+          <div class="input-group-btn">
+            <a href="{% url 'product-index' %}?search_filter">
+                <button type="submit" class="submit"><i class="fa fa-search"></i></button>
+            </a>
+          </div>
+      </form>
+{#      <input type="search" class="search-bar" id="search-box" name="search" placeholder="Enter search">#}
+{#      <div class="input-group-btn">#}
+{#        <a href="/">#}
+{#            <button type="button" id="search-btn" class="submit"><i class="fa fa-search"></i></button>#}
+{#        </a>#}
   </div>
 
 <div class="dropdown">

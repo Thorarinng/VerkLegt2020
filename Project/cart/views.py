@@ -4,6 +4,7 @@ from django.forms import model_to_dict
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from psycopg2.extensions import JSON
+from product.views import index
 
 from cart.models import orders
 from product.models import Product
@@ -15,6 +16,9 @@ from user.models import ShippingAddress, PaymentMethod
 
 
 def addToCart(request, id):
+    # checks if a user has inputted in the search field in the navbar
+    if 'search_filter' in request.GET:
+        return index(request)
     product = Product.objects.get(id=id)
     # Guard against default cookies without cart.
     # If cart hasn't been created in the cookies before, we do it here
@@ -37,11 +41,17 @@ def __cartExists(request):
 
 
 def getCart(request):
+    # checks if a user has inputted in the search field in the navbar
+    if 'search_filter' in request.GET:
+        return index(request)
     context = __cartExists(request)
     return render(request, 'cart/cart.html', context)
 
 
 def removeFromCart(request, id):
+    # checks if a user has inputted in the search field in the navbar
+    if 'search_filter' in request.GET:
+        return index(request)
     # This guard should prevent crash
     context = __cartExists(request)
     print(request.session['cart'][str(id)])
@@ -59,6 +69,9 @@ def removeFromCart(request, id):
 
 
 def checkout(request):
+    # checks if a user has inputted in the search field in the navbar
+    if 'search_filter' in request.GET:
+        return index(request)
     request.session['redirect'] = '/cart/checkout/shipping'
     request.session.modified = True
     try:
@@ -120,6 +133,9 @@ def __getCheckoutDetails(request):
 
 @login_required
 def getPayment(request):
+    # checks if a user has inputted in the search field in the navbar
+    if 'search_filter' in request.GET:
+        return index(request)
     request.session['redirect'] = '/cart/checkout/payment'
     request.session.modified = True
     context = {}
@@ -133,6 +149,9 @@ def getPayment(request):
 
 @login_required
 def reviewOrder(request):
+    # checks if a user has inputted in the search field in the navbar
+    if 'search_filter' in request.GET:
+        return index(request)
     context = {}
     context['cart'] = request.session['cart']
     sa = ShippingAddress.objects.get(user_id=request.user.pk)
@@ -146,6 +165,9 @@ def reviewOrder(request):
 
 @login_required
 def confirmOrder(request):
+    # checks if a user has inputted in the search field in the navbar
+    if 'search_filter' in request.GET:
+        return index(request)
     pm = PaymentMethod.objects.get(user_id=request.user.pk)
     sa = ShippingAddress.objects.get(user_id=request.user.pk)
     context = {}
