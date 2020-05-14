@@ -105,3 +105,14 @@
 .shipping-address, .payment-info {
     grid-column: 1;
 }
+
+.h1-c1 {
+    justify-self: center;
+    text-align: center;
+    background-color: #EDEDED;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 0px;
+    width: 100%;
+    height: fit-content;
+}
