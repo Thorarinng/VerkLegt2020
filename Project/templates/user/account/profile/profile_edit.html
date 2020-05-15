@@ -5,7 +5,11 @@
     <div class="account-details">
         <div class="account-styling">
             <h1>Edit Profile</h1>
-            <img class="profile-pic" src="{{ user.imgURL }}">
+            {% if user.imgURL %}
+                <img class="profile-pic" src="{{ user.imgURL }}" alt="">
+            {% else %}
+                <i class='far fa-user fa-10x profile-pic'></i>
+            {% endif %}
             <h3>{{ user.email }}</h3>
             <form class=" form-horizontal" action="{% url 'editProfile' %}" method="post">
                 {% csrf_token %}
