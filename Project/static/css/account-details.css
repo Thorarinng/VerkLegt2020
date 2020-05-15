@@ -34,7 +34,7 @@ h1 {
     width: 10rem;
     height: 10rem;
     margin-bottom: 1rem;
-
+    justify-self: center;
 }
 
 .search-history {
