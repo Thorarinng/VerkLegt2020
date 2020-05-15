@@ -270,14 +270,14 @@ hr {
 
 
 
-.btn-margin {
+/*.btn-margin {
     margin-top: 1rem;
-}
+}*/
 
 
 .extra-img {
-    max-height: 5rem;
-    max-width: 5rem;
+    max-height: 7.5rem;
+    max-width: 7.5rem;
     object-fit: contain;
     transition: max-width 1s, max-height 1s;
 
@@ -285,8 +285,9 @@ hr {
 }
 
 .extra-img:hover {
-    max-height: 6rem;
-    max-width: 6rem;
+    max-height: 9rem;
+    max-width: 9rem;
+    transition: max-width 1s, max-height 1s;
 
 
 }

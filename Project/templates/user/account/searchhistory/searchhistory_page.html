@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
     <h1 class="history-header">Search history</h1>
+
     <div class="products-container">
 
     {% if sh %}
@@ -18,7 +19,10 @@
             </div>
         {% endfor %}
     {% else %}
-        <h3>No search history...</h3>
+        <div class="multi-product-container">
+            <h3 class="no-history">No search history...</h3>
+        </div>
     {% endif %}
+
     </div>
 {% endblock %}

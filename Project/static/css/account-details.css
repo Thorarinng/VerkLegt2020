@@ -42,5 +42,8 @@ h1 {
     grid-row: 1;
 }
 
+.no-history {
+    grid-column: 1;
+}
 
 
