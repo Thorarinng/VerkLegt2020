@@ -31,7 +31,11 @@
 
             <div id="login-trigger" href="{% url 'login' %}">
                 {% if user.is_authenticated %}
-                  <img src="{{ user.imgURL }}" style="height: 50px; width: 50px; border-radius: 50%" class="far fa-user">
+                  {% if user.imgURL %}
+                    <img src="{{ user.imgURL }}" style="height: 50px; width: 50px; border-radius: 50%" class="far fa-user">
+                  {% else %}
+                    <i class='far fa-user'></i>
+                  {% endif %}
                     <a id="hello">{{ user.firstName }}</a>
                     <a id="my-account">{{ user.lastName }}</a>
                 {% else %}
