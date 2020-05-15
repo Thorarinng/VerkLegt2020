@@ -1,40 +1,39 @@
-
 .footer-links:hover {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .text-uppercase {
-    text-transform: uppercase !important;
-    text-align: center;
+  text-transform: uppercase !important;
+  text-align: center;
 }
 
 .row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  justify-content: center;
 }
 
 .col-md-6 {
-    -ms-flex: 0 0 50%;
-    flex: 0 0 20%;
-    max-width: 50%;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 20%;
+  max-width: 50%;
 }
 #footer-color {
-    background-color: #ededed;
-  }
+  background-color: #ededed;
+}
 
-  #news-signup {
-    justify-content: center;
-  }
+#news-signup {
+  justify-content: center;
+}
 
-  #news-text {
-    color: darkgrey;
-    margin-bottom: 8px;
-    margin-top: 16px;
-  }
+#news-text {
+  color: darkgrey;
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
 
 .page-footer {
   min-height: 100%;
@@ -42,11 +41,9 @@
   margin-top: 50px;
   bottom: 0px;
 
-
   /* Equal to height of footer */
   /* But also accounting for potential margin-bottom of last child */
   /*margin-top: -50px;
   clear: both;
   position: relative;*/
-
-  }
+}

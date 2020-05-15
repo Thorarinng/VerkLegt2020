@@ -1,23 +1,26 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
-
-    <div class="account-details">
-        <div class="account-styling">
-            <h1>Edit Profile</h1>
-            {% if user.imgURL %}
-                <img class="profile-pic" src="{{ user.imgURL }}" alt="">
-            {% else %}
-                <i class='far fa-user fa-10x profile-pic'></i>
-            {% endif %}
-            <h3>{{ user.email }}</h3>
-            <form class=" form-horizontal" action="{% url 'editProfile' %}" method="post">
-                {% csrf_token %}
-                {{ editProfileForm.as_p }}
-                <input type="submit" class="btn btn-primary" value="Save Changes">
-                <button class="btn btn-secondary" onclick="history.back();">Cancel</button>
-            </form>
-        </div>
-    </div>
+<div class="account-details">
+  <div class="account-styling">
+    <h1>Edit Profile</h1>
+    {% if user.imgURL %}
+    <img class="profile-pic" src="{{ user.imgURL }}" alt="" />
+    {% else %}
+    <i class="far fa-user fa-10x profile-pic"></i>
+    {% endif %}
+    <h3>{{ user.email }}</h3>
+    <form
+      class="form-horizontal"
+      action="{% url 'editProfile' %}"
+      method="post"
+    >
+      {% csrf_token %} {{ editProfileForm.as_p }}
+      <input type="submit" class="btn btn-primary" value="Save Changes" />
+      <button class="btn btn-secondary" onclick="history.back();">
+        Cancel
+      </button>
+    </form>
+  </div>
+</div>
 
 {% endblock %}

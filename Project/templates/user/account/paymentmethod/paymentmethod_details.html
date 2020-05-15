@@ -1,15 +1,25 @@
 {% block content %}
-    <div class="account-styling payment-method">
-        <h1 class="ship-adr">Payment Method </h1>
-        {% if hasPaymentMethod %}
-            <p> <b> Name: </b> {{ pm.nameOnCard.title }}</p>
-            <p> <b> Card Number: </b> {{ pm.getCardNumber }}</p>
-            <p> <b> Expiration: </b> {{ pm.cardExpiry }}</p>
-            <p> <b> CVC: </b> {{ pm.cvc }}</p>
-            <a class="btn btn-primary" style="width: 14rem" href="{% url 'updatePaymentMethod' %}">Edit Payment Method</a>
-        {% else %}
-            <p> No payment method currently registered</p>
-            <a class="btn btn-primary" style="width: 14rem" href="{% url 'updatePaymentMethod' %}">Add Payment Method</a>
-        {% endif %}
-    </div>
+<div class="account-styling payment-method">
+  <h1 class="ship-adr">Payment Method</h1>
+  {% if hasPaymentMethod %}
+  <p><b> Name: </b> {{ pm.nameOnCard.title }}</p>
+  <p><b> Card Number: </b> {{ pm.getCardNumber }}</p>
+  <p><b> Expiration: </b> {{ pm.cardExpiry }}</p>
+  <p><b> CVC: </b> {{ pm.cvc }}</p>
+  <a
+    class="btn btn-primary"
+    style="width: 14rem;"
+    href="{% url 'updatePaymentMethod' %}"
+    >Edit Payment Method</a
+  >
+  {% else %}
+  <p>No payment method currently registered</p>
+  <a
+    class="btn btn-primary"
+    style="width: 14rem;"
+    href="{% url 'updatePaymentMethod' %}"
+    >Add Payment Method</a
+  >
+  {% endif %}
+</div>
 {% endblock %}

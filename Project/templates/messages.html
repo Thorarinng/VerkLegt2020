@@ -2,11 +2,11 @@
     {% for message in messages %}
         {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
             <div id="success-message" class="alert alert-success container">
-                {{ message }}
+              {{ message }}
             </div>
-        {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
             <div id="success-message" class="alert alert-danger container">
-                {{ message }}
+              {{ message }}
             </div>
         {% endif %}
     {% endfor %}

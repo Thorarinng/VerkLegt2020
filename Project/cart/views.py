@@ -3,16 +3,15 @@ from django.contrib.auth.decorators import login_required
 from django.forms import model_to_dict
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from psycopg2.extensions import JSON
-from product.views import index
-
-from cart.models import orders
-from product.models import Product
 from django.contrib import messages
 
-# Create your views here.
+from product.views import index
+from cart.models import orders
+from product.models import Product
 from user.forms import AccountAuthenticationForm, ShippingAddressForm, EditProfileForm
 from user.models import ShippingAddress, PaymentMethod
+
+from psycopg2.extensions import JSON
 
 
 def addToCart(request, id):
@@ -26,7 +25,7 @@ def addToCart(request, id):
     request.session['cart'][str(id)] = product.productToDict(id)
     request.session.modified = True
     messages.success(request, 'Added to cart')
-    return redirect("/")
+    return redirect('/')
 
 
 def __cartExists(request):
@@ -54,7 +53,6 @@ def removeFromCart(request, id):
         return index(request)
     # This guard should prevent crash
     context = __cartExists(request)
-    print(request.session['cart'][str(id)])
     # Removing the certain product from the cart
     del request.session['cart'][str(id)]
     # Committing the changes
@@ -63,9 +61,7 @@ def removeFromCart(request, id):
     context = {'cart': request.session['cart']}
     # Message displayed when item removed
     messages.warning(request, 'Item removed from cart')
-    print(request.session['cart'])
-    return redirect("/cart")
-    # return render(request, 'cart/cart.html', context)
+    return redirect('/cart')
 
 
 def checkout(request):
@@ -80,31 +76,19 @@ def checkout(request):
         else:
             context = {}
             if request.user.is_authenticated:
-                # try:
-                #     request.session['hasShippingMethod'] == True
-                #     print("HERE")
-                # except:
-                #     print("HERE1")
-                #     messages.warning(request, 'Missing shipping method')
-                #     context = {'hasShippingAddress': False}
-                #     context['cart'] = request.session['cart']
-                #     return render(request, 'cart/checkout_shipping.html', context)
-
                 return __getCheckoutDetails(request)
             else:
-                print("redirect")
                 form = AccountAuthenticationForm(request.POST)
                 context['loginForm'] = form
                 # redirect to cart when logging in from checkout
                 request.session['redirect'] = '/cart'
                 request.session.modified = True
-                return render(request, "user/login.html", context)
+                return render(request, 'user/login.html', context)
     except:
-        return redirect("/")
+        return redirect('/')
 
 
 def __getCheckoutDetails(request):
-    # TODO: return the payment-method information stored about a user
     sa = ShippingAddress()
     pm = PaymentMethod()
     # Check if a shippingAddress exists
@@ -117,33 +101,26 @@ def __getCheckoutDetails(request):
         sa = ShippingAddress.objects.get(user_id=request.user.pk)
         context['sa'] = sa
         context['hasShippingAddress'] = True
-        request.session['hasShippingAddress'] = True ###############
-
+        request.session['hasShippingAddress'] = True
     except ShippingAddress.DoesNotExist:
         context['hasShippingAddress'] = False
-        print("HERE1")
         messages.warning(request, 'Missing shipping method')
         context = {'hasShippingAddress': False}
         context['cart'] = request.session['cart']
         return render(request, 'cart/checkout_shipping.html', context)
-    # Check if a PaymentMethod exists
-    # pm.checkIfExists(request.user.pk)
     try:
         pm = PaymentMethod.objects.get(user_id=request.user.pk)
         context['pm'] = pm
         context['hasPaymentMethod'] = True
-        request.session['hasPaymentMethod'] = True ###############
+        request.session['hasPaymentMethod'] = True
     except PaymentMethod.DoesNotExist:
         context['hasPaymentMethod'] = False
-
     total = 50
     for item in context['cart']:
-        print(int(context['cart'][item]['price']))
         total += int(context['cart'][item]['price'])
     request.session['total'] = total
     context['total'] = request.session['total']
     request.session.modified = True
-
     return render(request, 'cart/checkout_shipping.html', context)
 
 
@@ -165,19 +142,9 @@ def getPayment(request):
         context['cart'] = request.session['cart']
         context['total'] = request.session['total']
         messages.warning(request, 'Missing Payment')
-        context['hasPaymentMethod']= False
+        context['hasPaymentMethod'] = False
         return render(request, 'cart/checkout_payment.html', context)
     return render(request, 'cart/checkout_payment.html', context)
-
-    # try:
-    #     request.session['hasPaymentMethod'] == True
-    #     print("HERE")
-    # except:
-    #     print("HERE1")
-    #     messages.warning(request, 'Missing shipping method')
-    #     context = {'hasPaymentMethod': False}
-    #     context['cart'] = request.session['cart']
-    #     return render(request, 'cart/checkout_payment.html.html', context)
 
 
 @login_required
@@ -192,7 +159,6 @@ def reviewOrder(request):
     pm = PaymentMethod.objects.get(user_id=request.user.pk)
     context['pm'] = pm
     context['total'] = request.session['total']
-
     return render(request, 'cart/review_order.html', context)
 
 
@@ -208,7 +174,8 @@ def confirmOrder(request):
     context['total'] = request.session['total']
     # Add to database.
     # credit cart
-    cardNumber = {'cardNumber': str(pm.getCardNumber), 'name': str(pm.nameOnCard)}
+    cardNumber = {'cardNumber': str(
+        pm.getCardNumber), 'name': str(pm.nameOnCard)}
     context['cardNumber'] = cardNumber
     # Address
     address = {'address': sa.address1, 'city': sa.city, 'country': sa.country, 'region': sa.region,
@@ -227,5 +194,4 @@ def confirmOrder(request):
     del request.session['cart']
     del request.session['total']
     request.session.modified = True
-
     return render(request, 'cart/confirm_order.html', context)

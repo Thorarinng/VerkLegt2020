@@ -1,28 +1,25 @@
-{% extends "base.html" %}
-{% block content %}
-    <h1 class="history-header">Search history</h1>
+{% extends "base.html" %} {% block content %}
+<h1 class="history-header">Search history</h1>
 
-    <div class="products-container">
-
-    {% if sh %}
-        {% for product in sh.values %}
-            <div class="multi-product-container">
-                <a class="product-name" href="/products/{{ product.id }}">
-                    <h3 class="text-decoration"> {{ product.name }}</h3>
-                </a>
-                <a class="grid-image" href="/products/{{ product.id }}">
-                    <img class="images" src={{ product.imgURL }} >
-                </a>
-                <hr class="hr">
-                <p class="product-price">${{ product.price }} US</p>
-                <a href="{% url 'addToCart' product.id %}"  type="submit" class="atc-btn " >Add to cart</a>
-            </div>
-        {% endfor %}
-    {% else %}
-        <div class="multi-product-container">
-            <h3 class="no-history">No search history...</h3>
-        </div>
-    {% endif %}
-
-    </div>
+<div class="products-container">
+  {% if sh %} {% for product in sh.values %}
+  <div class="multi-product-container">
+    <a class="product-name" href="/products/{{ product.id }}">
+      <h3 class="text-decoration">{{ product.name }}</h3>
+    </a>
+    <a class="grid-image" href="/products/{{ product.id }}">
+      <img class="images" src="{{" product.imgURL }} />
+    </a>
+    <hr class="hr" />
+    <p class="product-price">${{ product.price }} US</p>
+    <a href="{% url 'addToCart' product.id %}" type="submit" class="atc-btn"
+      >Add to cart</a
+    >
+  </div>
+  {% endfor %} {% else %}
+  <div class="multi-product-container">
+    <h3 class="no-history">No search history...</h3>
+  </div>
+  {% endif %}
+</div>
 {% endblock %}

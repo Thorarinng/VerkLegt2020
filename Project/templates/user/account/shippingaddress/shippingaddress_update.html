@@ -1,20 +1,23 @@
-{% extends "base.html" %}
-
-{% block content %}
-    <div class="account-details">
-        <div class="profile account-styling">
-            {% if hasPaymentMethod %}
-                <h1>Edit Shipping Address</h1>
-            {% else %}
-                <h1>Add Shipping Address</h1>
-            {%  endif %}
-            <form class="form-horizontal" action="{% url 'updateBillingAddress' %}" method="post">
-                {% csrf_token %}
-                {{ updateShippingAddressForm.as_p }}
-                <input type="submit" class="btn btn-primary" value="Save Changes">
-                <button class="btn btn-secondary" onclick="history.back();">Cancel</button>
-{#                <a href= "{% url 'account' %}" class="btn btn-secondary">Cancel</a>#}
-            </form>
-        </div>
-    </div>
+{% extends "base.html" %} {% block content %}
+<div class="account-details">
+  <div class="profile account-styling">
+    {% if hasPaymentMethod %}
+    <h1>Edit Shipping Address</h1>
+    {% else %}
+    <h1>Add Shipping Address</h1>
+    {% endif %}
+    <form
+      class="form-horizontal"
+      action="{% url 'updateBillingAddress' %}"
+      method="post"
+    >
+      {% csrf_token %} {{ updateShippingAddressForm.as_p }}
+      <input type="submit" class="btn btn-primary" value="Save Changes" />
+      <button class="btn btn-secondary" onclick="history.back();">
+        Cancel
+      </button>
+      {# <a href="{% url 'account' %}" class="btn btn-secondary">Cancel</a>#}
+    </form>
+  </div>
+</div>
 {% endblock %}

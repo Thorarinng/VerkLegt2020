@@ -3,12 +3,12 @@ from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from django.db.models import Model
+
 from product.models import Product
 
 # Third-party libraries
 from creditcards.models import CardNumberField, CardExpiryField, SecurityCodeField
 from django_countries.fields import CountryField
-
 from .validators import validate_even
 
 
@@ -195,6 +195,7 @@ class PaymentMethod(models.Model):
         display = '••••-••••-••••-' + str(card[12:])
         return display
 
+
 class SearchHistory(models.Model):
     string = models.CharField(max_length=255)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -202,4 +203,3 @@ class SearchHistory(models.Model):
     def setSearchHistoryAttributes(self, searchString, userId):
         self.user_id = userId
         self.string = searchString
-

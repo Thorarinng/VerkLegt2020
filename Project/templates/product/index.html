@@ -1,63 +1,69 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <!--<p>Welcome to the product page, rendered from ./product/index.html</p>-->
 
-    <div class="min-height">
-    <div class="products-container">
-        {% for product in products %}
-            <!-- We display multiple single_product.html components-->
-            {%  include 'product/single_product.html' with product=product%}
-        {% endfor %}
-    </div>
-    </div>
-
+<div class="min-height">
+  <div class="products-container">
+    {% for product in products %}
+    <!-- We display multiple single_product.html components-->
+    {% include 'product/single_product.html' with product=product%} {% endfor %}
+  </div>
+</div>
 
 <nav id="sidebar">
-    <div class="filter-container">
-        <div>
-          <div class="sidebar-container">
-              <label for="color"><h5><strong>Color</strong></h5></label><br>
-              <select class="option" id="color" name="color">
-                <option value="" disabled selected hidden>Color...</option>
-                <option value="yellow">Yellow</option>
-                <option value="red">Red</option>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
-                <option value="black">Black</option>
-                <option value="white">White</option>
-              </select><br>
-          </div>
-          <div class="sidebar-container">
-            <label for="price"><h5><strong>Price</strong></h5></label><br>
-            <select class="option" id="price" name="price">
-                <option value="" disabled selected hidden>Price...</option>
-                <option value="low">0$ - 100$ </option>
-                <option value="mid">100$ - 500$</option>
-                <option value="max">500$<</option>
-            </select><br>
-          </div>
-          <div class="sidebar-container">
-            <label for="type"><h5><strong>Type</strong></h5></label><br>
-            <select class="option" id="type" name="type">
-                <option value="" disabled selected hidden>Type...</option>
-                <option value="handheld">Handheld</option>
-                <option value="console">Console</option>
-            </select><br>
-          </div>
-          <div class="sidebar-container">
-              <label for="sort"><h5><strong>Sort</strong></h5></label><br>
-              <select class="option" id="sort" name="sort">
-                <option value="" disabled selected hidden>Sort...</option>
-                <option value="az">Name (A to Z)</option>
-                <option value="za">Name (Z to A)</option>
-                <option value="lowhigh">Price (low to high)</option>
-                <option value="highlow">Price (high to low)</option>
-              </select><br>
-          </div>
-          <p id="submit-border"></p>
-          <button id="filter-btn" class="filter-btn-style" type="button">Search</button>
-        </div>
+  <div class="filter-container">
+    <div>
+      <div class="sidebar-container">
+        <label for="color"
+          ><h5><strong>Color</strong></h5></label
+        ><br />
+        <select class="option" id="color" name="color">
+          <option value="" disabled selected hidden>Color...</option>
+          <option value="yellow">Yellow</option>
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+          <option value="black">Black</option>
+          <option value="white">White</option> </select
+        ><br />
+      </div>
+      <div class="sidebar-container">
+        <label for="price"
+          ><h5><strong>Price</strong></h5></label
+        ><br />
+        <select class="option" id="price" name="price">
+          <option value="" disabled selected hidden>Price...</option>
+          <option value="low">0$ - 100$ </option>
+          <option value="mid">100$ - 500$</option>
+          <option value="max">500$<</option> </select
+        ><br />
+      </div>
+      <div class="sidebar-container">
+        <label for="type"
+          ><h5><strong>Type</strong></h5></label
+        ><br />
+        <select class="option" id="type" name="type">
+          <option value="" disabled selected hidden>Type...</option>
+          <option value="handheld">Handheld</option>
+          <option value="console">Console</option> </select
+        ><br />
+      </div>
+      <div class="sidebar-container">
+        <label for="sort"
+          ><h5><strong>Sort</strong></h5></label
+        ><br />
+        <select class="option" id="sort" name="sort">
+          <option value="" disabled selected hidden>Sort...</option>
+          <option value="az">Name (A to Z)</option>
+          <option value="za">Name (Z to A)</option>
+          <option value="lowhigh">Price (low to high)</option>
+          <option value="highlow">Price (high to low)</option> </select
+        ><br />
+      </div>
+      <p id="submit-border"></p>
+      <button id="filter-btn" class="filter-btn-style" type="button">
+        Search
+      </button>
     </div>
+  </div>
 </nav>
 {% endblock %}

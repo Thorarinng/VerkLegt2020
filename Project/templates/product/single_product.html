@@ -1,15 +1,15 @@
 <!-- This makes our objects clickable and href redirects us, instead of typing it in the URL manually-->
 
-
 <div class="multi-product-container">
-    <a class="product-name" href="/products/{{ product.id }}">
-        <h3 class="text-decoration"> {{ product.name }}</h3>
-    </a>
-    <a class="grid-image" href="/products/{{ product.id }}">
-        <img class="images" src={{ product.imgURL }} >
-    </a>
-    <hr class="hr">
-    <p class="product-price">${{ product.price }} US</p>
-    <a href="{% url 'addToCart' product.id %}"  type="submit" class=" atc-btn  btn" >Add to cart</a>
+  <a class="product-name" href="/products/{{ product.id }}">
+    <h3 class="text-decoration">{{ product.name }}</h3>
+  </a>
+  <a class="grid-image" href="/products/{{ product.id }}">
+    <img class="images" src="{{ product.imgURL }}" />
+  </a>
+  <hr class="hr" />
+  <p class="product-price">${{ product.price }} US</p>
+  <a href="{% url 'addToCart' product.id %}" type="submit" class="atc-btn btn"
+    >Add to cart</a
+  >
 </div>
-

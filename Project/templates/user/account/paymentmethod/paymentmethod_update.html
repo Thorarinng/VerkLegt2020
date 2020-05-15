@@ -1,39 +1,25 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
 
-{% block content %}
-
-
-    <div class="account-details">
-        <div class="profile account-styling">
-            {% if hasPaymentMethod %}
-                <h1>Edit Payment Method</h1>
-            {% else %}
-                <h1>Add Payment Method</h1>
-            {%  endif %}
-
-    {#        {% if updatePaymentMethod.errors %}#}
-    {#            {% for field in updatePaymentMethod %}#}
-    {#                {% for error in field.errors %}#}
-    {#                    <div class="alert alert-danger">#}
-    {#                        <strong> {{ error|escape }} </strong>#}
-    {#                    </div>#}
-    {#                {% endfor %}#}
-    {#            {% endfor %}#}
-    {#            {% for error in updatePaymentMethod.non_field_errors %}#}
-    {#                <div class="alert alert-danger">#}
-    {#                    <strong> {{ error|escape }} </strong>#}
-    {#                </div>#}
-    {#            {% endfor %}#}
-    {#        {% endif %}#}
-
-            <form class="form-horizontal" action="{% url 'updatePaymentMethod' %}" method="post">
-                {% csrf_token %}
-                {{ updatePaymentMethod.as_p }}
-                <input type="submit" class="btn btn-primary" value="Save Changes">
-                <button class="btn btn-secondary" onclick="history.back();">Cancel</button>
-{#                <a href= "{% url 'account' %}" class="btn btn-secondary">Cancel</a>#}
-            </form>
-        </div>
-    </div>
+<div class="account-details">
+  <div class="profile account-styling">
+    {% if hasPaymentMethod %}
+        <h1>Edit Payment Method</h1>
+    {% else %}
+        <h1>Edit Payment Method</h1>
+    {% endif %}
+    <form
+      class="form-horizontal"
+      action="{% url 'updatePaymentMethod' %}"
+      method="post"
+    >
+      {% csrf_token %} {{ updatePaymentMethod.as_p }}
+      <input type="submit" class="btn btn-primary" value="Save Changes" />
+      <button class="btn btn-secondary" onclick="history.back();">
+        Cancel
+      </button>
+      {# <a href="{% url 'account' %}" class="btn btn-secondary">Cancel</a>#}
+    </form>
+  </div>
+</div>
 
 {% endblock %}

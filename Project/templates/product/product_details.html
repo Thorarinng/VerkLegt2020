@@ -1,35 +1,32 @@
-{% extends "base.html" %}
-{% block content %}
-    <div class="product-container">
-        <h1 class="product-name-details">{{ product.name }}</h1>
-        <div class="details-container image-container">
-            <img class="image-details" src="{{ product.imgURL }}">
-        </div>
-        <div class="more-images-container">
-            {% for image in images %}
-                <img class="extra-img" src="{{ image.image }}">
-            {% endfor %}
-        </div>
-        <div class="details-container product-details">
-            <h3 class="price-details">${{ product.price }} US</h3>
-            <a href="{% url 'addToCart' product.id %}" type="button" class="btn atc-btn atc-btn-min"
-                    onclick="console.log('buttonpress')" >Add to cart
-            </a>
-            <p>Color:</p>
-            <div class="color-details">
-                <img class="image-details-min" src="{{ product.imgURL }}">
-                <p class="color-color">{{ product.color }}</p>
-            </div>
-            <p>Description:</p>
-            <p>{{ product.description }}</p>
-
-
-
-        </div>
-
+{% extends "base.html" %} {% block content %}
+<div class="product-container">
+  <h1 class="product-name-details">{{ product.name }}</h1>
+  <div class="details-container image-container">
+    <img class="image-details" src="{{ product.imgURL }}" />
+  </div>
+  <div class="more-images-container">
+    {% for image in images %}
+    <img class="extra-img" src="{{ image.image }}" />
+    {% endfor %}
+  </div>
+  <div class="details-container product-details">
+    <h3 class="price-details">${{ product.price }} US</h3>
+    <a
+      href="{% url 'addToCart' product.id %}"
+      type="button"
+      class="btn atc-btn atc-btn-min"
+      onclick="console.log('buttonpress')"
+      >Add to cart
+    </a>
+    <p>Color:</p>
+    <div class="color-details">
+      <img class="image-details-min" src="{{ product.imgURL }}" />
+      <p class="color-color">{{ product.color }}</p>
     </div>
-    {% comment %}<div class="more-images">
-
-    </div>{% endcomment %}
-
-{% endblock %}
+    <p>Description:</p>
+    <p>{{ product.description }}</p>
+  </div>
+</div>
+{% comment %}
+<div class="more-images"></div>
+{% endcomment %} {% endblock %}

@@ -1,21 +1,18 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <!--<p>Welcome to the product page, rendered from ./product/index.html</p>-->
+<div class="cart-grid">
 
-    <div class="cart-grid" >
-
-        <div class="cart-container-last" >
-            {% for product in cart.values %}
-                <div class="cart-item">
-                    <!-- We display multiple single_product.html components-->
-                    {%  include 'cart/single_product_cart.html' with product=product%}
-                </div>
-            {% endfor %}
-            <h3 class="cart-price total">Shipping:  + $50 US</h3>
-            <h3 class="cart-price total">Total: ${{ total }} US</h3>
-        </div>
-
+  <div class="cart-container-last">
+    <h1 class="succ">Order successful!</h1>
+    {% for product in cart.values %}
+    <div class="cart-item">
+      <!-- We display multiple single_product.html components-->
+      {% include 'cart/single_product_cart.html' with product=product%}
     </div>
+    {% endfor %}
+    <h3 class="cart-price total">Shipping: + $50 US</h3>
+    <h3 class="cart-price total">Total: ${{ total }} US</h3>
+  </div>
+</div>
 
 {% endblock %}

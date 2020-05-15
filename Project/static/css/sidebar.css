@@ -1,64 +1,50 @@
-
 h5 {
-    color: #494949;
+  color: #494949;
 }
 
 select {
-    width: 165px;
+  width: 165px;
 }
 
 #sidebar {
-    width: 90%;
-    background-color: #EDEDED;
-    height: 412px;
-    margin-top: 2rem;
-    border-radius: 8px;
-    padding: 1.5rem;
-    position: sticky;
-    top: 8.9rem;
-
+  width: 90%;
+  background-color: #ededed;
+  height: 412px;
+  margin-top: 2rem;
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: sticky;
+  top: 8.9rem;
 }
 
-
 .option {
-    border: 1px solid #a0a0a0;
-    height: 1.5rem;
-    width: 100%;
-    border-radius: 3px;
-    color: #494949;
-
+  border: 1px solid #a0a0a0;
+  height: 1.5rem;
+  width: 100%;
+  border-radius: 3px;
+  color: #494949;
 }
 
 .sidebar-container {
-
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
-
-
-
 .filter-btn-style {
-    margin-top: 1rem;
-    width: 6rem;
-    background-color: #55ccd4;
-
-    color: white;
-    font-size: 1rem;
-    border: transparent;
-    border-radius: 5px;
-
+  margin-top: 1rem;
+  width: 6rem;
+  background-color: #55ccd4;
+  color: white;
+  font-size: 1rem;
+  border: transparent;
+  border-radius: 5px;
 }
 
 .filter-btn-style:hover {
-
-    background-color: dimgray;
-
-    color: white;
-
-
+  background-color: dimgray;
+  color: white;
 }
 
 .btn {
-    background-color: #6c757d;
-    border-color: #6c757d;
+  background-color: #6c757d;
+  border-color: #6c757d;
 }

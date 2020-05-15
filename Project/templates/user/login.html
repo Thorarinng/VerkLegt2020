@@ -1,13 +1,15 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
-    <h1 class="name-style product-name-details">Login</h1>
-    <form class="form form-horizontal" action="{% url 'login' %}" method="post">
-        {% csrf_token %}
-        {{ loginForm.as_p }}
-        <input type="submit" class="btn btn-primary" value="Login">
-        <a class="btn btn-secondary btn-margin" style="width: 14rem" href="{% url 'register' %}">Register new account</a>
-
-    </form>
+<h1 class="name-style product-name-details">Login</h1>
+<form class="form form-horizontal" action="{% url 'login' %}" method="post">
+  {% csrf_token %} {{ loginForm.as_p }}
+  <input type="submit" class="btn btn-primary" value="Login" />
+  <a
+    class="btn btn-secondary btn-margin"
+    style="width: 14rem;"
+    href="{% url 'register' %}"
+    >Register new account</a
+  >
+</form>
 
 {% endblock %}

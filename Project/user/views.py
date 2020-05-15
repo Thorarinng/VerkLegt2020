@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from product.views import index
 
+
 def registerUser(request):
     # checks if a user has inputted in the search field in the navbar
     if 'search_filter' in request.GET:
@@ -47,7 +48,7 @@ def loginUser(request):
     user = request.user
     if user.is_authenticated:
         request.content_params
-        return redirect("/user/account")
+        return redirect('/user/account')
 
     if request.POST:
         form = AccountAuthenticationForm(request.POST)
@@ -60,12 +61,11 @@ def loginUser(request):
                 login(request, user)
                 try:
                     if request.session['redirect'] == None:
-                        return redirect("/")
+                        return redirect('/')
                     else:
                         return redirect(str(request.session['redirect']))
                 except:
-                    return redirect("/")
-
+                    return redirect('/')
 
     else:
         form = AccountAuthenticationForm()
@@ -73,7 +73,7 @@ def loginUser(request):
     context['loginForm'] = form
 
     # print(form)
-    return render(request, "user/login.html", context)
+    return render(request, 'user/login.html', context)
 
 
 def getProfile(request):
@@ -81,7 +81,6 @@ def getProfile(request):
     if 'search_filter' in request.GET:
         return index(request)
     request.session['redirect'] = None
-    print("Redirect path: ",request.session['redirect'])
 
     # TODO: return the payment-method information stored about a user
     sa = ShippingAddress()
@@ -116,6 +115,7 @@ def getProfile(request):
         context['hasSearchHistory'] = False
     return render(request, 'user/account/account_details.html', context)
 
+
 def editProfile(request):
     # checks if a user has inputted in the search field in the navbar
     if 'search_filter' in request.GET:
@@ -128,9 +128,7 @@ def editProfile(request):
                 user.__setUserAttributes__(form)
                 user.save()
                 login(request, user)
-                return redirect("/user/account")
-            else:
-                print("user not ")
+                return redirect('/user/account')
     else:
         form = EditProfileForm(
 
@@ -146,7 +144,7 @@ def editProfile(request):
 
     context = {'editProfileForm': form}
 
-    return render(request, "user/account/profile/profile_edit.html", context)
+    return render(request, 'user/account/profile/profile_edit.html', context)
 
 
 # This was originally editBillingAddress, because we had two different functions essentially doing the same thing
@@ -166,17 +164,15 @@ def updateBillingAddress(request):
         if form.is_valid():
             sa.setShippingAddressAttributes(request, form)
             sa.save()
-            request.session['hasShippingMethod'] = True  ###############
-            print("YES")
+            request.session['hasShippingMethod'] = True
             request.session.modified = True
-            print(request.session['hasShippingMethod'])
             try:
                 if request.session['redirect'] == None:
-                    return redirect("/user/account")
+                    return redirect('/user/account')
                 else:
                     return redirect(str(request.session['redirect']))
             except:
-                return redirect("/user/account")
+                return redirect('/user/account')
 
     form = ShippingAddressForm(
 
@@ -189,7 +185,7 @@ def updateBillingAddress(request):
             'postalCode': sa.postalCode
         })
     context = {'updateShippingAddressForm': form}
-    return render(request, "user/account/shippingaddress/shippingaddress_update.html", context)
+    return render(request, 'user/account/shippingaddress/shippingaddress_update.html', context)
 
 
 def updatePaymentMethod(request):
@@ -211,17 +207,16 @@ def updatePaymentMethod(request):
             # pm.validateAttributes(request, form)
             pm.setPaymentMethodAttributes(request, form)
             pm.save()
-            print("Valid paymentMethod")
         else:
             messages.warning(request, 'Not valid Payment info')
 
         try:
             if request.session['redirect'] == None:
-                return redirect("/user/account")
+                return redirect('/user/account')
             else:
                 return redirect(str(request.session['redirect']))
         except:
-            return render(request, "user/account/paymentmethod/paymentmethod_update.html", context)
+            return render(request, 'user/account/paymentmethod/paymentmethod_update.html', context)
 
     form = PaymentMethodForm(
 
@@ -233,10 +228,10 @@ def updatePaymentMethod(request):
         })
 
     context['updatePaymentMethod'] = form
-    return render(request, "user/account/paymentmethod/paymentmethod_update.html", context)
+    return render(request, 'user/account/paymentmethod/paymentmethod_update.html', context)
+
 
 def __sortedSearchHistory(request):
-    print("Keys:")
     dateList = []
     try:
         for string in request.session['searchHistory']:
@@ -257,6 +252,7 @@ def __sortedSearchHistory(request):
     except KeyError:
         return []
 
+
 def __getSearchHistory(request):
     ret_list = {}
     for searchString in request.session['searchHistory']:
@@ -272,19 +268,15 @@ def __getSearchHistory(request):
         for object in products:
             object['date'] = request.session['searchHistory'][searchString]
             ret_list[str(object['id'])] = object
-            print(object['date'])
     return ret_list
+
 
 def getSearchHistory(request):
     # checks if a user has inputted in the search field in the navbar
     if 'search_filter' in request.GET:
         return index(request)
     try:
-        print("In try")
         context = {'sh': __getSearchHistory(request)}
-        print(context)
     except KeyError:
-        print("In error")
         context = {'sh': {}}
     return render(request, 'user/account/searchhistory/searchhistory_page.html', context)
-

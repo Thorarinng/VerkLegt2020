@@ -1,73 +1,64 @@
-
-
 .name-style {
-    grid-column-start: 2;
-    justify-self: start;
-    color: #494949;
-
-
-
+  grid-column-start: 2;
+  justify-self: start;
+  color: #494949;
 }
 
 .form {
-    grid-column-start: 2;
-    justify-self: start;
-    color: #494949;
-    background: #ededed;
-    padding: 1rem;
-    margin: 1rem 0 25rem 0;
-    border-radius: 1rem;
+  grid-column-start: 2;
+  justify-self: start;
+  color: #494949;
+  background: #ededed;
+  padding: 1rem;
+  margin: 1rem 0 25rem 0;
+  border-radius: 1rem;
 }
 
-
-
-#id_email, #id_password1, #id_password2,
-#id_password, #id_imgURL, #id_firstName,
-#id_lastName, #id_phoneNumber, #id_nameOnCard,
-#id_cardNumber, #id_cardExpiry, #id_cvc,
-#id_address1, #id_address2, #id_country,
-#id_region, #id_postalCode, #id_city
-{
-    padding-left: 0.5rem;
-    border: 1px solid #a0a0a0;
-    height: 1.5rem;
-    width: 100%;
-    border-radius: 3px;
-    color: #494949;
-
-
-
+#id_email,
+#id_password1,
+#id_password2,
+#id_password,
+#id_imgURL,
+#id_firstName,
+#id_lastName,
+#id_phoneNumber,
+#id_nameOnCard,
+#id_cardNumber,
+#id_cardExpiry,
+#id_cvc,
+#id_address1,
+#id_address2,
+#id_country,
+#id_region,
+#id_postalCode,
+#id_city {
+  padding-left: 0.5rem;
+  border: 1px solid #a0a0a0;
+  height: 1.5rem;
+  width: 100%;
+  border-radius: 3px;
+  color: #494949;
 }
 
 .offset-3 {
-    grid-column: 2 / span 2;
-    justify-self: start;
-    margin: 0px;
-
+  grid-column: 2 / span 2;
+  justify-self: start;
+  margin: 0px;
 }
 
 .form-group {
-    width: 150%;
-    background: #EDEDED;
-    padding: 1rem 2rem 2rem 2rem;
-    border-radius: 1rem;
+  width: 150%;
+  background: #ededed;
+  padding: 1rem 2rem 2rem 2rem;
+  border-radius: 1rem;
 }
 
 ul {
-    float: left;
+  float: left;
 }
 
-
-
-li, .helptext {
-    background: transparent;
-    color: gray;
+li,
+.helptext {
+  background: transparent;
+  color: gray;
 }
-
-
-
-
-
-
-
-

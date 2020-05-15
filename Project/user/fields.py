@@ -4,7 +4,6 @@ from django.utils.translation import ugettext_lazy as _
 
 
 
-
 class TelephoneInput(TextInput):
     # switch input type to type tel so that the numeric keyboard shows on mobile devices
     input_type = 'tel'
@@ -16,8 +15,7 @@ class CreditCardField(forms.CharField):
             # override default widget
             widget=TelephoneInput(attrs={
                 'placeholder': placeholder
-            })
-            , *args, **kwargs)
+            }), *args, **kwargs)
 
     default_error_messages = {
         'invalid': _(u'The credit card number is invalid'),
@@ -29,7 +27,8 @@ class CreditCardField(forms.CharField):
         try:
             int(value)
         except:
-            raise forms.ValidationError('Card Number must be of a positive integer value')
+            raise forms.ValidationError(
+                'Card Number must be of a positive integer value')
         # ensure no spaces or dashes
         card = value.replace(' ', '').replace('-', '')
         if int(value) < 0:
@@ -47,8 +46,7 @@ class CVCField(forms.CharField):
             # override default widget
             widget=TelephoneInput(attrs={
                 'placeholder': placeholder
-            })
-            , *args, **kwargs)
+            }), *args, **kwargs)
 
     default_error_messages = {
         'invalid': _(u'The credit card number is invalid'),
@@ -70,8 +68,7 @@ class CardExpirationField(forms.CharField):
             # override default widget
             widget=TelephoneInput(attrs={
                 'placeholder': placeholder
-            })
-            , *args, **kwargs)
+            }), *args, **kwargs)
 
     default_error_messages = {
         'invalid': _(u'The CARDEXPIRATION'),

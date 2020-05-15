@@ -1,21 +1,26 @@
 {% block content %}
-    <div class="account-styling profile">
-        <h1>Profile</h1>
-        {% if user.imgURL %}
-            <img class="profile-pic" src="{{ user.imgURL }}" alt="">
-        {% else %}
-            <i class='far fa-user fa-10x profile-pic'></i>
-        {% endif %}
-        <p> <b>First Name: </b> {{ user.firstName }}</p>
-        <p> <b>Last Name: </b> {{ user.lastName }}</p>
-        <p> <b> Email: </b> {{ user.email }} </p>
-        <p> <b> Phone Number: </b> {{ user.phoneNumber }}</p>
-        {% if user.active %}
-            <h4>Status: <span style="color: green"> Active </span></h4>
-        {% else %}
-            <h4>Status: <span style="color: red"> Inactive </span></h4>
-        {% endif %}
+<div class="account-styling profile">
+  <h1>Profile</h1>
+  {% if user.imgURL %}
+  <img class="profile-pic" src="{{ user.imgURL }}" alt="" />
+  {% else %}
+  <i class="far fa-user fa-10x profile-pic"></i>
+  {% endif %}
+  <p><b>First Name: </b> {{ user.firstName }}</p>
+  <p><b>Last Name: </b> {{ user.lastName }}</p>
+  <p><b> Email: </b> {{ user.email }}</p>
+  <p><b> Phone Number: </b> {{ user.phoneNumber }}</p>
+  {% if user.active %}
+  <h4>Status: <span style="color: green;"> Active </span></h4>
+  {% else %}
+  <h4>Status: <span style="color: red;"> Inactive </span></h4>
+  {% endif %}
 
-        <a class="btn btn-primary" style="width: 14rem" href="{% url 'editProfile' %}">Edit Profile</a>
-    </div>
+  <a
+    class="btn btn-primary"
+    style="width: 14rem;"
+    href="{% url 'editProfile' %}"
+    >Edit Profile</a
+  >
+</div>
 {% endblock %}

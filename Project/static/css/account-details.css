@@ -1,49 +1,45 @@
 h1 {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-.account-styling{
-    width: 100%;
-    padding: 20px;
-    background-color: #EDEDED;
-    border-radius: 1rem;
+.account-styling {
+  width: 100%;
+  padding: 20px;
+  background-color: #ededed;
+  border-radius: 1rem;
 
-    display: grid;
-    justify-content: center;
+  display: grid;
+  justify-content: center;
 
-    justify-items: center;
-
+  justify-items: center;
 }
 
 .account-details {
-    grid-column: 2 / span 2;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 1rem;
-    gap: 1rem;
-    justify-items: center;
-    align-items: start;
-    height: fit-content;
+  grid-column: 2 / span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 1rem;
+  gap: 1rem;
+  justify-items: center;
+  align-items: start;
+  height: fit-content;
 
-    /*justify-content: center;*/
-
+  /*justify-content: center;*/
 }
 
 .profile-pic {
-    border-radius: 50%;
-    width: 10rem;
-    height: 10rem;
-    margin-bottom: 1rem;
-    justify-self: center;
+  border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+  margin-bottom: 1rem;
+  justify-self: center;
 }
 
 .search-history {
-    grid-column: 2;
-    grid-row: 1;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .no-history {
-    grid-column: 1;
+  grid-column: 1;
 }
-
-

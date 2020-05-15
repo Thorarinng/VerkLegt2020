@@ -1,14 +1,10 @@
-
 {% block content %}
 
+<img class="images cart-image" src="{{ product.imgURL }}" />
 
-    <img class="images cart-image" src="{{ product.imgURL }}">
+<h3 class="cart-name">{{ product.name }}</h3>
+<p class="cart-color">Color: {{ product.color }}</p>
 
-
-    <h3 class="cart-name"> {{ product.name }}</h3>
-    <p class="cart-color"> Color: {{ product.color }}</p>
-
-    <h4 class="cart-price"> ${{ product.price }} US</h4>
-
+<h4 class="cart-price">${{ product.price }} US</h4>
 
 {% endblock %}

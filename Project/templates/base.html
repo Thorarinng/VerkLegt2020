@@ -3,9 +3,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Games Go</title>
-    <link rel="shortcut icon" type="image/ico" href="..\..\..\..\static\Images\favicon.ico" >
+    <link
+      rel="shortcut icon"
+      type="image/ico"
+      href="..\..\..\..\static\Images\favicon.ico"
+    />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -19,42 +23,44 @@
     <link rel="stylesheet" href="{% static 'css/login.css' %}" />
     <link rel="stylesheet" href="{% static 'css/account-details.css' %}" />
     <link rel="stylesheet" href="{% static 'css/cart.css' %}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
-
     <div class="grid">
-    {% include 'navigation.html' %}
+      {% include 'navigation.html' %}
 
-
-    <span class="main-page">
-
-    {% include 'messages.html' %}
+      <span class="main-page">
+        {% include 'messages.html' %}
         <div class="content-container">
-
           <!-- This lets us extend index.html from product to the base.html-->
           <!-- Think of this as an import statement-->
-        <!-- product/index.html -->
-         {% block content %} {% endblock %}
+          <!-- product/index.html -->
+          {% block content %} {% endblock %}
         </div>
-    </span>
+      </span>
 
-    {% include 'footer.html' %}
+      {% include 'footer.html' %}
 
-    <!-- Bootstrap JavaScript import-->
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
-    <script src="{% static 'JS/search.js' %}"></script>
-    <script src="{% static 'JS/login.js' %}"></script>
-    <script src="{% static 'JS/products.js' %}"></script>
-    <script src="{% static 'JS/messageTimeout.js' %}"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+      <!-- Bootstrap JavaScript import-->
+      <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"
+      ></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+      <script src="{% static 'JS/search.js' %}"></script>
+      <script src="{% static 'JS/login.js' %}"></script>
+      <script src="{% static 'JS/products.js' %}"></script>
+      <script src="{% static 'JS/messageTimeout.js' %}"></script>
+      <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </div>
   </body>
 </html>

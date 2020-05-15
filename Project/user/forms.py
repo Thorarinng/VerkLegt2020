@@ -3,20 +3,21 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
 from user.models import User, ShippingAddress, PaymentMethod, SearchHistory
-# from creditcards.models import CardNumberField, CardExpiryField, SecurityCodeField
 from .fields import CreditCardField, CVCField, CardExpirationField
 from .validators import validate_even
 
 
 # register
 class RegistrationForm(UserCreationForm):
-    email = forms.EmailField(max_length=254, help_text='Required. Add a valid email address.')
+    email = forms.EmailField(
+        max_length=254, help_text='Required. Add a valid email address.')
     password1 = forms.PasswordInput(attrs={'class': 'option'})
     password2 = forms.PasswordInput(attrs={'class': 'option'})
 
     class Meta:
         model = User
-        fields = ('email', 'password1', 'password2', 'firstName', 'lastName', 'phoneNumber', 'imgURL')
+        fields = ('email', 'password1', 'password2', 'firstName',
+                  'lastName', 'phoneNumber', 'imgURL')
         widgets = {
             'password': forms.PasswordInput(attrs={'class': 'option'}),
             'email': forms.TextInput(attrs={'class': 'option'}),
@@ -60,18 +61,21 @@ class ShippingAddressForm(forms.ModelForm):
     class Meta:
         model = ShippingAddress
         exclude = ('pk',)
-        fields = ('address1', 'address2', 'city', 'country', 'region', 'postalCode')
-
+        fields = ('address1', 'address2', 'city',
+                  'country', 'region', 'postalCode')
 
 
 class PaymentMethodForm(forms.ModelForm):
-    cardNumber = CreditCardField(placeholder='0000', min_length=16 ,max_length=16)
+    cardNumber = CreditCardField(
+        placeholder='0000', min_length=16, max_length=16)
     cvc = CVCField(placeholder='123', max_length=3, min_length=3)
-    cardExpiry = CardExpirationField(placeholder='MM/YY',max_length=5,min_length=5)
+    cardExpiry = CardExpirationField(
+        placeholder='MM/YY', max_length=5, min_length=5)
 
     class Meta:
         model = PaymentMethod
         fields = ('nameOnCard', 'cardNumber', 'cardExpiry', 'cvc')
+
 
 class SearchForm(forms.ModelForm):
     class Meta:
