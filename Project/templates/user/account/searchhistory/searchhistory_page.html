@@ -8,13 +8,11 @@
       <h3 class="text-decoration">{{ product.name }}</h3>
     </a>
     <a class="grid-image" href="/products/{{ product.id }}">
-      <img class="images" src="{{" product.imgURL }} />
-    </a>
+      <img class="images" src="{{ product.imgURL }}" /></a>
     <hr class="hr" />
     <p class="product-price">${{ product.price }} US</p>
     <a href="{% url 'addToCart' product.id %}" type="submit" class="atc-btn"
-      >Add to cart</a
-    >
+      >Add to cart</a>
   </div>
   {% endfor %} {% else %}
   <div class="multi-product-container">

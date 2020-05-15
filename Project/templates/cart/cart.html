@@ -8,9 +8,7 @@
     <div class="cart-item">
       <a
         href="{% url 'removeFromCart' product.id %}"
-        class="btn btn-danger cart-btn"
-        >x</a
-      >
+        class="btn btn-danger cart-btn">x</a>
       <!-- We display multiple single_product.html components-->
       {% include 'cart/single_product_cart.html' with product=product%}
     </div>
@@ -20,9 +18,7 @@
     {% endfor %}
   </div>
   {% if cart.values %}
-  <a class="btn btn-primary checkout" href="{% url 'checkoutShipping' %}"
-    >Checkout</a
-  >
+  <a class="btn btn-primary checkout" href="{% url 'checkoutShipping' %}">Checkout</a>
   {% endif %}
 </div>
 
