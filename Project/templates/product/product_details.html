@@ -5,6 +5,11 @@
         <div class="details-container image-container">
             <img class="image-details" src="{{ product.imgURL }}">
         </div>
+        <div class="more-images-container">
+            {% for image in images %}
+                <img class="extra-img" src="{{ image.image }}">
+            {% endfor %}
+        </div>
         <div class="details-container product-details">
             <h3 class="price-details">${{ product.price }} US</h3>
             <a href="{% url 'addToCart' product.id %}" type="button" class="btn atc-btn atc-btn-min"
@@ -17,15 +22,14 @@
             </div>
             <p>Description:</p>
             <p>{{ product.description }}</p>
+
+
+
         </div>
+
     </div>
-    <div class="more-images">
-        <h3 style="text-align: center">More images</h3>
-        <div class="more-images-container">
-        {% for image in images %}
-            <img class="image-details extra-img" src="{{ image.image }}">
-        {% endfor %}
-        </div>
-    </div>
+    {% comment %}<div class="more-images">
+
+    </div>{% endcomment %}
 
 {% endblock %}
